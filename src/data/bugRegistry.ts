@@ -1,0 +1,3 @@
+import{knownSubmissions,realWorldBugTarget}from'./bugSubmissions';
+export const bugRegistry=Array.from({length:realWorldBugTarget},(_,i)=>{const id=String(i+1).padStart(3,'0');const found=knownSubmissions.find(s=>s.id===id);return found?{...found,recordStatus:'documented' as const}:{id,title:'Pending source retrieval',summary:'Belum ditemukan dokumentasi primer untuk ID ini. Bukan bukti telah diajukan.',evidenceStatus:'unverified' as const,approvalStatus:'not_verified' as const,recordStatus:'unrecovered' as const}});
+export const recoveredCount=bugRegistry.filter(x=>x.recordStatus==='documented').length;
