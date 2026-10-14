@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';
 const source=readFileSync('src/data.js','utf8');
-const champions=JSON.parse(source.match(/export const champions=(\\[[\\s\\S]*?\\]);/)[1]);
-const levels=JSON.parse(source.match(/export const levels=(\\[[\\s\\S]*?\\]);/)[1]);
+const champions=JSON.parse(source.match(/export const champions=(\[[\s\S]*?\]);/)[1]);
+const levels=JSON.parse(source.match(/export const levels=(\[[\s\S]*?\]);/)[1]);
 assert.equal(champions.length,105);assert.equal(levels.length,33);
 assert.equal(new Set(champions.map(x=>x.id)).size,105);assert.equal(new Set(levels.map(x=>x.id)).size,33);
 assert.deepEqual(levels.map(x=>x.id),Array.from({length:33},(_,i)=>i+1));
