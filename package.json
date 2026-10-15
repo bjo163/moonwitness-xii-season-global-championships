@@ -1,13 +1,13 @@
 {
   "name": "moonwitness-xii-global-championships",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "npm run test && npm run audit:posters && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node scripts/check-content.mjs",
+    "test": "node scripts/check-content.mjs && node scripts/test-workspace.mjs",
     "check": "npm run build",
     "test:browser": "playwright test",
     "audit:posters": "node scripts/audit-posters.mjs"
