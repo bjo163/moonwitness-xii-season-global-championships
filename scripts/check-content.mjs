@@ -27,4 +27,8 @@ assert.equal(scripts.reduce((total,e)=>total+e.pages.length,0),63);
 assert.ok(scripts.every(e=>e.pages.every((p,i)=>p.number===i+1 && p.artwork===null && p.artworkPath===null && p.sourceType==='editorial_reconstruction' && p.verification==='original_text_pending')),'Sequential pages and honest artwork status');
 assert.ok(reader.includes('current.artworkPath') && reader.includes('Episode references:'));
 for(const feature of ['FOCUS READING MODE','COPY PAGE LINK','SHARE ↗','useSearchParams','repeating-linear-gradient'])assert.ok(reader.includes(feature),'Missing Phase 2.6 feature '+feature);
+const manifest=readFileSync('src/data/posterManifest.js','utf8');
+assert.ok(manifest.includes('verifiedPosterAssets = []'),'No unverified art may be preloaded');
+assert.ok(manifest.includes('getPosterAsset'));
+assert.ok(reader.includes('POSTER GALLERY') && reader.includes('getPosterAsset'));
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
