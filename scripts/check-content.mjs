@@ -1,4 +1,4 @@
-import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';import assert from 'node:assert/strict';
 const source=readFileSync('src/data.js','utf8');
 const champions=JSON.parse(source.match(/export const champions=(\[[\s\S]*?\]);/)[1]);
 const levels=JSON.parse(source.match(/export const levels=(\[[\s\S]*?\]);/)[1]);
@@ -82,7 +82,7 @@ assert.equal(sourceAudit.storySourceRows.length,15);
 assert.ok(sourceAudit.championSourceRows.every(x=>x.status==='needs_independent_review'));
 assert.ok(sourceAudit.championSourceRows.every(x=>!x.identityReviewed&&!x.videoReviewed));
 assert.ok(sourceAudit.checkedReferenceLinks.length>=2);
-for(const path of ['src/pages/CommandCenter.jsx','src/pages/Research.jsx','src/hooks/useWorldProgress.js','scripts/audit-posters.mjs','api/health.js','tests/browser/smoke.spec.js','playwright.config.js','db/001_secure_foundation.sql'])assert.ok(readFileSync(path,'utf8').length>150,'Missing new seven-track module '+path);
+for(const path of ['src/pages/CommandCenter.jsx','src/pages/Research.jsx','src/hooks/useWorldProgress.js','scripts/audit-posters.mjs','tests/browser/smoke.spec.js','playwright.config.js'])assert.ok(readFileSync(path,'utf8').length>150,'Missing new seven-track module '+path);
 const appAll=readFileSync('src/App.jsx','utf8');
 const navAll=readFileSync('src/components/Header.jsx','utf8');
 for(const route of ['command-center','research']){assert.ok(appAll.includes('path="/'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
@@ -93,10 +93,13 @@ assert.ok(readFileSync('src/pages/Research.jsx','utf8').includes('EXPORT AUDIT C
 
 const workspaceUI=readFileSync('src/pages/Workspace.jsx','utf8');
 const workspaceUtils=readFileSync('src/utils/workspaceBackup.js','utf8');
-for(const piece of ['BACKUP & RESTORE','SOURCE REVIEW DRAFTS','BACKEND READINESS','RESTORE MY WORKSPACE','SAVE PRIVATE DRAFT'])assert.ok(workspaceUI.includes(piece),'Workspace UI incomplete: '+piece);
+for(const piece of ['BACKUP & RESTORE','SOURCE REVIEW DRAFTS','ABOUT THIS WEBSITE','RESTORE MY WORKSPACE','SAVE PRIVATE DRAFT'])assert.ok(workspaceUI.includes(piece),'Workspace UI incomplete: '+piece);
 for(const piece of ['parseWorkspaceBackup','restoreWorkspace','cleanReviewDrafts','WORKSPACE_EVENT','no fake']){/* last marker is documentary only */if(piece!=='no fake')assert.ok(workspaceUtils.includes(piece));}
 assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/workspace"'));
 assert.ok(readFileSync('src/components/Header.jsx','utf8').includes("'/workspace'"));
+assert.ok(workspaceUI.includes('NO ACCOUNT. JUST EXPLORE.'),'Public website must remain account free');
+assert.ok(readFileSync('src/pages/Grand.jsx','utf8').includes('NO ACCOUNTS BY DESIGN'),'Roadmap must stay static-first');
+for(const file of ['api/health.js','db/schema.sql','db/001_secure_foundation.sql'])assert.ok(!existsSync(file),'Unused backend/server file should not ship: '+file);
 assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('No events match this combination.'));
 assert.ok(readFileSync('src/hooks/useWorldProgress.js','utf8').includes('WORKSPACE_EVENT'));
 assert.ok(readFileSync('scripts/test-workspace.mjs','utf8').includes('restoreWorkspace'));
