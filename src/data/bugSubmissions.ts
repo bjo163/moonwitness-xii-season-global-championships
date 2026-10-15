@@ -100,3 +100,6 @@ export const knownSubmissions:BugSubmission[]=[
   }
 ];
 export const unnumberedReports=[{id:'RIBA',title:'RIBA — NOT APPROVED',note:'Frasa dari narasi; tidak boleh ditafsirkan sebagai penolakan Tuhan atau otoritas tertentu tanpa bukti.'}];
+
+// Standalone prayer report; not automatically assigned one of the 33 bug IDs.
+export const wildYouthReport={id:'MWX-SYF-00752',title:'WILD YOUTH — THE MERCY & HIDAYAH PATCH',scope:'Youth / Family / Believers / Humanity',summary:'Permohonan rahmah, hidayah, maghfirah dan barakah kepada Allah bagi generasi muda, keluarga, orang beriman, dan umat manusia.',benefit:'Harapan petunjuk, pengampunan, keberkahan, kasih sayang, pertobatan, serta dorongan memperbaiki diri dan saling menjaga.',references:'QS. Az-Zumar 39:53; QS. Al-Fatihah 1:6; QS. Al-Araf 7:156; QS. Ibrahim 14:41',status:'PERSONAL PRAYER REPORT · APPROVAL NOT VERIFIED',note:'Arsip isi permohonan dari riwayat; redaksi asli lengkap dan asal ID perlu dicocokkan kembali. Referensi ditambahkan secara tematis, bukan evidence persetujuan Allah.'};
