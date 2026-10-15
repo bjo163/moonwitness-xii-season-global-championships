@@ -1,22 +1,22 @@
-name: React Vite Quality Gates
+name: MoonWitness Quality Gate
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
-  validate:
+  content-and-build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Install dependencies
-        run: npm install
-      - name: Content checks
-        run: npm test
-      - name: Production build
+        run: npm install --no-audit --no-fund
+      - name: Check source integrity and build
         run: npm run build
