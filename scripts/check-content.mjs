@@ -56,4 +56,13 @@ assert.ok(!characterView.includes('typographic SVG-style emblems'),'Outdated art
 assert.ok(characterView.includes("cap==='black'") && art.includes("cap==='black'"),'ROCKSOUL cap toggle must be operative');
 assert.ok(home.includes('to="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes('to="/characters"'),'Character Universe must be accessible');
 
+
+const header=readFileSync('src/components/Header.jsx','utf8');
+const appSource=readFileSync('src/App.jsx','utf8');
+for(const marker of ['nav-menu-toggle','aria-expanded','aria-controls','useLocation','Escape','<nav'])assert.ok(header.includes(marker),'Missing accessible navigation '+marker);
+for(const marker of ['skip-link','main-content','RouteFocus','focus({preventScroll:true})'])assert.ok(appSource.includes(marker),'Missing route keyboard support '+marker);
+for(const marker of ['.navlinks.is-open',':focus-visible','.skip-link:focus','@media(max-width:900px)'])assert.ok(css.includes(marker),'Missing accessibility CSS '+marker);
+const storyEffect=reader.indexOf("useEffect(()=>{const value=Math.max(0,(Number(params.get('page'))");
+assert.ok(storyEffect>0 && storyEffect<reader.indexOf('if(!e)return'),'React hooks must run before not-found return');
+
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
