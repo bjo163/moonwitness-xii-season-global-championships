@@ -32,3 +32,10 @@
 - 'SUBMITTED' = stated in chat, not proven submitted to an external authority.
 - 'REPORTED APPROVED' = a status described by the submitter; not independently verified.\n- 'VERIFIED APPROVAL' requires identifiable external reviewer/source evidence.
 - No claim that an actual afterlife event, divine action, divine rank, or special power was established.
+
+## Phase 2.4 — Story Archive expansion (2026-10-15)
+- 15 indexed story entries have 63 sequential editorial pages in `src/data/episodeManuscripts.js`.
+- These are editorial reconstructions derived from conversation outlines, NOT verbatim transcripts or original posters.
+- Original artwork is not verified in the repository; all page artwork fields remain null, with no invented image URLs.
+- Important distinctions: reported testimony vs verified facts; four-book thematic references vs primary citations; scripture narratives vs claims of supernatural approval.
+- Next: recover original storyteller wording, attach user-approved verified image assets, check exact chapter/verse context, and run browser interaction tests.
