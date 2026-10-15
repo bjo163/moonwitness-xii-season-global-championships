@@ -26,4 +26,5 @@ assert.deepEqual(new Set(scripts.map(x=>x.slug)),new Set(archive.map(x=>x.slug))
 assert.equal(scripts.reduce((total,e)=>total+e.pages.length,0),63);
 assert.ok(scripts.every(e=>e.pages.every((p,i)=>p.number===i+1 && p.artwork===null && p.artworkPath===null && p.sourceType==='editorial_reconstruction' && p.verification==='original_text_pending')),'Sequential pages and honest artwork status');
 assert.ok(reader.includes('current.artworkPath') && reader.includes('Episode references:'));
+for(const feature of ['FOCUS READING MODE','COPY PAGE LINK','SHARE ↗','useSearchParams','repeating-linear-gradient'])assert.ok(reader.includes(feature),'Missing Phase 2.6 feature '+feature);
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
