@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "vite build",
+    "build": "npm run test && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node scripts/check-content.mjs",
-    "check": "npm run test && npm run build"
+    "check": "npm run build"
   },
   "dependencies": {
     "react": "^19.1.1",
