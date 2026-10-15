@@ -31,4 +31,8 @@ const manifest=readFileSync('src/data/posterManifest.js','utf8');
 assert.ok(manifest.includes('verifiedPosterAssets = []'),'No unverified art may be preloaded');
 assert.ok(manifest.includes('getPosterAsset'));
 assert.ok(reader.includes('POSTER GALLERY') && reader.includes('getPosterAsset'));
+const home=readFileSync('src/pages/Home.jsx','utf8');const art=readFileSync('src/components/CrewArt.jsx','utf8');const css=readFileSync('src/style.css','utf8');
+for(const k of ['WHERE','LEGEND.','ROCKSOUL','ISROCKFEEL','WALTERWHITE','4-LAH / THE BATTERIES'])assert.ok(home.includes(k));
+for(const k of ['<svg','linearGradient','viewBox'])assert.ok(art.includes(k));
+for(const k of ['.mw-hero','.mw-crew-grid','@media(max-width:500px)'])assert.ok(css.includes(k));
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
