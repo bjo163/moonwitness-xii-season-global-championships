@@ -42,7 +42,7 @@ assert.ok(art.includes('rocksoul')&&art.includes('punk')&&art.includes('queen'))
 const charPage=readFileSync('src/pages/Characters.jsx','utf8');
 for(const k of ['ROCKSOUL','ISROCKFEEL','WALTERWHITE','4-LAH / THE BATTERIES','setCap','supportingCrew'])assert.ok(charPage.includes(k),'Character UI missing '+k);
 assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/characters"'));
-assert.ok(readFileSync('src/components/Header.jsx','utf8').includes('to="/characters"'));
+assert.ok(readFileSync('src/components/Header.jsx','utf8').includes("'/characters'"));
 assert.ok(art.includes("cap==='black'"),'ROCKSOUL black cap must change real SVG colors');
 
 // Finished Character Universe quality gates.
@@ -54,7 +54,7 @@ assert.ok(art.includes('React.useId'), 'Main crew gradients must have unique IDs
 assert.ok(home.includes('<SupportArt') && characterView.includes('<SupportArt'),'Both character galleries should show vector art');
 assert.ok(!characterView.includes('typographic SVG-style emblems'),'Outdated artwork placeholder claim');
 assert.ok(characterView.includes("cap==='black'") && art.includes("cap==='black'"),'ROCKSOUL cap toggle must be operative');
-assert.ok(home.includes('to="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes('to="/characters"'),'Character Universe must be accessible');
+assert.ok(home.includes('to="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes("'/characters'"),'Character Universe must be accessible');
 
 
 const header=readFileSync('src/components/Header.jsx','utf8');
