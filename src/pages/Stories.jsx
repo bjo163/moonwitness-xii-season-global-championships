@@ -17,7 +17,7 @@ export function StoryDetail(){
   {label:"03 / SCRIPTURE · RESEARCH",title:"CHECK THE REFERENCES",body:e.references,sub:"Rujukan tematis. Keterkaitan tafsir dan kutipan harus dicek pada sumber primer; tidak membuktikan pengalaman supranatural."},
   {label:"04 / CONTINUED · PATCH NOTES",title:"HONEST FIRST. MERCY ALWAYS.",body:e.note,sub:"Original manga art / full narration pending. This is the last editorial draft page."}
  ];
- const panels=restored?restored.pages.map(p=>({label:String(p.number).padStart(2,'0')+' / EDITORIAL',title:p.title,body:p.text,sub:restored.provenance})):fallbackPanels;
+ const panels=restored?restored.pages.map(p=>({label:String(p.number).padStart(2,'0')+' / EDITORIAL',title:p.title,body:p.text,sub:restored.provenance,artworkPath:p.artworkPath,sourceType:p.sourceType,verification:p.verification})):fallbackPanels;
  const current=panels[Math.min(page,panels.length-1)];
  return <main className="container page">
   <Link to="/stories" className="textlink">← BACK TO STORY ARCHIVE</Link>
@@ -28,7 +28,7 @@ export function StoryDetail(){
    <article aria-live="polite" style={{border:'2px solid currentColor',borderRadius:18,padding:'clamp(20px,5vw,54px)',minHeight:430,display:'flex',flexDirection:'column',justifyContent:'space-between',background:'linear-gradient(145deg,transparent,#9991)',boxShadow:'8px 8px 0 #8883'}}>
     <small style={{letterSpacing:2}}>{current.label}</small>
     <div><h2 style={{fontSize:'clamp(26px,5vw,52px)',lineHeight:1.1,margin:'22px 0'}}>{current.title}</h2><p style={{fontSize:'clamp(16px,2.2vw,22px)',lineHeight:1.65,whiteSpace:'pre-wrap'}}>{current.body}</p></div>
-    <div><hr style={{opacity:.25}}/><small>{current.sub}</small><p><strong>MOONWITNESS XII • ROCKSOUL × THE BATTERIES</strong></p></div>
+    <div>{current.artworkPath?<img src={current.artworkPath} alt={'Poster '+e.title+' page '+(page+1)} loading="lazy" style={{maxWidth:'100%',maxHeight:540,objectFit:'contain'}}/>:<p style={{border:'1px dashed currentColor',borderRadius:10,padding:12,opacity:.7}}>POSTER IMAGE PENDING · No original image file linked</p>}<p><small>Page source: {current.sourceType||'editorial_reconstruction'} · {current.verification||'original_text_pending'}</small></p><p><small>Episode references: {e.references}</small></p><hr style={{opacity:.25}}/><small>{current.sub}</small><p><strong>MOONWITNESS XII • ROCKSOUL × THE BATTERIES</strong></p></div>
    </article>
    <div className="filters" style={{justifyContent:'space-between',marginTop:22}}>
     <button disabled={page===0} onClick={()=>setPage(n=>Math.max(0,n-1))}>← PREVIOUS PAGE</button>
