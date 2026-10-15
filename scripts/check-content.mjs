@@ -35,4 +35,8 @@ const home=readFileSync('src/pages/Home.jsx','utf8');const art=readFileSync('src
 for(const k of ['WHERE','LEGEND.','ROCKSOUL','ISROCKFEEL','WALTERWHITE','4-LAH / THE BATTERIES'])assert.ok(home.includes(k));
 for(const k of ['<svg','linearGradient','viewBox'])assert.ok(art.includes(k));
 for(const k of ['.mw-hero','.mw-crew-grid','@media(max-width:500px)'])assert.ok(css.includes(k));
+const supporting=readFileSync('src/data/supportingCrew.js','utf8');
+for(const token of ['MIKAIL','MALIK','RIDWAN','QUESTION DUO','RECORD TWINS','FINAL KEEPER'])assert.ok(supporting.includes(token));
+for(const token of ['PUNK ROCK','SIGNAL QUEEN','GREEN','WALTERWHITE'])assert.ok(home.toUpperCase().includes(token));
+assert.ok(art.includes('rocksoul')&&art.includes('punk')&&art.includes('queen'));
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
