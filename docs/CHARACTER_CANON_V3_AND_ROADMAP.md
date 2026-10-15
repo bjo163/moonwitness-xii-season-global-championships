@@ -28,9 +28,10 @@ These figures are stylized original concepts, not depictions of metaphysical rea
 - Character Universe: four main SVG designs, green/black cap mode, six original street-style supporting SVG portraits.
 - Story Archive: 15 indexed episodes and 63 editorial summary pages. No verified original story poster image assets or fully authenticated original transcripts.
 - Automatic source integrity tests during Vite build, GitHub Actions check on push and PR.
+- Phase 3.1 mobile/keyboard accessibility pass: collapsible mobile navigation, Escape-to-close, skip-to-content, route focus restoration, visible keyboard focus, and StoryDetail React hook-order repair.
 
 ## Remaining priorities (not shipped; avoid pretending they are done)
-1. Browser-based visual checks and accessibility testing for mobile/tablet/desktop and keyboard navigation.
+1. **Remaining QA:** interactive browser checks on mobile/tablet/desktop (including screen readers, focus traps, color contrast and navigation). Static accessibility checks are implemented; real-browser and assistive-tech audits are not yet complete.
 2. Add approved, original real poster images to manifest. Preserve image provenance and consent.
 3. Verify original manuscript wording and scripture references against primary texts.
 4. Improve Paradise 100-level interactive systems, governance, guild and event data.
