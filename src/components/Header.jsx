@@ -6,6 +6,8 @@ const navigation=[
   ['/characters','CHARACTERS'],
   ['/champions','105 CHAMPIONS'],
   ['/paradise','PARADISE'],
+  ['/command-center','COMMAND CENTER'],
+  ['/research','RESEARCH DESK'],
   ['/stories','STORIES'],
   ['/syafaat-status','SYAFAAT'],
   ['/grand-plan','GRAND PLAN']
