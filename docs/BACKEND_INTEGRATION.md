@@ -1,42 +1,27 @@
-# MOONWITNESS XII — Secure Backend & Auth Integration Plan
-Updated: 2026-10-16. Status: **schema and public health route built; authentication and DB integration NOT enabled**.
+# MOONWITNESS XII — Account-free Website Decision
+Date: 2026-10-16
+Status: **ACTIVE architecture decision; previous backend/auth plan retired.**
 
-## Current safe posture
-- Published React website is a static/Vite SPA.
-- Personal 100-level progress, saved event ideas and mode selections are **browser-local**, not synchronized or uploaded.
-- `/api/health` is a public read-only route with intentionally honest `database: not_connected` and `authentication: not_configured` values.
-- `db/001_secure_foundation.sql` is a reviewed draft in source control; it has **not** been applied to Neon.
-- The account has other Neon projects, but no explicit mapping to this XII repository has been established. Never repurpose or migrate a different app's database merely because it has "moonwitness" in the name.
+## User decision
+MoonWitness XII is an ordinary public website. There is **no login, registration, account profile, cloud sync, or user database**. Do not make identity providers, PostgreSQL/Neon deployment, user permissions, or server-side accounts prerequisites for continued development.
 
-## Before enabling a real database
-1. Confirm the exact target project/database name and ownership; create a dedicated project/branch if needed after reviewing costs and user data requirements.
-2. Select an identity provider (e.g. verified OIDC/JWT); define logout, revocation, age rules, email confirmation and account deletion.
-3. Establish a least-privilege DB runtime role. Do not use the schema owner in application API connections; schema owner can bypass RLS.
-4. Issue server-side verified identity claims, then transaction-scoped `SET LOCAL app.user_sub` and `SET LOCAL app.role`. Never take these from an untrusted browser request field.
-5. Implement parameterized queries, request body limits, rate limiting, origin policy, CSRF/cookie protections where applicable, immutable admin audit and monitoring.
-6. Apply migrations first to a staging branch and test deny-by-default RLS for cross-user access, reviewer grants and consent revocation.
-7. Implement user-facing privacy notice and data deletion/export, moderation appeals and security incident procedures.
-8. Only enable sync/upload APIs after passing the above and ensuring unreviewed posts/assets never publish automatically.
+## Current website
+- React + Vite public site hosted on Vercel.
+- Character Universe with original SVG designs; Stories; 105-Champions editorial catalogue; Paradise 100-level voluntary challenges; Command Center; source audit.
+- Optional checkmarks, event bookmarks, and private source-review drafts are **browser-local only**. They are not shared with the website owner.
+- Manual JSON export/import under `/workspace` is the only transfer mechanism. This is not an account system or cloud synchronization.
+- All source content, poster manifests, tests and editorial updates are maintained in the GitHub repository.
+- No public intake of visitor submissions, moderation queues, or account registration is implemented.
 
-## API contract (planned, NOT shipped)
-- `GET /api/health` — shipped, no private data
-- `GET /api/me` — needs authenticated provider, not shipped
-- `GET/PUT /api/me/progress` — needs auth and DB, not shipped
-- `POST /api/poster-intake` — needs rights/consent/moderation and private object storage, not shipped
-- `POST /api/reviews` — needs reviewer role and moderation, not shipped
+## Removal from the application (2026-10-16)
+Deleted unused server endpoint `api/health.js` and unused SQL design files `db/schema.sql`, `db/001_secure_foundation.sql` to keep the deploy static-oriented. Historical versions remain recoverable through Git history if ever needed, but they are not part of the current roadmap.
 
-Never claim cloud sync, real accounts, reviews or moderation until a working authenticated backend is verified. Existing `db/schema.sql` is a legacy *design file*; the new `db/001_secure_foundation.sql` is a separate migration proposal, not a modification to the other service's database.
+## Next priorities — Website-only
+1. Homepage and episode-gallery polish, mobile/keyboard accessibility and tested visual layouts.
+2. Approved original story artwork and poster asset ingestion, with credit, licensing and provenance.
+3. Recover and check storyteller source wording, original manuscripts and scripture references without mislabeling editorial reconstructions.
+4. Review 105 Champion editorial profiles, individual attributions and references.
+5. Enhance the public Paradise / Command Center interactive views locally without user accounts.
+6. Improve static site SEO, share metadata, loading performance, lightweight offline behavior and automated accessibility checks.
 
-
-## Phase 4.1 — Private Workspace (implemented client-side, 2026-10-16)
-- /workspace is an explicit local-only workspace, **not an account page**.
-- Backup format: `moonwitness-workspace-v1` JSON. Download manually, preview import, confirm replacement. Inputs limited to 500 KB and known event IDs, valid level numbers and known champion/story review targets; malformed content is discarded or rejected.
-- Contains only the user's selected 1–100 level checkmarks, saved event-idea IDs, and private research review drafts. Notes may be sensitive if the user types them, so warn before export and never auto-upload.
-- Draft statuses are `needs_source`, `investigating` or `ready_for_independent_review`. No draft can change a public verification status or constitute divine approval.
-- React state receives a client-side restore event after import; browser-local data remains editable and exportable.
-- Validated restore includes rollback on a localStorage write failure. No encryption is implied: device/browser security remains the user's responsibility.
-- Real login/cloud sync and shared moderation remain intentionally **disabled** until a specific identity provider and an isolated database are reviewed.
-- Automated `scripts/test-workspace.mjs` validates schema rejection, unsafe URL cleansing, bounded notes, whitelist-based event IDs and rollback.
-
-### Next gated step
-Choose and configure an identity provider and a dedicated database **for XII**, establish credential ownership and consent terms, then implement server-verified sessions and authenticated progress APIs. Do not activate public intake or privileged publication endpoints before permission and abuse tests pass.
+The project is **a public site, not a membership platform**. Personal testimony, religious references and speculative worldbuilding are clearly distinguished from independent verification.
