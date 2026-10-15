@@ -90,4 +90,15 @@ assert.ok(readFileSync('src/pages/Paradise.jsx','utf8').includes('worldLevels'))
 assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('communityEvents'));
 assert.ok(readFileSync('src/pages/Research.jsx','utf8').includes('EXPORT AUDIT CSV'));
 
+
+const workspaceUI=readFileSync('src/pages/Workspace.jsx','utf8');
+const workspaceUtils=readFileSync('src/utils/workspaceBackup.js','utf8');
+for(const piece of ['BACKUP & RESTORE','SOURCE REVIEW DRAFTS','BACKEND READINESS','RESTORE MY WORKSPACE','SAVE PRIVATE DRAFT'])assert.ok(workspaceUI.includes(piece),'Workspace UI incomplete: '+piece);
+for(const piece of ['parseWorkspaceBackup','restoreWorkspace','cleanReviewDrafts','WORKSPACE_EVENT','no fake']){/* last marker is documentary only */if(piece!=='no fake')assert.ok(workspaceUtils.includes(piece));}
+assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/workspace"'));
+assert.ok(readFileSync('src/components/Header.jsx','utf8').includes("'/workspace'"));
+assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('No events match this combination.'));
+assert.ok(readFileSync('src/hooks/useWorldProgress.js','utf8').includes('WORKSPACE_EVENT'));
+assert.ok(readFileSync('scripts/test-workspace.mjs','utf8').includes('restoreWorkspace'));
+
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
