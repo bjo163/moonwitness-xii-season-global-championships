@@ -13,6 +13,8 @@ export function StoryDetail(){
  const [page,setPage]=useState(()=>Math.max(0,(Number(params.get('page'))||1)-1));
  const e=archiveEpisodes.find(x=>x.slug===slug);
  const index=archiveEpisodes.findIndex(x=>x.slug===slug);
+ // Keep React hook order stable even when a story slug is missing.
+ useEffect(()=>{const value=Math.max(0,(Number(params.get('page'))||1)-1);setPage(value);},[slug,params.get('page')]);
  if(!e)return <main className="container page"><Head title="EPISODE NOT FOUND."/><Link to="/stories" className="btn">BACK TO ARCHIVE</Link></main>;
  const restored=episodeManuscripts.find(x=>x.slug===slug);
  const fallbackPanels=[
@@ -28,7 +30,7 @@ export function StoryDetail(){
  const goPage=n=>{const next=Math.max(0,Math.min(panels.length-1,n));setPage(next);setParams(next===0?{}:{page:String(next+1)},{replace:true});};
  const shareUrl=()=>window.location.origin+'/stories/'+slug+'?page='+(safePage+1);
  const copyPage=async()=>{try{await navigator.clipboard.writeText(shareUrl());setCopyStatus('LINK COPIED');}catch{setCopyStatus('COPY NOT AVAILABLE');}};
- useEffect(()=>{const value=Math.max(0,(Number(params.get('page'))||1)-1);setPage(Math.min(value,panels.length-1));},[slug,params.get('page')]);
+ 
  return <main className="container page">
   <Link to="/stories" className="textlink">← BACK TO STORY ARCHIVE</Link>
   <Head eyebrow={'// '+e.collection+' • '+e.kind} title={e.title} sub={e.chapter}/>
@@ -49,7 +51,7 @@ export function StoryDetail(){
    <div className="grid four" style={{marginTop:14}}>{panels.map((x,i)=><button key={x.label} onClick={()=>goPage(i)} aria-pressed={safePage===i} className={'mission '+(page===i?'complete':'')}><small>PAGE {String(i+1).padStart(2,'0')}</small><strong>{x.title}</strong></button>)}</div>
   </section>
   <section className="section"><Head eyebrow="// POSTER GALLERY" title="MANGA PANEL INVENTORY." sub="Each original poster has its own page slot. Only reviewed and committed files appear as images."/><div className="grid four">{panels.map((panel,i)=>{const art=getPosterAsset(slug,i+1);return <button key={'poster-'+i} className={'mission '+(safePage===i?'complete':'')} onClick={()=>goPage(i)} aria-label={'Open poster panel '+(i+1)}>{art?<img src={art.src} alt={art.alt} loading="lazy" style={{width:'100%',height:150,objectFit:'cover',borderRadius:8}}/>:<div style={{height:130,display:'flex',alignItems:'center',justifyContent:'center',border:'1px dashed currentColor',borderRadius:8,opacity:.65}}>NO ORIGINAL ART YET</div>}<small>PAGE {String(i+1).padStart(2,'0')} · {art?'VERIFIED ASSET':'AWAITING ASSET'}</small></button>})}</div></section>
- <section className="section"><div className="grid two"><Card><h3>EPISODE EVIDENCE</h3><p>{e.contentStatus}</p><p>{e.posterStatus}</p><p><b>Tags:</b> {e.tags.join(' · ')}</p></Card><Card><h3>CONTINUE THE ARCHIVE</h3><p>Navigate without losing your place in the episode library.</p><p><Link className="textlink" to={'/stories/'+archiveEpisodes[(index+1)%archiveEpisodes.length].slug} onClick={()=>goPage(0)}>NEXT EPISODE →</Link></p><p><Link className="textlink" to={'/stories/'+archiveEpisodes[(index-1+archiveEpisodes.length)%archiveEpisodes.length].slug} onClick={()=>setPage(0)}>← PREVIOUS EPISODE</Link></p></Card></div></section>
+ <section className="section"><div className="grid two"><Card><h3>EPISODE EVIDENCE</h3><p>{e.contentStatus}</p><p>{e.posterStatus}</p><p><b>Tags:</b> {e.tags.join(' · ')}</p></Card><Card><h3>CONTINUE THE ARCHIVE</h3><p>Navigate without losing your place in the episode library.</p><p><Link className="textlink" to={'/stories/'+archiveEpisodes[(index+1)%archiveEpisodes.length].slug} onClick={()=>setPage(0)}>NEXT EPISODE →</Link></p><p><Link className="textlink" to={'/stories/'+archiveEpisodes[(index-1+archiveEpisodes.length)%archiveEpisodes.length].slug} onClick={()=>setPage(0)}>← PREVIOUS EPISODE</Link></p></Card></div></section>
  </main>;
 }
 export default StoryArchive;
