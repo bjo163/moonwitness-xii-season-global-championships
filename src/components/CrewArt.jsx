@@ -5,7 +5,7 @@ const configs={
   'WALTERWHITE':{a:'#ff74b6',b:'#ffb45e',coat:'#482846',hair:'#181b2b',mark:'✚',role:'CHAOS ENGINEER'},
   '4-LAH / THE BATTERIES':{a:'#d2a2ff',b:'#ff78d3',coat:'#27213e',hair:'#141526',mark:'◆',role:'COMMAND CENTER'}
 };
-export default function CrewArt({name,hero=false,cap='green'}){const c=configs[name]||configs.ROCKSOUL;const punk=name==='ISROCKFEEL';const queen=name==='4-LAH / THE BATTERIES';const rocksoul=name==='ROCKSOUL';const uid=name.replace(/[^a-zA-Z]/g,'').toLowerCase()+(hero?'hero':'card')+cap;return <svg className={hero?'crew-svg crew-svg-hero':'crew-svg'} viewBox="0 0 360 450" role="img" aria-label={name+' faceless original vector portrait'} xmlns="http://www.w3.org/2000/svg">
+export default function CrewArt({name,hero=false,cap='green'}){const c=configs[name]||configs.ROCKSOUL;const punk=name==='ISROCKFEEL';const queen=name==='4-LAH / THE BATTERIES';const rocksoul=name==='ROCKSOUL';const uid=React.useId().replace(/[^a-zA-Z0-9_-]/g,'');return <svg className={hero?'crew-svg crew-svg-hero':'crew-svg'} viewBox="0 0 360 450" role="img" aria-label={name+' faceless original vector portrait'} xmlns="http://www.w3.org/2000/svg">
 <defs><linearGradient id={'sky'+uid} x1="0" x2="1" y1="0" y2="1"><stop stopColor={c.a} stopOpacity=".18"/><stop offset="1" stopColor={c.b} stopOpacity=".03"/></linearGradient><linearGradient id={'coat'+uid} x1="0" x2="1" y1="0" y2="1"><stop stopColor={c.coat}/><stop offset=".75" stopColor="#080d19"/></linearGradient><filter id={'glow'+uid}><feGaussianBlur stdDeviation="5"/></filter></defs>
 <rect x="4" y="4" width="352" height="442" rx="18" fill="#101325" stroke={c.a} strokeWidth="2"/>
 <path d="M0 84L360 0M0 185L360 60M0 450L360 260" stroke={c.a} strokeOpacity=".17" strokeWidth="17"/>
