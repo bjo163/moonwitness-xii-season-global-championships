@@ -17,5 +17,6 @@ for(const path of ['src/pages/Home.jsx','src/pages/Champions.jsx','src/pages/Par
 const archive=JSON.parse(readFileSync('src/data/storyArchive.js','utf8').replace(/^export const archiveEpisodes = /,'').replace(/;\s*$/,''));
 assert.ok(archive.length>=15,'Story archive must contain 15 seeded synopses');
 assert.equal(new Set(archive.map(x=>x.slug)).size,archive.length);
-assert.ok(readFileSync('src/pages/Stories.jsx','utf8').includes('StoryDetail'));
+const reader=readFileSync('src/pages/Stories.jsx','utf8');
+for(const part of ['StoryDetail','PREVIOUS PAGE','NEXT PAGE','NEXT EPISODE','EDITORIAL PAGE SET'])assert.ok(reader.includes(part),'Missing reader feature '+part);
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries, 0 verified approvals.');
