@@ -26,3 +26,17 @@ Updated: 2026-10-16. Status: **schema and public health route built; authenticat
 - `POST /api/reviews` — needs reviewer role and moderation, not shipped
 
 Never claim cloud sync, real accounts, reviews or moderation until a working authenticated backend is verified. Existing `db/schema.sql` is a legacy *design file*; the new `db/001_secure_foundation.sql` is a separate migration proposal, not a modification to the other service's database.
+
+
+## Phase 4.1 — Private Workspace (implemented client-side, 2026-10-16)
+- /workspace is an explicit local-only workspace, **not an account page**.
+- Backup format: `moonwitness-workspace-v1` JSON. Download manually, preview import, confirm replacement. Inputs limited to 500 KB and known event IDs, valid level numbers and known champion/story review targets; malformed content is discarded or rejected.
+- Contains only the user's selected 1–100 level checkmarks, saved event-idea IDs, and private research review drafts. Notes may be sensitive if the user types them, so warn before export and never auto-upload.
+- Draft statuses are `needs_source`, `investigating` or `ready_for_independent_review`. No draft can change a public verification status or constitute divine approval.
+- React state receives a client-side restore event after import; browser-local data remains editable and exportable.
+- Validated restore includes rollback on a localStorage write failure. No encryption is implied: device/browser security remains the user's responsibility.
+- Real login/cloud sync and shared moderation remain intentionally **disabled** until a specific identity provider and an isolated database are reviewed.
+- Automated `scripts/test-workspace.mjs` validates schema rejection, unsafe URL cleansing, bounded notes, whitelist-based event IDs and rollback.
+
+### Next gated step
+Choose and configure an identity provider and a dedicated database **for XII**, establish credential ownership and consent terms, then implement server-verified sessions and authenticated progress APIs. Do not activate public intake or privileged publication endpoints before permission and abuse tests pass.
