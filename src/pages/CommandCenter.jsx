@@ -1,9 +1,10 @@
-import React,{useMemo,useState} from 'react';
+import React,{useEffect,useMemo,useState} from 'react';
 import {Link} from 'react-router-dom';
 import {guilds,communityEvents,governanceRules,worldLevels,worldPhases} from '../data/worldSystems.js';
 import {useWorldProgress,exportWorldProgress} from '../hooks/useWorldProgress.js';
 import {Head,Notice} from '../components/UI.jsx';
-const boardKey='moonwitness-xii-command-board-v1';
+import {cleanBookmarks,WORKSPACE_EVENT,WORKSPACE_KEYS} from '../utils/workspaceBackup.js';
+const boardKey=WORKSPACE_KEYS.bookmarks;
 const safeRead=()=>{try{const v=JSON.parse(localStorage.getItem(boardKey)||'[]');return Array.isArray(v)?v.filter(x=>typeof x==='string'&&/^EVT-\d{3}$/.test(x)):[]}catch{return[]}};
 export default function CommandCenter(){
  const {completed,toggle}=useWorldProgress();
@@ -11,9 +12,10 @@ export default function CommandCenter(){
  const [selectedEvent,setSelectedEvent]=useState(0);const[saved,setSaved]=useState(safeRead);
  const [view,setView]=useState('dashboard');
  const events=useMemo(()=>communityEvents.filter(e=>(cycle==='All'||e.cycle===cycle)&&(guild==='All'||e.domain===guild)),[cycle,guild]);
- const chosen=events[Math.min(selectedEvent,events.length-1)]||communityEvents[0];
- const markEvent=id=>setSaved(v=>{const next=v.includes(id)?v.filter(x=>x!==id):[...v,id];try{localStorage.setItem(boardKey,JSON.stringify(next))}catch{}return next;});
- const nextEvent=()=>setSelectedEvent(n=>(n+1)%events.length);
+ const chosen=events.length?events[Math.min(selectedEvent,events.length-1)]:null;
+ const markEvent=id=>setSaved(v=>{const next=cleanBookmarks(v.includes(id)?v.filter(x=>x!==id):[...v,id]);try{localStorage.setItem(boardKey,JSON.stringify(next))}catch{}return next;});
+ useEffect(()=>{const sync=()=>setSaved(safeRead());window.addEventListener(WORKSPACE_EVENT,sync);const onStorage=e=>{if(e.key===boardKey)sync();};window.addEventListener('storage',onStorage);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('storage',onStorage)};},[]);
+ const nextEvent=()=>{if(events.length)setSelectedEvent(n=>(n+1)%events.length);};
  return <main className="container page">
  <Head eyebrow="// THE BATTERIES • MISSION CONTROL" title="PARADISE COMMAND CENTER." sub="Local-first interactive prototype: mission tracking, creative event ideas, guild charters and safety-by-design. No claims of actual heavenly government."/>
  <div className="stats"><div><b>{completed.length}/100</b> MISSION CHECKS</div><div><b>{guilds.length}</b> GUILD PROPOSALS</div><div><b>{communityEvents.length}</b> EVENT IDEAS</div><div><b>{saved.length}</b> SAVED EVENT IDEAS</div></div>
@@ -24,8 +26,8 @@ export default function CommandCenter(){
  <p><Link className="btn" to="/paradise">OPEN ALL 100 LEVELS ↗</Link><button className="btn secondary" onClick={()=>exportWorldProgress(completed)}>EXPORT MY PROGRESS ↓</button></p></section>}
  {view==='guilds'&&<section className="section"><Head eyebrow="// GUILD ROLES" title="TEN GUILDS. NO HIERARCHY OF SOULS." sub="Proposed professional responsibilities with clear boundaries and voluntary participation."/><div className="grid three">{guilds.map(g=><article className="card" key={g.id}><small>{g.id} / {g.domain}</small><h3>{g.name}</h3><p>{g.mandate}</p><p><b>Rule:</b> Volunteer-based roles; no authority over someone’s religious beliefs.</p></article>)}</div></section>}
  {view==='events'&&<section className="section"><Head eyebrow="// LIVING WORLD ENGINE" title="48 EVENT BLUEPRINTS." sub="These are ideas, not live events. Browse themes and bookmark safe voluntary activities."/><div className="filters"><select aria-label="Event cycle" value={cycle} onChange={e=>{setCycle(e.target.value);setSelectedEvent(0)}}><option>All</option>{['Spark','Bridge','Bloom','Renew'].map(x=><option key={x}>{x}</option>)}</select><select aria-label="Event domain" value={guild} onChange={e=>{setGuild(e.target.value);setSelectedEvent(0)}}><option>All</option>{[...new Set(communityEvents.map(x=>x.domain))].map(x=><option key={x}>{x}</option>)}</select></div>
- <div className="grid two"><article className="card"><small>{chosen.id} / {chosen.cycle}</small><h3>{chosen.title}</h3><p>{chosen.description}</p><p><strong>STATUS: IDEA ONLY / NOT SCHEDULED</strong></p><button className="btn" onClick={nextEvent}>NEXT EVENT IDEA →</button><button className="btn secondary" onClick={()=>markEvent(chosen.id)}>{saved.includes(chosen.id)?'REMOVE BOOKMARK':'BOOKMARK IDEA'}</button></article><article className="card"><h3>THE EVENT BOARD</h3><p>{events.length} ideas match filters. {saved.length} bookmarked locally.</p><div className="command-scroll">{events.map((e,i)=><button key={e.id} className={'mission '+(i===selectedEvent?'complete':'')} onClick={()=>setSelectedEvent(i)}><small>{e.id} • {e.domain}{saved.includes(e.id)?' • SAVED':''}</small><h3>{e.title}</h3></button>)}</div></article></div></section>}
+ {chosen?<div className="grid two"><article className="card"><small>{chosen.id} / {chosen.cycle}</small><h3>{chosen.title}</h3><p>{chosen.description}</p><p><strong>STATUS: IDEA ONLY / NOT SCHEDULED</strong></p><button className="btn" onClick={nextEvent}>NEXT EVENT IDEA →</button><button className="btn secondary" onClick={()=>markEvent(chosen.id)}>{saved.includes(chosen.id)?'REMOVE BOOKMARK':'BOOKMARK IDEA'}</button></article><article className="card"><h3>THE EVENT BOARD</h3><p>{events.length} ideas match filters. {saved.length} bookmarked locally.</p><div className="command-scroll">{events.map((e,i)=><button key={e.id} className={'mission '+(i===selectedEvent?'complete':'')} onClick={()=>setSelectedEvent(i)}><small>{e.id} • {e.domain}{saved.includes(e.id)?' • SAVED':''}</small><h3>{e.title}</h3></button>)}</div></article></div>:<Notice>No events match this combination. Change the filters.</Notice>}</section>}
  {view==='governance'&&<section className="section"><Head eyebrow="// GOVERNANCE PROTOTYPE" title="RESPECT IS THE DEFAULT." sub="Human responsibility, appeals, privacy, and professional roles. This is a proposed charter, not a legal or religious authority."/><div className="grid two">{governanceRules.map((rule,i)=><article className="card" key={rule}><small>RULE {String(i+1).padStart(2,'0')}</small><p>{rule}</p></article>)}</div><div className="notice"><b>PROCESS:</b> Idea → Risk assessment → Consent check → Voluntary review → Decision record → Right to appeal → Follow-up. No real governance votes or public moderation decisions are processed yet.</div></section>}
- <div className="notice"><b>REAL DATA / LIMITATIONS:</b> Browser-only progress, no login or shared database. Please do not enter personal, medical, or sensitive information. For community deployment, security, consent and moderation must be implemented first.</div>
+ <p><Link className="mw-button mw-button-ghost" to="/workspace">BACKUP DATA / PRIVATE REVIEW DESK ↗</Link></p><div className="notice"><b>REAL DATA / LIMITATIONS:</b> Browser-only progress, no login or shared database. Please do not enter personal, medical, or sensitive information. For community deployment, security, consent and moderation must be implemented first.</div>
  </main>;
 }
