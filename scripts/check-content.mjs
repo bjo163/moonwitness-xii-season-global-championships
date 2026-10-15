@@ -25,7 +25,7 @@ assert.ok(scripts.every(x=>x.pages.length>=4 && x.provenance.includes('not a ver
 assert.deepEqual(new Set(scripts.map(x=>x.slug)),new Set(archive.map(x=>x.slug)),'Every archive episode must have editorial pages');
 assert.equal(scripts.reduce((total,e)=>total+e.pages.length,0),63);
 assert.ok(scripts.every(e=>e.pages.every((p,i)=>p.number===i+1 && p.artwork===null && p.artworkPath===null && p.sourceType==='editorial_reconstruction' && p.verification==='original_text_pending')),'Sequential pages and honest artwork status');
-assert.ok(reader.includes('current.artworkPath') && reader.includes('Episode references:'));
+assert.ok(reader.includes('getPosterAsset') && reader.includes('Episode references:'));
 for(const feature of ['FOCUS READING MODE','COPY PAGE LINK','SHARE ↗','useSearchParams','repeating-linear-gradient'])assert.ok(reader.includes(feature),'Missing Phase 2.6 feature '+feature);
 const manifest=readFileSync('src/data/posterManifest.js','utf8');
 assert.ok(manifest.includes('verifiedPosterAssets = []'),'No unverified art may be preloaded');
