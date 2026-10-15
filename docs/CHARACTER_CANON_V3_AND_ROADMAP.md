@@ -35,9 +35,9 @@ These figures are stylized original concepts, not depictions of metaphysical rea
 2. Add approved, original real poster images to manifest. Preserve image provenance and consent.
 3. Verify original manuscript wording and scripture references against primary texts.
 4. Improve Paradise 100-level interactive systems, governance, guild and event data.
-5. Implement a secure backend only after design review: auth, roles, moderation, consent, abuse protections and rate limits.
-6. Validate 105 champion entries and attribution/video links.
-7. Command Center, missions, event engine and ALP/1 protocol remain design/backlog, not functioning production systems.
+5. Keep the website public and account-free. Enhance browser-local interactions and manual backup/import without backend, logins, or shared user data.
+6. Validate 105 champion entries and attribution/video links; the source-audit ledger is live but entries remain unverified.
+7. Command Center now has a public local-first simulation with 100 challenge levels, 10 guild concepts and 48 event ideas. ALP/1 protocol remains conceptual; no real community governance service runs.
 
 ## Release safety
 - CI: `npm run build` executes integrity checks before Vite build.
