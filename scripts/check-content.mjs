@@ -19,4 +19,7 @@ assert.ok(archive.length>=15,'Story archive must contain 15 seeded synopses');
 assert.equal(new Set(archive.map(x=>x.slug)).size,archive.length);
 const reader=readFileSync('src/pages/Stories.jsx','utf8');
 for(const part of ['StoryDetail','PREVIOUS PAGE','NEXT PAGE','NEXT EPISODE','EDITORIAL PAGE SET'])assert.ok(reader.includes(part),'Missing reader feature '+part);
+const scripts=JSON.parse(readFileSync('src/data/episodeManuscripts.js','utf8').replace(/^export const episodeManuscripts = /,'').replace(/;\s*$/,''));
+assert.equal(scripts.length,6);assert.equal(scripts.find(x=>x.slug==='digimon-jogress').pages.length,7);
+assert.ok(scripts.every(x=>x.pages.length>=4 && x.provenance.includes('not a verbatim')));
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries, 0 verified approvals.');
