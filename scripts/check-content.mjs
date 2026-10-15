@@ -14,7 +14,7 @@ for(const s of ['Yesaya 65:20','QS. Al-Mu\'minun 23:99–100','approved_with_con
 assert.ok(bugs.includes('MWX-SYF-00752'));
 assert.ok(bugs.includes('WILD YOUTH'));
 for(const path of ['src/pages/Home.jsx','src/pages/Champions.jsx','src/pages/Paradise.jsx','src/pages/Syafaat.jsx','src/pages/Grand.jsx'])assert.ok(readFileSync(path,'utf8').length>100);
-const archive=JSON.parse(readFileSync('src/data/storyArchive.js','utf8').replace(/^export const archiveEpisodes = /,'').replace(/;\\s*$/,''));
+const archive=JSON.parse(readFileSync('src/data/storyArchive.js','utf8').replace(/^export const archiveEpisodes = /,'').replace(/;\s*$/,''));
 assert.ok(archive.length>=15,'Story archive must contain 15 seeded synopses');
 assert.equal(new Set(archive.map(x=>x.slug)).size,archive.length);
 assert.ok(readFileSync('src/pages/Stories.jsx','utf8').includes('StoryDetail'));
