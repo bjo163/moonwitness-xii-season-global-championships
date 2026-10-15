@@ -24,5 +24,6 @@ assert.equal(scripts.length,15);assert.equal(scripts.find(x=>x.slug==='digimon-j
 assert.ok(scripts.every(x=>x.pages.length>=4 && x.provenance.includes('not a verbatim')));
 assert.deepEqual(new Set(scripts.map(x=>x.slug)),new Set(archive.map(x=>x.slug)),'Every archive episode must have editorial pages');
 assert.equal(scripts.reduce((total,e)=>total+e.pages.length,0),63);
-assert.ok(scripts.every(e=>e.pages.every((p,i)=>p.number===i+1 && p.artwork===null)),'Sequential pages and honest artwork status');
+assert.ok(scripts.every(e=>e.pages.every((p,i)=>p.number===i+1 && p.artwork===null && p.artworkPath===null && p.sourceType==='editorial_reconstruction' && p.verification==='original_text_pending')),'Sequential pages and honest artwork status');
+assert.ok(reader.includes('current.artworkPath') && reader.includes('Episode references:'));
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
