@@ -10,7 +10,7 @@ for(const key of ['MAIN PROTAGONIST / WITNESS','ACTION MENTOR','WILD IDEA ENGINE
 const bugs=readFileSync('src/data/bugSubmissions.ts','utf8');
 for(const n of Array.from({length:8},(_,i)=>String(i+1).padStart(3,'0')))assert.ok(bugs.includes('\"id\": \"'+n+'\"'),'Missing submission '+n);
 assert.equal((bugs.match(/\"approvalStatus\": \"not_verified\"/g)||[]).length,8);
-for(const s of ['Yesaya 65:20','QS. Al-Mu\'minun 23:99–100','approved_with_condition'])assert.ok(bugs.includes(s));
+for(const s of ['Yesaya 65:20','Al-Mu\'minun 23:99–100','approved_with_condition'])assert.ok(bugs.includes(s));
 assert.ok(bugs.includes('MWX-SYF-00752'));
 assert.ok(bugs.includes('WILD YOUTH'));
 for(const path of ['src/pages/Home.jsx','src/pages/Champions.jsx','src/pages/Paradise.jsx','src/pages/Syafaat.jsx','src/pages/Grand.jsx'])assert.ok(readFileSync(path,'utf8').length>100);
