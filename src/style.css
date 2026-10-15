@@ -73,3 +73,23 @@ body[data-theme=moonlit] .nav{background:#101d31ed}
 .grid .card{height:100%}
 @media(max-width:920px){.tablewrap{overflow-x:auto}.tablewrap table{min-width:880px}.command-scroll{max-height:380px}}
 @media(max-width:600px){.filters{align-items:stretch}.filters select,.filters button{flex:1}.detail{padding:18px}.stats>div{padding:16px}.stats b{font-size:clamp(24px,7vw,39px)}}
+
+
+/* Workspace V4 — private local desk */
+.workspace-page .workspace-message{min-height:1.5rem;color:var(--accent);font-size:14px;line-height:1.5;max-width:860px}
+.workspace-page .workspace-panel{padding-top:35px}
+.workspace-file-label{display:inline-flex;padding:13px 15px;border:1px solid var(--accent);color:var(--accent);font:800 12px 'Space Mono';margin:8px 0;cursor:pointer}
+.workspace-page input[type=file]{display:block;max-width:100%;font-size:13px;line-height:1.6}
+.workspace-page .workspace-targets{max-height:440px;overflow:auto;display:grid;gap:7px;margin-top:15px}
+.workspace-page .workspace-target{display:grid;gap:5px;padding:12px;text-align:left;color:#e9e6f1;border:1px solid #65617a;background:#22223b;cursor:pointer;min-width:0}
+.workspace-page .workspace-target:hover,.workspace-page .workspace-target[aria-pressed=true]{border-color:var(--accent);background:#29343a}
+.workspace-page .workspace-target b{font-size:13px;overflow-wrap:anywhere}
+.workspace-page .workspace-target small{color:#b8c5d3;font-size:11px}
+.workspace-page .workspace-target.has-draft:before{content:'●';color:var(--accent);font-size:10px}
+.workspace-page .workspace-search,.workspace-page .workspace-field input,.workspace-page .workspace-field select,.workspace-page .workspace-field textarea{width:100%;background:#111728;border:1px solid #7c7892;color:#fff;padding:12px;border-radius:3px;font:inherit}
+.workspace-page .workspace-field{display:block;margin:16px 0 0;color:#eee;font-size:13px;font-weight:700}
+.workspace-page .workspace-field input,.workspace-page .workspace-field select,.workspace-page .workspace-field textarea{display:block;margin-top:6px;font-size:14px}
+.workspace-page button:disabled{opacity:.45;cursor:not-allowed}
+.workspace-page .research-check{margin:12px 0}
+.workspace-page .card p{line-height:1.7}
+@media(max-width:680px){.workspace-page .grid.two{grid-template-columns:1fr}.workspace-page .workspace-targets{max-height:260px}.workspace-page .stats b{font-size:30px}}
