@@ -14,11 +14,11 @@ One hundred levels now interactive; first 33 are historic Self Aura tasks and 67
 ## 5. Command Center
 Ten voluntary guild roles, 48 unscheduled events and governance charter with interactive browsing/bookmarks. Simulation UI; real social coordination, public voting and moderation NOT enabled.
 
-## 6. Backend & identity
-Read-only public health route and a permission-oriented Postgres RLS migration proposal exist. No live connected Postgres data, account sign-in, storage uploads or private data collection. See BACKEND_INTEGRATION.md.
+## 6. Public account-free website
+**Updated decision (2026-10-16):** no login, registration or user database. The unused health route and backend SQL proposals were removed from deploy source. Browser-local optional tasks, bookmarks and private draft notes remain exportable with a manually downloaded JSON file. See BACKEND_INTEGRATION.md for the retired-plan record and new website-only roadmap.
 
 ## 7. 105 Champions
 105 catalog entries; 6 listed video URLs (presence only, unreviewed). Per-entry evidence and exportable CSV in /research. No external endorsement or award ranking verified.
 
 ## Follow-on blockers
-User-authenticated source documents, original artwork/usage rights, actual database and identity provider decisions, browser CI results and a full 105-person external verification campaign.
+Original artwork and usage rights, recoverable primary manuscripts, browser CI results and a full 105-person external verification campaign. Backend/database and identity provider setup are no longer planned.
