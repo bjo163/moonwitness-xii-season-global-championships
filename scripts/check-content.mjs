@@ -65,4 +65,29 @@ for(const marker of ['.navlinks.is-open',':focus-visible','.skip-link:focus','@m
 const storyEffect=reader.indexOf("useEffect(()=>{const value=Math.max(0,(Number(params.get('page'))");
 assert.ok(storyEffect>0 && storyEffect<reader.indexOf('if(!e)return'),'React hooks must run before not-found return');
 
+
+const {worldLevels,worldPhases,guilds,communityEvents,governanceRules}=await import('../src/data/worldSystems.js');
+assert.equal(worldLevels.length,100);
+assert.deepEqual(worldLevels.map(x=>x.id),Array.from({length:100},(_,i)=>i+1));
+assert.equal(worldLevels.filter(x=>x.prototype).length,67,'67 editorial prototype tasks');
+assert.equal(worldLevels.filter(x=>!x.prototype).length,33,'Preserve 33 original Self Aura tasks');
+assert.equal(worldPhases.length,3);
+assert.equal(guilds.length,10);assert.equal(new Set(guilds.map(x=>x.id)).size,10);
+assert.equal(communityEvents.length,48);assert.equal(new Set(communityEvents.map(x=>x.id)).size,48);
+assert.ok(communityEvents.every(x=>x.isScheduled===false&&x.status==='suggested_only'));
+assert.ok(governanceRules.length>=8);
+const sourceAudit=await import('../src/data/sourceAudit.js');
+assert.equal(sourceAudit.championSourceRows.length,105);
+assert.equal(sourceAudit.storySourceRows.length,15);
+assert.ok(sourceAudit.championSourceRows.every(x=>x.status==='needs_independent_review'));
+assert.ok(sourceAudit.championSourceRows.every(x=>!x.identityReviewed&&!x.videoReviewed));
+assert.ok(sourceAudit.checkedReferenceLinks.length>=2);
+for(const path of ['src/pages/CommandCenter.jsx','src/pages/Research.jsx','src/hooks/useWorldProgress.js','scripts/audit-posters.mjs','api/health.js','tests/browser/smoke.spec.js','playwright.config.js','db/001_secure_foundation.sql'])assert.ok(readFileSync(path,'utf8').length>150,'Missing new seven-track module '+path);
+const appAll=readFileSync('src/App.jsx','utf8');
+const navAll=readFileSync('src/components/Header.jsx','utf8');
+for(const route of ['command-center','research']){assert.ok(appAll.includes('path="/'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
+assert.ok(readFileSync('src/pages/Paradise.jsx','utf8').includes('worldLevels'));
+assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('communityEvents'));
+assert.ok(readFileSync('src/pages/Research.jsx','utf8').includes('EXPORT AUDIT CSV'));
+
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
