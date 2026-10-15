@@ -44,4 +44,16 @@ for(const k of ['ROCKSOUL','ISROCKFEEL','WALTERWHITE','4-LAH / THE BATTERIES','s
 assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/characters"'));
 assert.ok(readFileSync('src/components/Header.jsx','utf8').includes('to="/characters"'));
 assert.ok(art.includes("cap==='black'"),'ROCKSOUL black cap must change real SVG colors');
+
+// Finished Character Universe quality gates.
+const supportArt=readFileSync('src/components/SupportArt.jsx','utf8');
+const characterView=readFileSync('src/pages/Characters.jsx','utf8');
+for(const name of ['MIKAIL','FINAL KEEPER','QUESTION DUO','RECORD TWINS','MALIK','RIDWAN'])assert.ok(supportArt.includes("'"+name+"'"),'Missing custom illustrated character: '+name);
+assert.ok(supportArt.includes('useId'), 'SVG gradients must have unique IDs');
+assert.ok(art.includes('React.useId'), 'Main crew gradients must have unique IDs');
+assert.ok(home.includes('<SupportArt') && characterView.includes('<SupportArt'),'Both character galleries should show vector art');
+assert.ok(!characterView.includes('typographic SVG-style emblems'),'Outdated artwork placeholder claim');
+assert.ok(characterView.includes("cap==='black'") && art.includes("cap==='black'"),'ROCKSOUL cap toggle must be operative');
+assert.ok(home.includes('to="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes('to="/characters"'),'Character Universe must be accessible');
+
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
