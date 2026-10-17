@@ -5,7 +5,7 @@ import {Head,Notice,Card} from '../components/UI.jsx';
 
 const makeSubmission=()=>[
  'MOONWITNESS XII — FINAL SUBMISSION RECORD V'+patch.finalCopy.version,
- 'MOONWITNESS — BUG PATCH #033 / FAITH TO ACTION',
+ 'MOONWITNESS — BUG PATCH #033 / '+patch.title,
  'FINALIZED: '+patch.finalCopy.date+' / EDITORIAL FINAL COPY',
  'SUBMISSION: Recorded in chat and the public project registry. No external delivery or verified divine approval.',
  'REALM: DUNIA / EARTH',
@@ -49,7 +49,7 @@ export default function Patch033(){
  const [copied,setCopied]=useState(false);
  const copy=async()=>{try{await navigator.clipboard.writeText(makeSubmission());setCopied(true)}catch{setCopied(false)}};
  return <main className="container page faith033">
- <Head eyebrow="// CHAOS MEDIC / GLOBAL WORLD PATCH" title="#033 — FAITH TO ACTION." sub={patch.tagline}/>
+ <Head eyebrow="// CHAOS MEDIC / GLOBAL WORLD PATCH" title={"#033 — "+patch.title} sub={patch.conceptSubtitle+" • "+patch.tagline}/>
  <div className="stats">
  <div><b>033</b> PATCH SLOT</div>
  <div><b>05</b> IMPLEMENTATION DOMAINS</div>
