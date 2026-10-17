@@ -88,3 +88,6 @@ The user said **oke tolong lakukan submit** for #033 FAITH TO ACTION. The editor
 - #033 FAITH TO ACTION editorial copy finalized as version **1.0** in docs/MWX_033_FINAL_SUBMISSION_V1.md.
 - Record state remains **user_submitted_in_chat**; being editorially finalized does **not** change recipient, external dispatch, or independent divine approval status.
 - THE FINAL AUDIT stays archived without reusing #033. Numbered slots remain exactly 33.
+
+## ACENG caption — user-reported editorial remark
+The #033 KOPIHITAM - SIACENG display includes **ACENG MAH APPROVE**, a phrase reported by the user. Do not treat the caption as a separate formal endorsement, divine approval, verified acceptance, or change to the project's submission status.
