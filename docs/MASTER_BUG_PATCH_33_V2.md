@@ -6,7 +6,7 @@ Updated 2026-10-17. The register is an editorial index, NOT a claim that all 33 
 - 5 recovered conversation drafts (#009–#013), original texts still pending.
 - 1 numbering conflict (#014): FAMILY WITHOUT FEAR versus THE WRONG WAY / HELLROAD. Distinct concepts; never conflate or silently renumber.
 - 18 editorial proposals (#015–#032), NOT submitted.
-- 1 explicitly requested submission recorded in chat (#033): FAITH TO ACTION, Earth / Global Humanity. This is a chat/project record, not an external dispatch.
+- 1 explicitly requested submission recorded in chat (#033): KOPIHITAM - SIACENG (FAITH TO ACTION), Earth / Global Humanity. This is a chat/project record, not an external dispatch.
 - 0 independently verified divine approvals.
 - WILD YOUTH — MWX-SYF-00752 and RIBA — NOT APPROVED remain extra unnumbered records.
 - THE FINAL AUDIT, previously a #033 editorial proposal, is preserved as an unnumbered historical concept and is not silently deleted.
@@ -46,7 +46,7 @@ Updated 2026-10-17. The register is an editorial index, NOT a claim that all 33 
 | #030 | FAIR GOVERNANCE | proposed |
 | #031 | PEACE BUILDER | proposed |
 | #032 | A SAFE PLACE TO LIVE | proposed |
-| #033 | FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM | user_submitted_in_chat |
+| #033 | KOPIHITAM - SIACENG (FAITH TO ACTION concept) | user_submitted_in_chat |
 
 ## Verification boundaries
 Registered means reported/documented in earlier chat; not independently confirmed submission to any external institution or religious authority.
