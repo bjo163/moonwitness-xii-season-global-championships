@@ -327,7 +327,7 @@ export const registryCandidates=[
   },
   {
     "id": "033",
-    "title": "FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM",
+    "title": "KOPIHITAM - SIACENG",
     "scope": "Dunia / Global Humanity / Religion / Education / Ethics / Technology",
     "summary": "Permohonan agar umat manusia dimudahkan memahami, mengingat, dan mengamalkan tuntunan kebaikan sesuai tradisi masing-masing melalui pembelajaran, alat bantu teknologi dan tindakan sukarela yang dapat dievaluasi.",
     "benefit": "Harapan kemudahan ibadah sesuai tradisi, literasi sumber agama, pendidikan, kasih sayang keluarga, perlindungan anak, kepedulian lingkungan, dan tanggung jawab digital. Manfaat yang terukur harus diuji secara nyata.",
@@ -369,9 +369,9 @@ export const registrySummary={
  submittedInChat:registryEntries.filter(p=>p.recordStatus==='user_submitted_in_chat').length,
  verifiedApprovals:registryEntries.filter(p=>p.approvalStatus==='approved_with_evidence').length
 };
-export const registryNote='Slot #033 FAITH TO ACTION was explicitly requested for submission by the user and recorded IN THIS CHAT / PROJECT REGISTRY on 2026-10-17. No dispatch to a third party, divine receipt, approval, or real-world effect is verified. Having 33 indexed slots does NOT mean 33 formally delivered submissions.';
+export const registryNote='Slot #033 KOPIHITAM - SIACENG (concept: FAITH TO ACTION) was explicitly requested for submission by the user and recorded IN THIS CHAT / PROJECT REGISTRY on 2026-10-17. No dispatch to a third party, divine receipt, approval, or real-world effect is verified. Having 33 indexed slots does NOT mean 33 formally delivered submissions.';
 
-// User explicitly assigned #033 to FAITH TO ACTION. Preserve displaced concept without reusing the slot.
+// User assigned #033 to the Faith to Action concept (now titled KOPIHITAM - SIACENG). Preserve displaced concept without reusing the slot.
 export const displacedPatchConcepts=[
   {
     "archiveId": "EXTRA-CONCEPT-001",
