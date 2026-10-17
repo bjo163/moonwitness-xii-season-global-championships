@@ -332,12 +332,16 @@ export const registryCandidates=[
     "summary": "Permohonan agar umat manusia dimudahkan memahami, mengingat, dan mengamalkan tuntunan kebaikan sesuai tradisi masing-masing melalui pembelajaran, alat bantu teknologi dan tindakan sukarela yang dapat dievaluasi.",
     "benefit": "Harapan kemudahan ibadah sesuai tradisi, literasi sumber agama, pendidikan, kasih sayang keluarga, perlindungan anak, kepedulian lingkungan, dan tanggung jawab digital. Manfaat yang terukur harus diuji secara nyata.",
     "references": "Al-Ma'idah 5:2; Ulangan 6:6–9; Mazmur 119:105; Yakobus 1:22 (rujukan tematis; tidak memerintahkan pembuatan aplikasi)",
-    "recordStatus": "user_selected_draft",
-    "note": "Ditetapkan pengguna sebagai slot #033, menggantikan rancangan editorial THE FINAL AUDIT. Ini draf permohonan untuk dunia, bukan bukti submission eksternal, pengesahan teologis, atau hasil yang terjadi.",
-    "reviewNeeded": "Finalisasi redaksi sumber dan implementasi contoh kecil yang aman; jika kelak ada bukti pengajuan ke lembaga eksternal, arsipkan secara terpisah.",
-    "provenance": "explicit_user_selection_and_scope_confirmed_2026-10-17",
-    "origin": "user_selected_draft_not_externally_submitted",
-    "detailKey": "FAITH_TO_ACTION"
+    "recordStatus": "user_submitted_in_chat",
+    "note": "Pengguna secara eksplisit meminta SUBMIT pada 17 Oktober 2026. Permohonan #033 dicatat di arsip publik MOONWITNESS melalui percakapan ini; pengiriman eksternal, penerimaan Allah atau pengesahan otoritas tidak dinyatakan terjadi.",
+    "reviewNeeded": "Arsipkan redaksi yang dipilih pengguna; verifikasi sumber dan pembangunan teknologi tetap pekerjaan lanjutan. Tidak ada bukti pengiriman ke penerima eksternal.",
+    "provenance": "explicit_user_submission_request_in_chat_2026-10-17",
+    "origin": "user_submission_request_recorded_in_chat_only",
+    "detailKey": "FAITH_TO_ACTION",
+    "submissionDate": "2026-10-17",
+    "submissionChannel": "chat",
+    "externalSubmission": "not_evidenced",
+    "approvalStatus": "not_verified"
   }
 ];
 export const registryStatusLabels={
@@ -345,7 +349,8 @@ registered:'REGISTERED / REPORTED IN CHAT',
 recovered_draft:'RECOVERED DRAFT / REVIEW NEEDED',
 number_conflict:'NUMBER CONFLICT / UNRESOLVED',
 proposed:'EDITORIAL PROPOSAL / NOT SUBMITTED',
-user_selected_draft:'USER SELECTED / DRAFT ONLY'
+user_selected_draft:'USER SELECTED / DRAFT ONLY',
+user_submitted_in_chat:'SUBMITTED IN CHAT • NO EXTERNAL DELIVERY'
 };
 export const registryEntries=[
  ...knownSubmissions.map(p=>({...p,recordStatus:'registered',origin:'submission_reported_in_chat',provenance:'earlier_chat_summary',reviewNeeded:'Original complete text and independent evaluation remain outstanding.'})),
@@ -359,9 +364,10 @@ export const registrySummary={
  conflicted:registryEntries.filter(p=>p.recordStatus==='number_conflict').length,
  proposed:registryEntries.filter(p=>p.recordStatus==='proposed').length,
  selected:registryEntries.filter(p=>p.recordStatus==='user_selected_draft').length,
+ submittedInChat:registryEntries.filter(p=>p.recordStatus==='user_submitted_in_chat').length,
  verifiedApprovals:registryEntries.filter(p=>p.approvalStatus==='approved_with_evidence').length
 };
-export const registryNote='Slot #033 was selected by the user as a draft for a voluntary global proposal. Having 33 indexed slots does NOT mean 33 submissions were formally submitted or approved. Reports, drafts and proposals remain distinct.';
+export const registryNote='Slot #033 FAITH TO ACTION was explicitly requested for submission by the user and recorded IN THIS CHAT / PROJECT REGISTRY on 2026-10-17. No dispatch to a third party, divine receipt, approval, or real-world effect is verified. Having 33 indexed slots does NOT mean 33 formally delivered submissions.';
 
 // User explicitly assigned #033 to FAITH TO ACTION. Preserve displaced concept without reusing the slot.
 export const displacedPatchConcepts=[
