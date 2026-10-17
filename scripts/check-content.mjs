@@ -118,7 +118,7 @@ assert.equal(counts.proposed,18);
 assert.equal(counts.user_submitted_in_chat,1);
 assert.ok(candidates.every(x=>x.title&&x.scope&&x.summary&&x.benefit&&x.references&&x.provenance&&x.reviewNeeded),'Every patch needs complete editorial metadata');
 assert.ok(candidates.every(x=>x.recordStatus!=='registered'&&x.origin!=='submission_reported_in_chat'),'No proposal may impersonate a submitted report');
-assert.ok(candidates.every(x=>!x.reportedApproval && !x.approvalStatus),'No invented approval attributes');
+assert.ok(candidates.every(x=>!x.reportedApproval && (!x.approvalStatus||x.approvalStatus==='not_verified')),'No candidate can claim unverified approval as established');
 const conflict=candidates.find(x=>x.id==='014');
 assert.equal(conflict.title,'FAMILY WITHOUT FEAR');
 assert.equal(conflict.conflictingCandidate.title,'THE WRONG WAY / HELLROAD');
