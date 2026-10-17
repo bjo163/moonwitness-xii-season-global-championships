@@ -1,6 +1,8 @@
 # MOONWITNESS XII — FINAL SUBMISSION RECORD
 
-## MWX-033 | FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM
+## MWX-033 | KOPIHITAM - SIACENG
+
+**Concept subtitle:** FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM
 
 **Final editorial version:** 1.0 (17 October 2026)
 **Submission channel:** User-requested, recorded in ChatGPT conversation and published in the MOONWITNESS XII project registry.
@@ -61,7 +63,7 @@ Ketepatan sumber; reliabilitas fitur; aksesibilitas; kendali pengguna; review da
 > **BIIZNILLAH. AAMIIN.**
 
 ### 9. Integrasi master patch dan preservasi sejarah
-- Slot #033 adalah FAITH TO ACTION, status **user_submitted_in_chat**, editorial copy **FINAL v1.0**.
+- Slot #033 adalah KOPIHITAM - SIACENG (konsep FAITH TO ACTION), status **user_submitted_in_chat**, editorial copy **FINAL v1.0**.
 - Slot #001–#032 tidak berubah.
 - Konsep lama THE FINAL AUDIT tetap disimpan sebagai usulan editorial **tanpa nomor**.
 - WILD YOUTH (MWX-SYF-00752) tetap menjadi laporan terpisah.
