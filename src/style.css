@@ -127,3 +127,19 @@ body[data-theme=moonlit] .nav{background:#101d31ed}
 .patch-unverified{border-top:1px solid #5c526e;padding-top:12px}
 @media(max-width:1000px){.patch-register .patch-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:720px){.patch-grid{grid-template-columns:1fr}.patch-register .patch-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.patch-item{padding:18px}.patch-filters input{width:100%;flex:1 1 100%}}
+
+/* PATCH #033 • FAITH TO ACTION */
+.patch-register .patch-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.patch-meter-selected{background:#f0e976}
+.patch-register .patch-user_selected_draft{border-top-color:var(--accent);box-shadow:0 0 0 1px #f1ed7060,0 0 38px #f1ed7014}
+.patch-featured{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(130deg,#2e3042,#17282f 72%);border:2px solid var(--accent);border-radius:16px;padding:clamp(22px,4vw,42px);margin:20px 0 36px;box-shadow:0 0 30px #f1ed701b}
+.patch-featured>div{flex:1;min-width:240px}
+.patch-featured small,.faith033 .stats+div small{font:700 11px 'Space Mono',monospace;color:#f1ed70}
+.patch-featured h2{font-size:clamp(30px,6vw,68px);line-height:1.07;letter-spacing:-.04em;margin:12px 0}
+.patch-featured p{max-width:680px;line-height:1.65}
+.patch-featured .btn{align-self:center}
+.faith033 .section{padding-top:50px;padding-bottom:40px}
+.faith033 .grid .card{min-width:0}
+.faith033 .faith033-prayer{font-size:clamp(17px,2.2vw,24px);line-height:1.9;max-width:970px;white-space:pre-line}
+.faith033 a.textlink{display:inline-block;overflow-wrap:anywhere;margin:8px 0}
+@media(max-width:720px){.patch-register .patch-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.patch-featured{display:block}.patch-featured .btn{display:inline-block;margin-top:15px}.faith033 .section{padding-top:25px;padding-bottom:25px}}
