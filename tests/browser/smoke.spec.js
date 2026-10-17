@@ -61,3 +61,22 @@ test('Workspace can preview and restore validated local data',async({page})=>{
  await page.goto('/paradise');
  await expect(page.getByText('2/100').first()).toBeVisible();
 });
+
+
+test('Faith to Action owns patch #033 with all five domains and visible safety rules',async({page})=>{
+ await page.goto('/syafaat-status');
+ await expect(page.getByText('FAITH TO ACTION').first()).toBeVisible();
+ await page.getByRole('link',{name:/OPEN FULL #033 SPEC/}).click();
+ await expect(page).toHaveURL(/\/syafaat-status\/033$/);
+ await expect(page.getByText('FIVE HUMAN DOMAINS')).toBeVisible();
+ for(const item of ['FAITH & WORSHIP','KNOWLEDGE & EDUCATION','FAMILY & HUMANITY','NATURE & ENVIRONMENT','TECHNOLOGY & ACCOUNTABILITY'])await expect(page.getByRole('heading',{name:item})).toBeVisible();
+ await expect(page.getByText('THE PATCH MUST HAVE BRAKES.')).toBeVisible();
+ await expect(page.getByText(/QIBLAT UTARA.*tidak otomatis/i)).toBeVisible();
+ await expect(page.getByText(/NOT EXTERNALLY SUBMITTED/).first()).toBeVisible();
+});
+test('Previous Final Audit proposal is retained outside numbered slots',async({page})=>{
+ await page.goto('/syafaat-status');
+ await expect(page.getByText(/THE FINAL AUDIT — ARCHIVED EDITORIAL CONCEPT/)).toBeVisible();
+ await expect(page.locator('#patch-033')).toContainText('FAITH TO ACTION');
+ await expect(page.locator('#patch-033')).not.toContainText('THE FINAL AUDIT');
+});
