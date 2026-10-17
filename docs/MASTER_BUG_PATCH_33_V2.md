@@ -90,4 +90,4 @@ The user said **oke tolong lakukan submit** for #033 FAITH TO ACTION. The editor
 - THE FINAL AUDIT stays archived without reusing #033. Numbered slots remain exactly 33.
 
 ## ACENG caption — user-reported editorial remark
-The #033 KOPIHITAM - SIACENG display includes **ACENG MAH APPROVE**, a phrase reported by the user. Do not treat the caption as a separate formal endorsement, divine approval, verified acceptance, or change to the project's submission status.
+The #033 KOPIHITAM - SIACENG display includes **ACENG MAH APPROVE**, a phrase attributed by the user to THE BATTERIES, a character in the MOONWITNESS narrative. Do not treat the caption as a separate formal endorsement, divine approval, verified acceptance, or change to the project's submission status.
