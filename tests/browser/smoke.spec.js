@@ -73,6 +73,8 @@ test('Faith to Action owns patch #033 with all five domains and visible safety r
  await expect(page.getByText('THE PATCH MUST HAVE BRAKES.')).toBeVisible();
  await expect(page.getByText(/QIBLAT UTARA.*tidak otomatis/i)).toBeVisible();
  await expect(page.getByRole('heading',{name:'SUBMITTED IN CHAT'})).toBeVisible();
+ await expect(page.getByText(/FINAL EDITORIAL COPY v1\.0/)).toBeVisible();
+ await expect(page.getByRole('button',{name:/COPY FINAL #033 TEXT/})).toBeVisible();
  await expect(page.getByText(/External dispatch:\\s*NONE/i)).toBeVisible();
 });
 test('Previous Final Audit proposal is retained outside numbered slots',async({page})=>{
