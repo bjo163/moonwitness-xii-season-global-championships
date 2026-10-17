@@ -124,7 +124,7 @@ assert.equal(conflict.conflictingCandidate.title,'THE WRONG WAY / HELLROAD');
 assert.equal(conflict.recordStatus,'number_conflict');
 assert.equal(8+candidates.length,33,'Combined index must cover precisely 33 slots');
 const patchUI=readFileSync('src/pages/Syafaat.jsx','utf8');
-for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','WILD YOUTH','reportedApproval','NOT VERIFIED','33 SLOTS'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
+for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','wildYouthReport','reportedApproval','NOT VERIFIED','33 SLOTS'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
 assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('THE FINAL AUDIT'));
 
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
