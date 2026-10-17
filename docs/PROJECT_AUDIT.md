@@ -39,3 +39,12 @@
 - Original artwork is not verified in the repository; all page artwork fields remain null, with no invented image URLs.
 - Important distinctions: reported testimony vs verified facts; four-book thematic references vs primary citations; scripture narratives vs claims of supernatural approval.
 - Next: recover original storyteller wording, attach user-approved verified image assets, check exact chapter/verse context, and run browser interaction tests.
+
+## Update — Master 33 Bug Patch Register V2 (2026-10-17)
+- The old statement '8 recovered / 25 missing' describes submission evidence, NOT editorial slot coverage after V2.
+- All 33 editorial slots are now populated in src/data/bugPatchRegistry.js and visible under /syafaat-status.
+- 8 previously reported in chat, 5 recovered draft topics #009–#013, 1 unresolved numbering conflict #014, 19 editorial proposals #015–#033.
+- Filling the remaining 25 slots did NOT create 25 new user submissions. Divine approval status remains independently unverified for every item.
+- #014 has TWO DISTINCT candidate topics: FAMILY WITHOUT FEAR and THE WRONG WAY / HELLROAD; do not merge their substance or quietly renumber.
+- WILD YOUTH MWX-SYF-00752 remains outside the numbered 33 slots.
+- See docs/MASTER_BUG_PATCH_33_V2.md for complete slot list and required primary-source follow-up.
