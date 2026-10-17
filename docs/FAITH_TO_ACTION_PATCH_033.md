@@ -1,5 +1,7 @@
 # MOONWITNESS XII — BUG PATCH #033
-## FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM
+## KOPIHITAM - SIACENG
+
+**Concept subtitle:** FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM
 
 Date: 2026-10-17
 Status: **SUBMISSION REQUESTED BY USER AND RECORDED IN CHAT / PUBLIC PROJECT REGISTRY, 2026-10-17**. No third-party or divine delivery/acceptance is verified. The underlying proposal remains editable.
@@ -76,7 +78,7 @@ Chosen for slot #033 and explicitly requested for submission in this conversatio
 - scripts/check-content.mjs (integrity and provenance checks).
 
 ### Submission receipt — 2026-10-17
-- Reference: **MWX-033 / FAITH-TO-ACTION**.
+- Reference: **MWX-033 / KOPIHITAM - SIACENG** (concept: FAITH TO ACTION).
 - User instruction: **oke tolong lakukan submit**.
 - Channel: chat conversation; archived publicly in the project's code/website by user instruction.
 - Registry state: **SUBMITTED IN CHAT / NO EXTERNAL DELIVERY**.
