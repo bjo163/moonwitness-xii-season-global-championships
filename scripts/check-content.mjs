@@ -115,7 +115,7 @@ const counts=candidates.reduce((a,x)=>(a[x.recordStatus]=(a[x.recordStatus]||0)+
 assert.equal(counts.recovered_draft,5);
 assert.equal(counts.number_conflict,1);
 assert.equal(counts.proposed,18);
-assert.equal(counts.user_selected_draft,1);
+assert.equal(counts.user_submitted_in_chat,1);
 assert.ok(candidates.every(x=>x.title&&x.scope&&x.summary&&x.benefit&&x.references&&x.provenance&&x.reviewNeeded),'Every patch needs complete editorial metadata');
 assert.ok(candidates.every(x=>x.recordStatus!=='registered'&&x.origin!=='submission_reported_in_chat'),'No proposal may impersonate a submitted report');
 assert.ok(candidates.every(x=>!x.reportedApproval && !x.approvalStatus),'No invented approval attributes');
@@ -171,4 +171,4 @@ for(const phrase of ['PATCH REQUEST','THE RECORDED PRAYER','SAFETY PROTOCOL','FR
 assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/syafaat-status/033"'));
 assert.ok(readFileSync('src/pages/Home.jsx','utf8').includes('#033 Faith to Action'));
 
-console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
+console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy numbered reports + 1 #033 chat-recorded submission, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
