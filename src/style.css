@@ -151,3 +151,12 @@ body[data-theme=moonlit] .nav{background:#101d31ed}
 .patch-submission-receipt small{color:#acefbf;font:700 11px 'Space Mono',monospace;letter-spacing:.06em}
 .patch-submission-receipt h2{font-size:clamp(28px,4vw,48px);margin:12px 0}
 .patch-submission-receipt p{line-height:1.7;max-width:900px}
+
+
+/* ACENG caption is an editorial joke attributed to the user, not a verified endorsement. */
+.aceng-line{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;background:#26301d;border-left:5px solid #f1ed70;padding:17px 22px;margin:18px 0;border-radius:8px}
+.aceng-line strong{font-size:clamp(19px,3vw,29px);font-weight:900;letter-spacing:.03em;color:#f1ed70}
+.aceng-line span{font:700 11px/1.6 'Space Mono',monospace;color:#d7dfcf;max-width:480px}
+.aceng-inline{border-left:3px solid #f1ed70;padding-left:12px}
+.aceng-inline strong{color:#f1ed70}
+.aceng-inline small{display:block;color:#d7dfcf;font-size:12px;margin-top:5px}
