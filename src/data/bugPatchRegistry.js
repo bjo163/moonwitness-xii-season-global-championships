@@ -333,6 +333,8 @@ export const registryCandidates=[
     "benefit": "Harapan kemudahan ibadah sesuai tradisi, literasi sumber agama, pendidikan, kasih sayang keluarga, perlindungan anak, kepedulian lingkungan, dan tanggung jawab digital. Manfaat yang terukur harus diuji secara nyata.",
     "references": "Al-Ma'idah 5:2; Ulangan 6:6–9; Mazmur 119:105; Yakobus 1:22 (rujukan tematis; tidak memerintahkan pembuatan aplikasi)",
     "recordStatus": "user_submitted_in_chat",
+    "acengUserReportedCaption": "ACENG MAH APPROVE",
+    "acengCaptionEvidence": "user_reported_in_chat_not_independently_verified",
     "editorialFinalVersion": "1.0",
     "editorialFinalizedAt": "2026-10-17",
     "note": "Pengguna secara eksplisit meminta SUBMIT pada 17 Oktober 2026. Permohonan #033 dicatat di arsip publik MOONWITNESS melalui percakapan ini; pengiriman eksternal, penerimaan Allah atau pengesahan otoritas tidak dinyatakan terjadi.",
