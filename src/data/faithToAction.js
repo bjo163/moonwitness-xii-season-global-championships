@@ -70,7 +70,18 @@ export const faithToAction={
   {name:'PRACTICAL BENEFIT',metric:'Kegunaan pendidikan atau tindakan yang dilaporkan sukarela.'}
  ],
  prayer:'YA ALLAH, YA RAHMAN, YA RAHIM, YA KHALIQ. Kami memohon kemudahan, ilmu, hikmah, dan kemampuan agar manusia dapat memahami, mengingat, mempelajari serta menjalankan tuntunan kebaikan sesuai keyakinan masing-masing. Semoga teknologi menjadi alat bantu untuk pendidikan, ibadah, keluarga, perlindungan anak, kepedulian sosial, kelestarian alam dan tanggung jawab. Jauhkanlah kami dari pemaksaan, kesalahan penafsiran, penyalahgunaan teknologi, dan kerugian bagi sesama. Karuniakanlah manfaat yang tepat menurut hikmah dan rahmat-Mu. Hanya kepada-Mu kami memohon. Biiznillah. Aamiin.',
- submissionStage:'user_selected_draft',
+ submissionStage:'user_submitted_in_chat',
+ chatSubmission:{
+  status:'recorded_from_user_request',
+  date:'2026-10-17',
+  channel:'chat_conversation',
+  request:'oke tolong lakukan submit',
+  destination:'moonwitness_xii_public_registry',
+  purpose:'Archive the user-requested #033 prayer and patch proposal',
+  externalDispatch:false,
+  authorization:'explicit_user_request',
+  note:'Recording a prayer or proposal in a website does not send it to Allah, verify its acceptance, or make it a formal third-party submission.'
+ },
  externalSubmission:'not_evidenced',
  approval:'not_independently_verified'
 };
