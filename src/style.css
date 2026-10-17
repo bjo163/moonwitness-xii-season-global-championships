@@ -93,3 +93,37 @@ body[data-theme=moonlit] .nav{background:#101d31ed}
 .workspace-page .research-check{margin:12px 0}
 .workspace-page .card p{line-height:1.7}
 @media(max-width:680px){.workspace-page .grid.two{grid-template-columns:1fr}.workspace-page .workspace-targets{max-height:260px}.workspace-page .stats b{font-size:30px}}
+
+
+/* CHAOS MEDIC / Master 33 Bug Patch Registry V2 */
+.patch-register .patch-stats{grid-template-columns:repeat(5,minmax(0,1fr))}
+.patch-register .patch-stats>div{min-width:0}
+.patch-register .patch-stats b{font-size:clamp(24px,3vw,42px)}
+.patch-meter{display:flex;width:100%;height:12px;margin:20px 0 28px;border:1px solid #6d6b89;border-radius:999px;overflow:hidden;background:#1b1729}
+.patch-meter>div{height:100%}
+.patch-meter-registered{background:#84e3a3}.patch-meter-recovered{background:#61c5ff}.patch-meter-conflict{background:#ffa975}.patch-meter-proposed{background:#b7a5cf}
+.patch-filters{gap:10px;margin:24px 0 12px;align-items:stretch}
+.patch-filters input{min-width:min(100%,280px);flex:2}
+.patch-filters button{font-size:11px;letter-spacing:.05em;font-weight:800}
+.patch-count{color:var(--muted);font:700 12px 'Space Mono',monospace;margin:14px 0}
+.patch-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.patch-item{border:1px solid #71687f;border-top:4px solid #84e3a3;border-radius:12px;background:linear-gradient(150deg,#241f35,#161526 65%);padding:23px 24px;min-width:0;overflow-wrap:anywhere}
+.patch-item.patch-recovered_draft{border-top-color:#61c5ff}
+.patch-item.patch-number_conflict{border-top-color:#ffa975}
+.patch-item.patch-proposed{border-top-color:#b7a5cf}
+.patch-item-head{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.patch-number{font:900 24px 'Space Mono',monospace;color:var(--accent)}
+.patch-state{font:700 10px 'Space Mono',monospace;letter-spacing:.02em;line-height:1.6;color:#cce5f4}
+.patch-item h3{font-size:clamp(22px,2.4vw,30px);line-height:1.2;margin:14px 0 4px}
+.patch-item p{font-size:14px;line-height:1.7;color:#d9d1df}
+.patch-item .patch-scope{color:#a8dccc;font:700 11px 'Space Mono',monospace;letter-spacing:.03em;text-transform:uppercase}
+.patch-item details{margin-top:14px;border-top:1px solid #70647f;padding-top:12px}
+.patch-item summary{cursor:pointer;color:var(--accent);font:700 12px 'Space Mono',monospace;line-height:1.7;outline-offset:4px}
+.patch-item summary:focus-visible{outline:3px solid var(--accent)}
+.patch-detail p{font-size:13px}
+.patch-conflict{background:#50302675;padding:14px;margin-top:15px;border-left:3px solid #ffa975}
+.patch-conflict b{font:700 11px 'Space Mono',monospace;color:#ffc99e}
+.patch-conflict small{color:#e0c8bd}
+.patch-unverified{border-top:1px solid #5c526e;padding-top:12px}
+@media(max-width:1000px){.patch-register .patch-stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.patch-grid{grid-template-columns:1fr}.patch-register .patch-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.patch-item{padding:18px}.patch-filters input{width:100%;flex:1 1 100%}}
