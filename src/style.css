@@ -143,3 +143,11 @@ body[data-theme=moonlit] .nav{background:#101d31ed}
 .faith033 .faith033-prayer{font-size:clamp(17px,2.2vw,24px);line-height:1.9;max-width:970px;white-space:pre-line}
 .faith033 a.textlink{display:inline-block;overflow-wrap:anywhere;margin:8px 0}
 @media(max-width:720px){.patch-register .patch-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.patch-featured{display:block}.patch-featured .btn{display:inline-block;margin-top:15px}.faith033 .section{padding-top:25px;padding-bottom:25px}}
+
+
+/* #033 submission receipt — submitted in the public project registry, not sent externally */
+.patch-register .patch-user_submitted_in_chat{border-top-color:#a4edc1;box-shadow:0 0 0 1px #a4edc14d,0 0 25px #a4edc113}
+.patch-submission-receipt{margin:28px 0 34px;padding:clamp(20px,3vw,38px);border:2px solid #a4edc1;background:linear-gradient(135deg,#20372d,#16232e 85%);border-radius:14px}
+.patch-submission-receipt small{color:#acefbf;font:700 11px 'Space Mono',monospace;letter-spacing:.06em}
+.patch-submission-receipt h2{font-size:clamp(28px,4vw,48px);margin:12px 0}
+.patch-submission-receipt p{line-height:1.7;max-width:900px}
