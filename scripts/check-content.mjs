@@ -144,7 +144,7 @@ assert.ok(fullPatch.faithToAction.links.some(x=>x.patch==='025'));
 assert.ok(fullPatch.faithToAction.links.some(x=>x.patch==='029'));
 assert.ok(fullPatch.faithToAction.prayer.includes('YA ALLAH'));
 // Parse registry source rather than importing the TS-dependent module in the Node integrity runner.
-const preservedMatch=masterSource.match(/export const displacedPatchConcepts=(\\[[\\s\\S]*?\\]);/);
+const preservedMatch=masterSource.match(/export const displacedPatchConcepts=(\[[\s\S]*?\]);/);
 assert.ok(preservedMatch,'Displaced Final Audit archive must exist');
 const archived=JSON.parse(preservedMatch[1]);
 assert.equal(archived.length,1);
