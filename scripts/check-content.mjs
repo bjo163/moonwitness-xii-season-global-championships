@@ -125,7 +125,7 @@ assert.equal(conflict.conflictingCandidate.title,'THE WRONG WAY / HELLROAD');
 assert.equal(conflict.recordStatus,'number_conflict');
 assert.equal(8+candidates.length,33,'Combined index must cover precisely 33 slots');
 const selected=candidates.find(x=>x.id==='033');
-assert.equal(selected.title,'FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM');
+assert.equal(selected.title,'KOPIHITAM - SIACENG');
 assert.equal(selected.recordStatus,'user_submitted_in_chat');
 assert.equal(selected.detailKey,'FAITH_TO_ACTION');
 assert.match(selected.scope,/Dunia \/ Global Humanity/);
@@ -137,6 +137,8 @@ assert.equal(selected.editorialFinalVersion,'1.0');
 assert.equal(selected.editorialFinalizedAt,'2026-10-17');
 const fullPatch=await import('../src/data/faithToAction.js');
 assert.equal(fullPatch.faithToAction.id,'033');
+assert.equal(fullPatch.faithToAction.title,'KOPIHITAM - SIACENG');
+assert.equal(fullPatch.faithToAction.conceptSubtitle,'FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM');
 assert.equal(fullPatch.faithToAction.domains.length,5);
 assert.equal(fullPatch.faithToAction.stages.length,7);
 assert.equal(fullPatch.faithToAction.references.length,4);
@@ -168,15 +170,15 @@ assert.equal(candidates.filter(x=>x.recordStatus==='user_submitted_in_chat').len
 assert.ok(patchUIReady());
 function patchUIReady(){return readFileSync('src/pages/Patch033.jsx','utf8').includes('PROJECT SUBMISSION RECEIPT / ARCHIVE ONLY');}
 const patchUI=readFileSync('src/pages/Syafaat.jsx','utf8');
-for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','wildYouthReport','reportedApproval','NOT VERIFIED','33 SLOTS','FAITH TO ACTION','user_submitted_in_chat','displacedPatchConcepts'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
+for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','wildYouthReport','reportedApproval','NOT VERIFIED','33 SLOTS','KOPIHITAM - SIACENG','user_submitted_in_chat','displacedPatchConcepts'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
 assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('THE FINAL AUDIT'));
 assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('FAITH TO ACTION'));
 const finalDoc=readFileSync('docs/MWX_033_FINAL_SUBMISSION_V1.md','utf8');
-for(const part of ['MWX-033','17 October 2026','FAITH TO ACTION','Faith & Worship','SOURCE → CONTEXT','Ya Allah','BIIZNILLAH','THE FINAL AUDIT','user_submitted_in_chat'])assert.ok(finalDoc.toLowerCase().includes(part.toLowerCase()),'Final doc missing '+part);
+for(const part of ['MWX-033','17 October 2026','KOPIHITAM - SIACENG','Faith & Worship','SOURCE → CONTEXT','Ya Allah','BIIZNILLAH','THE FINAL AUDIT','user_submitted_in_chat'])assert.ok(finalDoc.toLowerCase().includes(part.toLowerCase()),'Final doc missing '+part);
 const patchPage=readFileSync('src/pages/Patch033.jsx','utf8');
 for(const part of ['COPY FINAL #033 TEXT','patch.finalCopy.version','patch.stages.map','patch.metrics.map','patch.safetyRules.map'])assert.ok(patchPage.includes(part),'Final full-copy path missing '+part);
 for(const phrase of ['PATCH REQUEST','THE RECORDED PRAYER','SAFETY PROTOCOL','FROM SOURCE TO HUMAN ACTION','REFERENCES, NOT MAGIC COMMANDS','faithToAction'])assert.ok(patchPage.includes(phrase),'Missing patch #033 page feature '+phrase);
 assert.ok(readFileSync('src/App.jsx','utf8').includes('path="/syafaat-status/033"'));
-assert.ok(readFileSync('src/pages/Home.jsx','utf8').includes('#033 Faith to Action'));
+assert.ok(readFileSync('src/pages/Home.jsx','utf8').includes('#033 KOPIHITAM - SIACENG'));
 
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy numbered reports + 1 #033 chat-recorded submission, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
