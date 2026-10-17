@@ -63,9 +63,9 @@ test('Workspace can preview and restore validated local data',async({page})=>{
 });
 
 
-test('Faith to Action owns patch #033 with all five domains and visible safety rules',async({page})=>{
+test('KOPIHITAM - SIACENG owns #033 with Faith to Action theme and five domains',async({page})=>{
  await page.goto('/syafaat-status');
- await expect(page.getByText('FAITH TO ACTION').first()).toBeVisible();
+ await expect(page.getByRole('heading',{name:'KOPIHITAM - SIACENG'}).first()).toBeVisible();
  await page.getByRole('link',{name:/OPEN FULL #033 SPEC/}).click();
  await expect(page).toHaveURL(/\/syafaat-status\/033$/);
  await expect(page.getByText('FIVE HUMAN DOMAINS')).toBeVisible();
@@ -80,6 +80,6 @@ test('Faith to Action owns patch #033 with all five domains and visible safety r
 test('Previous Final Audit proposal is retained outside numbered slots',async({page})=>{
  await page.goto('/syafaat-status');
  await expect(page.getByText(/THE FINAL AUDIT — ARCHIVED EDITORIAL CONCEPT/)).toBeVisible();
- await expect(page.locator('#patch-033')).toContainText('FAITH TO ACTION');
+ await expect(page.locator('#patch-033')).toContainText('KOPIHITAM - SIACENG');
  await expect(page.locator('#patch-033')).not.toContainText('THE FINAL AUDIT');
 });
