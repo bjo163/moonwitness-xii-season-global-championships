@@ -66,6 +66,7 @@ test('Workspace can preview and restore validated local data',async({page})=>{
 test('KOPIHITAM - SIACENG owns #033 with Faith to Action theme and five domains',async({page})=>{
  await page.goto('/syafaat-status');
  await expect(page.getByRole('heading',{name:'KOPIHITAM - SIACENG'}).first()).toBeVisible();
+ await expect(page.getByText('ACENG MAH APPROVE').first()).toBeVisible();
  await page.getByRole('link',{name:/OPEN FULL #033 SPEC/}).click();
  await expect(page).toHaveURL(/\/syafaat-status\/033$/);
  await expect(page.getByText('FIVE HUMAN DOMAINS')).toBeVisible();
