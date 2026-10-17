@@ -6,7 +6,7 @@ export const faithToAction={
  finalCopy:{version:'1.0',date:'2026-10-17',state:'editorially_finalized',source:'docs/MWX_033_FINAL_SUBMISSION_V1.md',scope:'submission_text_archived_in_project_only'},
  title:'KOPIHITAM - SIACENG',
  conceptSubtitle:'FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM',
- acengApproval:{phrase:'ACENG MAH APPROVE',source:'user_reported_phrase_in_chat',reportedAt:'2026-10-17',context:'humorous_editorial_caption',independentVerification:'not_verified',note:'Aceng wording is supplied by the user; no external acknowledgement or divine approval is asserted.'},
+ acengApproval:{phrase:'ACENG MAH APPROVE',source:'user_attributed_to_the_batteries_in_chat',attributedTo:'THE BATTERIES',reportedAt:'2026-10-17',context:'humorous_editorial_caption',independentVerification:'not_verified',note:'The user attributes the Aceng caption to the MOONWITNESS character THE BATTERIES; this is a narrative attribution, not an externally verified statement or divine approval.'},
  tagline:'UNDERSTAND THE TEACHING • BUILD THE TOOL • PRACTICE THE GOOD',
  realm:'DUNIA / EARTH',
  scope:'GLOBAL HUMANITY — VOLUNTARY USE',
