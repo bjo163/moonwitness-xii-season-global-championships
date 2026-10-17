@@ -104,4 +104,27 @@ assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('No events
 assert.ok(readFileSync('src/hooks/useWorldProgress.js','utf8').includes('WORKSPACE_EVENT'));
 assert.ok(readFileSync('scripts/test-workspace.mjs','utf8').includes('restoreWorkspace'));
 
+
+const masterSource=readFileSync('src/data/bugPatchRegistry.js','utf8');
+const masterMatch=masterSource.match(/export const registryCandidates=(\[[\s\S]*?\]);/);
+assert.ok(masterMatch,'33 Patch candidate list missing');
+const candidates=JSON.parse(masterMatch[1]);
+assert.equal(candidates.length,25,'#009-#033 must all exist');
+assert.deepEqual(candidates.map(x=>x.id),Array.from({length:25},(_,i)=>String(i+9).padStart(3,'0')),'Patch IDs must be unique and sequential');
+const counts=candidates.reduce((a,x)=>(a[x.recordStatus]=(a[x.recordStatus]||0)+1,a),{});
+assert.equal(counts.recovered_draft,5);
+assert.equal(counts.number_conflict,1);
+assert.equal(counts.proposed,19);
+assert.ok(candidates.every(x=>x.title&&x.scope&&x.summary&&x.benefit&&x.references&&x.provenance&&x.reviewNeeded),'Every patch needs complete editorial metadata');
+assert.ok(candidates.every(x=>x.recordStatus!=='registered'&&x.origin!=='submission_reported_in_chat'),'No proposal may impersonate a submitted report');
+assert.ok(candidates.every(x=>!x.reportedApproval && !x.approvalStatus),'No invented approval attributes');
+const conflict=candidates.find(x=>x.id==='014');
+assert.equal(conflict.title,'FAMILY WITHOUT FEAR');
+assert.equal(conflict.conflictingCandidate.title,'THE WRONG WAY / HELLROAD');
+assert.equal(conflict.recordStatus,'number_conflict');
+assert.equal(8+candidates.length,33,'Combined index must cover precisely 33 slots');
+const patchUI=readFileSync('src/pages/Syafaat.jsx','utf8');
+for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','WILD YOUTH','reportedApproval','NOT VERIFIED','33 SLOTS'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
+assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('THE FINAL AUDIT'));
+
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 numbered submissions, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
