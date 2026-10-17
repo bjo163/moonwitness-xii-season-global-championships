@@ -42,7 +42,7 @@ const makeSubmission=()=>[
  'DOA:',
  patch.prayer,
  '',
- 'CAPTION REPORTED BY USER: '+patch.acengApproval.phrase+' (not independently verified).',
+ 'ACENG CAPTION — MENURUT PERNYATAAN '+patch.acengApproval.attributedTo+': '+patch.acengApproval.phrase+' (narrative attribution, not independently verified).',
  'STATUS: SUBMISSION REQUESTED BY USER AND RECORDED IN CHAT / WEBSITE ON 2026-10-17; NOT DELIVERED TO ANY EXTERNAL RECIPIENT; NO INDEPENDENTLY VERIFIED DIVINE APPROVAL.'
 ].join('\n');
 
@@ -57,7 +57,7 @@ export default function Patch033(){
  <div><b>07</b> PROCESS STAGES</div>
  <div><b>00</b> VERIFIED APPROVALS</div>
  </div>
- <div className="aceng-line" aria-label="User-reported Aceng caption"><strong>{patch.acengApproval.phrase}</strong><span>USER-REPORTED / FUNKY CAPTION • NOT A VERIFIED EXTERNAL OR DIVINE APPROVAL</span></div>
+ <div className="aceng-line" aria-label="Aceng caption attributed to The Batteries"><strong>{patch.acengApproval.phrase}</strong><span>MENURUT PERNYATAAN {patch.acengApproval.attributedTo} • NARASI MOONWITNESS, BUKAN PERSETUJUAN EKSTERNAL ATAU ILAHI TERVERIFIKASI</span></div>
  <Notice><b>EARTH / GLOBAL HUMANITY:</b> Ini permohonan dan rancangan peningkatan pendidikan/praktik manusia. Bukan sistem yang memerintah agama, mengubah kitab, mengontrol ibadah, atau menjamin hasil gaib. Pengajuan diminta oleh pengguna dan dicatat di chat pada 17 Oktober 2026. Tidak ada pengiriman kepada penerima eksternal atau bukti penerimaan/persetujuan ilahi.</Notice>
  <section className="patch-submission-receipt" aria-label="Submission record"><small>PROJECT SUBMISSION RECEIPT / ARCHIVE ONLY • FINAL EDITORIAL COPY v{patch.finalCopy.version}</small><h2>SUBMITTED IN CHAT</h2><p><b>Reference:</b> MWX-033 • <b>Final text:</b> {patch.finalCopy.date} / Version {patch.finalCopy.version} • <b>Date:</b> {patch.chatSubmission.date} • <b>Channel:</b> chat conversation • <b>External dispatch:</b> NONE</p><p>Ini catatan pengajuan yang diminta pengguna, bukan pengiriman kepada Allah, lembaga, atau penerima pihak ketiga. Pengabulan doa tidak dapat dipastikan oleh website.</p></section>
  <section className="section"><Head eyebrow="// THE REAL BUG" title="KNOWLEDGE IS NOT YET ACTION." sub="Jangan mengubah ajaran agama menjadi kode mentah. Pelajari konteks, lalu rancang bantuan yang tepat."/>
