@@ -1,19 +1,60 @@
-import React from 'react';
+import React,{useMemo,useState} from 'react';
 import {Link} from 'react-router-dom';
-import {knownSubmissions,unnumberedReports,realWorldBugTarget,wildYouthReport} from '../data/bugSubmissions.ts';
 import {Card,Head,Notice} from '../components/UI.jsx';
-const statusText={approved:'APPROVED · REPORTED',approved_with_condition:'APPROVED WITH CONDITION · REPORTED',submitted:'SUBMITTED'};
-const reportedApproved=knownSubmissions.filter(x=>x.reportedApproval==='approved').length;
-const conditional=knownSubmissions.filter(x=>x.reportedApproval==='approved_with_condition').length;
-const submitted=knownSubmissions.filter(x=>x.reportedApproval==='submitted').length;
-const auditTracks=[['24 SUBJECT ROADMAP','Arsip topik akhirat dan laporan pribadi; DONE tidak berarti fakta terverifikasi.'],['33 AETHERION OPEN / 67 LOCKED','Desain dunia 100 level: Mercy Spawn 01–10, Peacehaven 11–20, Blessing Wilds 21–30, Heartbound 31–33.'],['33 SELF AURA','Latihan pembelajaran dalam browser, bukan 33 approval.'],['CHAOS MEDIC: 33 REAL-WORLD BUGS','Target arsip laporan dan permohonan; 8 nama pengajuan teridentifikasi, 25 belum dipulihkan.']];
-export default function Syafaat(){return <main className="container page">
-<Head eyebrow="// THE BATTERIES · CHAOS MEDIC" title="PATCH IT BRO! — DIVINE GRACE REQUESTS." sub="MOONWITNESS XII · Real-World Bug Patch Register · Prayer, testimony, scripture & evidence kept distinct."/>
-<div className="stats"><div><b>{knownSubmissions.length}/{realWorldBugTarget}</b> IDENTIFIED</div><div><b>{reportedApproved}</b> REPORTED APPROVED</div><div><b>{conditional}</b> REPORTED CONDITIONAL</div><div><b>{submitted}</b> SUBMITTED</div></div>
-<Notice><b>HONEST FIRST:</b> APPROVED adalah status menurut laporan pengaju, bukan persetujuan Allah atau otoritas yang terverifikasi. Effect/Benefit adalah manfaat yang DIMOHONKAN, bukan perubahan supernatural yang terbukti. Referensi kitab merupakan rujukan tematis dan tidak otomatis membenarkan seluruh proposal. Deskripsi #001–#005 diringkas dari pembahasan dan belum diverifikasi terhadap naskah pengajuan primer lengkap.</Notice>
-<section className="section"><Head eyebrow="// FINAL MASTER SUBMISSION REGISTER" title="8 SUBMISSIONS. 33 TARGET." sub="Scope / Target · Permohonan Karunia / Bug Fix · Effect / Benefit · Referensi Kitab · Reported Status"/>
-<div style={{overflowX:'auto',border:'1px solid var(--line, #7776)',borderRadius:14,marginTop:18}}><table style={{width:'100%',minWidth:1150,borderCollapse:'collapse',textAlign:'left',fontSize:13}}><thead><tr>{['ID / SUBMISSION','SCOPE / TARGET','PERMOHONAN KARUNIA / BUG FIX','EFFECT / BENEFIT YANG DIMOHONKAN','REFERENSI KITAB','REPORTED STATUS'].map(c=><th key={c} style={{padding:13,borderBottom:'2px solid currentColor',verticalAlign:'top'}}>{c}</th>)}</tr></thead><tbody>{knownSubmissions.map(x=><tr key={x.id}><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:150,verticalAlign:'top'}}><b>#{x.id}</b><br/><strong>{x.title}</strong></td><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:135,verticalAlign:'top'}}>{x.scope}</td><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:240,verticalAlign:'top'}}>{x.summary}</td><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:240,verticalAlign:'top'}}>{x.benefit}</td><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:190,verticalAlign:'top'}}>{x.references}</td><td style={{padding:13,borderBottom:'1px solid #8885',minWidth:160,verticalAlign:'top'}}><strong>{statusText[x.reportedApproval]}</strong><br/><small>Independent approval: NOT VERIFIED</small></td></tr>)}</tbody></table></div>
-<p style={{opacity:.8,fontSize:13}}>TABLE NOTE: Reported status ≠ independently verified approval. Proposal Qiblat Utara does not change Islamic qibla (QS. 2:144). QS. 23:99–100 describes a denied request to return to worldly life; miracle references are not a general promise of resurrection before the Last Day.</p></section>
-<section className="section"><Head eyebrow="// DETAILED SUBMISSION NOTES" title="PATCH NOTES & SCRIPTURE."/><div className="grid two">{knownSubmissions.map(x=><Card key={x.id}><small>SUBMISSION #{x.id} · {x.scope.toUpperCase()}</small><h3>{x.title}</h3><p><b>Permohonan:</b> {x.summary}</p><p><b>Effect / Benefit (requested):</b> {x.benefit}</p><p><b>References:</b> {x.references}</p><p><b>Notes:</b> {x.note}</p><span className="pill">{statusText[x.reportedApproval]}</span><p style={{fontSize:12,opacity:.75}}>Independent approval / supernatural outcome: NOT VERIFIED</p></Card>)}</div></section>
-<section className="section"><Head eyebrow="// SEPARATE PRAYER REGISTER" title="WILD YOUTH — MERCY & HIDAYAH PATCH." sub="Unnumbered prayer report • MWX-SYF-00752 • Not assigned a Real-World Bug ID"/><Card><small>{wildYouthReport.id} · {wildYouthReport.scope}</small><h3>{wildYouthReport.title}</h3><p><b>Permohonan:</b> {wildYouthReport.summary}</p><p><b>Effect / Benefit (requested):</b> {wildYouthReport.benefit}</p><p><b>Scripture references (thematic):</b> {wildYouthReport.references}</p><p><b>Status:</b> {wildYouthReport.status}</p><p>{wildYouthReport.note}</p></Card></section><section className="section"><p className="notice"><b>REGISTRY:</b> {knownSubmissions.length} identified / {realWorldBugTarget} target · {realWorldBugTarget-knownSubmissions.length} unrecovered placeholders. Submitted in chat is not external submission. No divine approval has been independently verified.</p><Head eyebrow="// FOUR DISTINCT TRACKS" title="DON'T MIX THE NUMBERS."/><div className="grid two">{auditTracks.map(x=><Card key={x[0]}><h3>{x[0]}</h3><p>{x[1]}</p></Card>)}</div>{unnumberedReports.map(x=><p key={x.id} className="notice"><b>{x.title}:</b> {x.note}</p>)}<Link to="/paradise" className="btn">OPEN 33 SELF AURA LEVELS ↗</Link></section>
-</main>}
+import {registryEntries,registrySummary,registryStatusLabels,registryNote} from '../data/bugPatchRegistry.js';
+import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions.ts';
+
+const reportLabel={approved:'APPROVED — PERSONAL REPORT ONLY',approved_with_condition:'CONDITIONAL APPROVAL — PERSONAL REPORT ONLY',submitted:'SUBMITTED IN CHAT — PERSONAL REPORT'};
+const options=[['all','ALL 33'],['registered','REGISTERED'],['recovered_draft','RECOVERED DRAFTS'],['number_conflict','CONFLICT'],['proposed','PROPOSALS']];
+export default function Syafaat(){
+ const [filter,setFilter]=useState('all');
+ const [q,setQ]=useState('');
+ const visible=useMemo(()=>registryEntries.filter(e=>(filter==='all'||e.recordStatus===filter)&&[e.id,e.title,e.summary,e.scope,e.benefit,e.references,e.conflictingCandidate?.title||''].join(' ').toLowerCase().includes(q.trim().toLowerCase())),[filter,q]);
+ return <main className="container page patch-register">
+ <Head eyebrow="// THE BATTERIES • CHAOS MEDIC" title="PATCH IT BRO! — MASTER 33." sub="Satu peta 33 slot Bug Patch, dengan jejak asal-usul yang jujur: laporan yang tercatat, draf yang dipulihkan, konflik nomor, dan proposal baru."/>
+ <div className="stats patch-stats" aria-label="Patch register completion">
+ <div><b>{registrySummary.total}/{registrySummary.target}</b> SLOTS LISTED</div>
+ <div><b>{registrySummary.registered}</b> REGISTERED IN CHAT</div>
+ <div><b>{registrySummary.recovered}</b> RECOVERED DRAFTS</div>
+ <div><b>{registrySummary.conflicted}</b> NUMBER CONFLICT</div>
+ <div><b>{registrySummary.proposed}</b> EDITORIAL PROPOSALS</div>
+ </div>
+ <div className="patch-meter" aria-label="Registry origin proportions">
+  <div className="patch-meter-registered" style={{width:registrySummary.registered/registrySummary.target*100+'%'}} title="Registered"/>
+  <div className="patch-meter-recovered" style={{width:registrySummary.recovered/registrySummary.target*100+'%'}} title="Recovered draft"/>
+  <div className="patch-meter-conflict" style={{width:registrySummary.conflicted/registrySummary.target*100+'%'}} title="Number conflict"/>
+  <div className="patch-meter-proposed" style={{width:registrySummary.proposed/registrySummary.target*100+'%'}} title="Proposed"/>
+ </div>
+ <Notice><b>HONEST FIRST:</b> {registryNote} Status APPROVED dalam arsip lama adalah klaim persetujuan menurut pengaju, bukan persetujuan Allah yang dapat diverifikasi. Tidak ada persetujuan ilahi yang diverifikasi secara independen. Entri #001–#005 pun masih berupa ringkasan dan membutuhkan naskah lengkap.</Notice>
+ <section className="section" id="master-register"><Head eyebrow="// FINAL STRUCTURAL REGISTRY V2" title="33 SLOTS. ZERO GUESSWORK." sub="Tidak menambah submission atau ayat yang tidak memiliki sumber. Klik setiap patch untuk melihat scope, manfaat, rujukan, catatan, dan kebutuhan review."/>
+ <div className="filters patch-filters">
+  <input aria-label="Cari nomor, judul atau topik patch" placeholder="CARI #009, SAFE, FAMILY, HELLROAD..." value={q} onChange={e=>setQ(e.target.value)}/>
+  {options.map(([id,label])=><button key={id} type="button" aria-pressed={filter===id} onClick={()=>setFilter(id)}>{label}</button>)}
+  <button type="button" onClick={()=>{setFilter('all');setQ('')}}>RESET FILTERS</button>
+ </div>
+ <p className="patch-count" role="status">{visible.length} dari {registrySummary.total} slot ditampilkan</p>
+ <div className="patch-grid">{visible.map(e=><article className={'patch-item patch-'+e.recordStatus} key={e.id} id={'patch-'+e.id}>
+  <div className="patch-item-head"><span className="patch-number">#{e.id}</span><span className="patch-state">{registryStatusLabels[e.recordStatus]}</span></div>
+  <h3>{e.title}</h3>
+  <p className="patch-scope">{e.scope}</p>
+  <p>{e.summary}</p>
+  {e.recordStatus==='number_conflict'&&<div className="patch-conflict"><b>ANOTHER #014 CANDIDATE</b><p>{e.conflictingCandidate.title}</p><p>{e.conflictingCandidate.summary}</p><small>Konflik tetap terbuka; kedua konsep tidak otomatis digabung.</small></div>}
+  <details><summary>DETAILS / SOURCES / REVIEW ↓</summary>
+   <div className="patch-detail"><p><b>Proposed benefit:</b> {e.benefit}</p><p><b>Scripture / source references:</b> {e.references}</p><p><b>Documentation note:</b> {e.note}</p><p><b>Origin:</b> {e.provenance}</p><p><b>Next review:</b> {e.reviewNeeded}</p>
+   {e.reportedApproval&&<p><b>Reported status:</b> {reportLabel[e.reportedApproval]} — NOT INDEPENDENTLY VERIFIED</p>}
+   <p className="patch-unverified"><b>Independent approval:</b> NOT VERIFIED</p></div>
+  </details>
+ </article>)}</div>
+ {visible.length===0&&<Notice>No matching patches. Clear your filters to see all 33 slots.</Notice>}
+ </section>
+ <section className="section"><Head eyebrow="// PRESERVED OUTSIDE THE 33 SLOTS" title="DON'T LOSE THE EXTRAS." sub="Tambahan berikut punya asal sendiri. Tidak diam-diam mengambil nomor #009–#033."/>
+  <div className="grid two"><Card><small>SEPARATE PRAYER REPORT • {wildYouthReport.id}</small><h3>{wildYouthReport.title}</h3><p>{wildYouthReport.summary}</p><p><b>Benefits requested:</b> {wildYouthReport.benefit}</p><p><b>References:</b> {wildYouthReport.references}</p><p><b>Status:</b> {wildYouthReport.status}</p><p>{wildYouthReport.note}</p></Card>
+  <Card><small>ADDITIONAL NARRATIVE NOTES</small><h3>UNNUMBERED / REVIEW QUEUE</h3>{unnumberedReports.map(e=><p key={e.id}><b>{e.title}</b> — {e.note}</p>)}<p><b>THE WRONG WAY / HELLROAD</b> remains a separate competing candidate for #014, preserved in its conflict card above, not relabelled as a confirmed submission.</p></Card></div>
+ </section>
+ <section className="section"><Head eyebrow="// KEEP THE SYSTEMS SEPARATE" title="NOT ALL 33s ARE THE SAME."/><div className="grid three">
+ <Card><h3>33 BUG PATCH SLOTS</h3><p>Arsip 8 laporan + 5 recovered drafts + 1 konflik + 19 proposal editorial.</p></Card>
+ <Card><h3>33 ORIGINAL SELF AURA</h3><p>Latihan pribadi yang sudah ada di Paradise. Bukan daftar 33 Bug Patch.</p></Card>
+ <Card><h3>100 AETHERION LEVELS</h3><p>33 level awal serta 67 level pembelajaran lanjutan dalam konsep dunia kreatif.</p></Card>
+ </div><p><Link className="btn" to="/paradise">EXPLORE PARADISE LEVELS ↗</Link></p></section>
+ </main>;
+}
