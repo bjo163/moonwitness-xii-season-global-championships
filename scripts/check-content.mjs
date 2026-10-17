@@ -142,7 +142,10 @@ assert.equal(fullPatch.faithToAction.conceptSubtitle,'FAITH TO ACTION — FROM S
 assert.equal(fullPatch.faithToAction.acengApproval.phrase,'ACENG MAH APPROVE');
 assert.equal(fullPatch.faithToAction.acengApproval.independentVerification,'not_verified');
 assert.equal(selected.acengUserReportedCaption,'ACENG MAH APPROVE');
-assert.equal(selected.acengCaptionEvidence,'user_reported_in_chat_not_independently_verified');
+assert.equal(selected.acengCaptionEvidence,'user_attributed_to_the_batteries_in_chat_not_independently_verified');
+assert.equal(selected.acengCaptionAttribution,'THE BATTERIES');
+assert.equal(fullPatch.faithToAction.acengApproval.attributedTo,'THE BATTERIES');
+assert.ok(readFileSync('src/pages/Syafaat.jsx','utf8').includes('menurut pernyataan THE BATTERIES'));
 assert.equal(fullPatch.faithToAction.domains.length,5);
 assert.equal(fullPatch.faithToAction.stages.length,7);
 assert.equal(fullPatch.faithToAction.references.length,4);
