@@ -4,6 +4,7 @@
 // #014 remains a genuine numbering conflict; both proposals preserved.
 // #015–#033 are editorial proposals, NOT claimed submissions or divine approvals.
 import {knownSubmissions,realWorldBugTarget} from './bugSubmissions.ts';
+import {faithToAction} from './faithToAction.js';
 
 export const registryCandidates=[
   {
@@ -326,23 +327,25 @@ export const registryCandidates=[
   },
   {
     "id": "033",
-    "title": "THE FINAL AUDIT",
-    "scope": "Evaluation / Accountability",
-    "summary": "Rancangan evaluasi akhir terhadap capaian nyata dan pekerjaan yang belum selesai.",
-    "benefit": "Usulan manfaat sosial/etis yang perlu dirumuskan dan ditinjau; belum merupakan hasil yang terwujud.",
-    "references": "REFERENCES PENDING — belum ditelusuri ke sumber primer",
-    "recordStatus": "proposed",
-    "note": "Judul dan tema berasal dari rancangan master registry sebelumnya, bukan bukti submission final.",
-    "reviewNeeded": "Perlu naskah final, scope, rujukan dan persetujuan redaksional sebelum dinaikkan statusnya.",
-    "provenance": "assistant_drafted_master_plan",
-    "origin": "editorial_proposal_only"
+    "title": "FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM",
+    "scope": "Dunia / Global Humanity / Religion / Education / Ethics / Technology",
+    "summary": "Permohonan agar umat manusia dimudahkan memahami, mengingat, dan mengamalkan tuntunan kebaikan sesuai tradisi masing-masing melalui pembelajaran, alat bantu teknologi dan tindakan sukarela yang dapat dievaluasi.",
+    "benefit": "Harapan kemudahan ibadah sesuai tradisi, literasi sumber agama, pendidikan, kasih sayang keluarga, perlindungan anak, kepedulian lingkungan, dan tanggung jawab digital. Manfaat yang terukur harus diuji secara nyata.",
+    "references": "Al-Ma'idah 5:2; Ulangan 6:6–9; Mazmur 119:105; Yakobus 1:22 (rujukan tematis; tidak memerintahkan pembuatan aplikasi)",
+    "recordStatus": "user_selected_draft",
+    "note": "Ditetapkan pengguna sebagai slot #033, menggantikan rancangan editorial THE FINAL AUDIT. Ini draf permohonan untuk dunia, bukan bukti submission eksternal, pengesahan teologis, atau hasil yang terjadi.",
+    "reviewNeeded": "Finalisasi redaksi sumber dan implementasi contoh kecil yang aman; jika kelak ada bukti pengajuan ke lembaga eksternal, arsipkan secara terpisah.",
+    "provenance": "explicit_user_selection_and_scope_confirmed_2026-10-17",
+    "origin": "user_selected_draft_not_externally_submitted",
+    "detailKey": "FAITH_TO_ACTION"
   }
 ];
 export const registryStatusLabels={
 registered:'REGISTERED / REPORTED IN CHAT',
 recovered_draft:'RECOVERED DRAFT / REVIEW NEEDED',
 number_conflict:'NUMBER CONFLICT / UNRESOLVED',
-proposed:'EDITORIAL PROPOSAL / NOT SUBMITTED'
+proposed:'EDITORIAL PROPOSAL / NOT SUBMITTED',
+user_selected_draft:'USER SELECTED / DRAFT ONLY'
 };
 export const registryEntries=[
  ...knownSubmissions.map(p=>({...p,recordStatus:'registered',origin:'submission_reported_in_chat',provenance:'earlier_chat_summary',reviewNeeded:'Original complete text and independent evaluation remain outstanding.'})),
@@ -355,6 +358,24 @@ export const registrySummary={
  recovered:registryEntries.filter(p=>p.recordStatus==='recovered_draft').length,
  conflicted:registryEntries.filter(p=>p.recordStatus==='number_conflict').length,
  proposed:registryEntries.filter(p=>p.recordStatus==='proposed').length,
+ selected:registryEntries.filter(p=>p.recordStatus==='user_selected_draft').length,
  verifiedApprovals:registryEntries.filter(p=>p.approvalStatus==='approved_with_evidence').length
 };
-export const registryNote='One row per slot (#001–#033) does NOT imply 33 submitted patches. Numbering shows an editorial index; reports, recovered ideas, and proposals must remain distinct.';
+export const registryNote='Slot #033 was selected by the user as a draft for a voluntary global proposal. Having 33 indexed slots does NOT mean 33 submissions were formally submitted or approved. Reports, drafts and proposals remain distinct.';
+
+// User explicitly assigned #033 to FAITH TO ACTION. Preserve displaced concept without reusing the slot.
+export const displacedPatchConcepts=[
+  {
+    "archiveId": "EXTRA-CONCEPT-001",
+    "title": "THE FINAL AUDIT",
+    "formerSlot": "033",
+    "recordStatus": "displaced_editorial_proposal",
+    "scope": "Evaluation / Accountability",
+    "summary": "Rancangan evaluasi akhir terhadap capaian nyata dan pekerjaan yang belum selesai.",
+    "benefit": "Usulan manfaat sosial/etis yang perlu dirumuskan dan ditinjau; belum merupakan hasil yang terwujud.",
+    "source": "former_033_proposal_in_master_registry_v2",
+    "note": "Preserved as unnumbered historical proposal when the user assigned #033 to FAITH TO ACTION; it is not a second #033.",
+    "provenance": "assistant_drafted_master_plan"
+  }
+];
+export const selectedPatch=faithToAction;
