@@ -13,7 +13,6 @@ const navigation=[
   ['/research','RESEARCH DESK'],
   ['/stories','STORIES'],
   ['/syafaat-status','SYAFAAT'],
-  ['/syafaat-engine','SYAFAAT LAB'],
   ['/grand-plan','GRAND PLAN']
 ];
 
