@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Header from "../src/components/Header.jsx";
-import Footer from "../src/components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function AppShell({ children }) {
   const [theme, setTheme] = useState("moonlit");

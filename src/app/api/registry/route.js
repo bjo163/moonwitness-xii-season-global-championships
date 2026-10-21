@@ -1,4 +1,4 @@
-import { prisma } from "../../../src/lib/prisma.js";
+import { prisma } from "../../../lib/prisma.js";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
