@@ -34,6 +34,7 @@ export default function Syafaat(){
  <section className="patch-featured" aria-labelledby="patch-featured-title">
  <div><small>WORLD SYSTEM PATCH • DUNIA / GLOBAL HUMANITY • #033</small><h2 id="patch-featured-title">KOPIHITAM - SIACENG</h2><p><b>FAITH TO ACTION — FROM SCRIPTURE TO SYSTEM</b></p><p className="aceng-inline"><strong>ACENG MAH APPROVE</strong> <small>— menurut pernyataan THE BATTERIES; atribusi karakter dalam narasi, bukan persetujuan independen atau ilahi yang terverifikasi</small></p><p>Memahami ajaran → memeriksa konteks → membangun alat bantu → melakukan kebaikan → mengukur manfaat nyata.</p><p><b>One global proposal • Five practical domains • No forced religion • No accounts.</b></p><p><b>SUBMISSION RECORDED IN CHAT • 17 OCT 2026 • NOT SENT EXTERNALLY</b></p></div>
  <Link className="btn" href="/syafaat-status/033">OPEN FULL #033 SPEC ↗</Link>
+  <Link className="btn secondary" href="/syafaat-engine">OPEN LOCAL SUBMISSION & IMPACT LAB ↗</Link>
  </section>
  <section className="section" id="master-register"><Head eyebrow="// FINAL STRUCTURAL REGISTRY V2" title="33 SLOTS. ZERO GUESSWORK." sub="Tidak menambah submission atau ayat yang tidak memiliki sumber. Klik setiap patch untuk melihat scope, manfaat, rujukan, catatan, dan kebutuhan review."/>
  <div className="filters patch-filters">
