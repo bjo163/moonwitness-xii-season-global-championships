@@ -94,3 +94,10 @@ for (const entry of registryEntries) {
   for (const field of ['benefit','references','origin']) assert.ok(typeof entry[field] === 'string' && entry[field].trim(), entry.id + ' missing audit field ' + field);
 }
 assert.equal(registryEntries.length, 33, 'Slot audit and canonical registry must remain exactly 33 records');
+
+
+// Command Center must report static evidence honestly and link to the audit contracts.
+assert.ok(commandCenter.includes('status CI atau deployment secara live'), 'Command Center must disclose that CI/deploy state is not live');
+assert.ok(commandCenter.includes('MASTER_33_SLOT_EVIDENCE_AUDIT.md'), 'Command Center must link the 33-slot evidence audit');
+assert.ok(commandCenter.includes('CROSS_SYSTEM_INTERFACE_CONTRACTS.md'), 'Command Center must link cross-system contracts');
+assert.ok(!commandCenter.includes('BUILD GATE: PASS'), 'Command Center must not present a stale hard-coded build pass');
