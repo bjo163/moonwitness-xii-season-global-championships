@@ -5,7 +5,7 @@ test.beforeEach(async({page})=>{
 });
 
 test('Homepage and key routes render without overflow',async({page})=>{
- for(const path of ['/','/characters','/paradise','/command-center','/research','/workspace','/stories','/champions']){
+ for(const path of ['/','/characters','/paradise','/paradise.html','/command-center','/research','/workspace','/stories','/champions','/syafaat-status','/syafaat-status.html']){
   await page.goto(path);await expect(page.locator('#main-content')).toBeVisible();
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
   expect(overflow,path+' has horizontal overflow').toBeFalsy();
