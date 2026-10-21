@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model RegistryEntry {
+  id           String   @id @default(cuid())
+  slot         Int      @unique
+  title        String
+  scope        String
+  summary      String
+  benefit      String?
+  references   String?
+  recordStatus String   @default("editorial_proposal")
+  provenance   String
+  sourceText   String?
+  reviewNeeded String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([recordStatus])
+  @@map("registry_entries")
+}
+
+model CharacterProfile {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  name           String
+  role           String
+  biography      String
+  visualBrief    String
+  accentColor    String   @default("#82e4d1")
+  canonStatus    String   @default("fictional_symbolic")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("character_profiles")
+}
+
+model ChampionRecord {
+  id             String   @id @default(cuid())
+  sourceKey      String   @unique
+  displayName    String
+  tradition      String
+  symbolicAward  String
+  gift           String
+  sourceUrl      String?
+  reviewStatus   String   @default("pending_independent_review")
+  reviewNote     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([reviewStatus])
+  @@index([tradition])
+  @@map("champion_records")
+}
+
+model PosterAsset {
+  id          String    @id @default(cuid())
+  assetKey    String    @unique
+  title       String
+  storageUrl  String?
+  altText     String?
+  provenance  String?
+  sha256      String?
+  reviewState String    @default("unverified")
+  reviewedAt  DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([reviewState])
+  @@map("poster_assets")
+}
+
+model WorkspaceRecord {
+  id          String   @id @default(cuid())
+  workspaceId String
+  recordType  String
+  payload     Json
+  version     Int      @default(1)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([workspaceId, recordType])
+  @@index([workspaceId])
+  @@map("workspace_records")
+}
+
+model AuditEvent {
+  id         String   @id @default(cuid())
+  entityType String
+  entityId   String
+  action     String
+  actorLabel String   @default("system")
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@map("audit_events")
+}

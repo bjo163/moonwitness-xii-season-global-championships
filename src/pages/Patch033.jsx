@@ -1,5 +1,6 @@
+"use client";
 import React,{useState} from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 import {faithToAction as patch} from '../data/faithToAction.js';
 import {Head,Notice,Card} from '../components/UI.jsx';
 
@@ -78,9 +79,9 @@ export default function Patch033(){
  <section className="section"><Head eyebrow="// IMPACT REVIEW" title="MEASURE HELP, NOT FAITH." sub="Indikator yang bisa diuji tidak menilai kesalehan seseorang."/>
  <div className="grid three">{patch.metrics.map(x=><Card key={x.name}><h3>{x.name}</h3><p>{x.metric}</p></Card>)}</div></section>
  <section className="section alt"><Head eyebrow="// PATCH RELATIONSHIPS" title="LINK THE WORLD SYSTEM." sub="Tautan tematis ke patch lain, bukan dependency otomatis yang sudah diterapkan."/>
- <div className="grid three">{patch.links.filter(x=>x.patch!=='033').map(x=><Card key={x.patch}><small>RELATED BUG PATCH #{x.patch}</small><p>{x.why}</p><Link className="textlink" to={'/syafaat-status#patch-'+x.patch}>VIEW IN MASTER REGISTER ↗</Link></Card>)}</div></section>
+ <div className="grid three">{patch.links.filter(x=>x.patch!=='033').map(x=><Card key={x.patch}><small>RELATED BUG PATCH #{x.patch}</small><p>{x.why}</p><Link className="textlink" href={'/syafaat-status#patch-'+x.patch}>VIEW IN MASTER REGISTER ↗</Link></Card>)}</div></section>
  <section className="section"><Head eyebrow="// PERSONAL PRAYER / REFERENCE COPY" title="THE RECORDED PRAYER."/>
  <Card><small>YA ALLAH • BIIZNILLAH • AAMIIN</small><p className="faith033-prayer">{patch.prayer}</p><p><b>Intended role:</b> permohonan pribadi, bukan hasil persetujuan atau keajaiban yang dapat dinyatakan telah terjadi.</p></Card>
- <div className="filters"><button type="button" onClick={copy}>COPY FINAL #033 TEXT ↗</button><Link className="btn" to="/syafaat-status#patch-033">BACK TO MASTER 33 ↗</Link></div><p role="status" aria-live="polite">{copied?'Naskah final v1.0 telah disalin. Pengajuan tercatat di chat dan arsip website; tidak dikirim ke penerima eksternal.':''}</p>
+ <div className="filters"><button type="button" onClick={copy}>COPY FINAL #033 TEXT ↗</button><Link className="btn" href="/syafaat-status#patch-033">BACK TO MASTER 33 ↗</Link></div><p role="status" aria-live="polite">{copied?'Naskah final v1.0 telah disalin. Pengajuan tercatat di chat dan arsip website; tidak dikirim ke penerima eksternal.':''}</p>
  </section></main>;
 }

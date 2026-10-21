@@ -71,3 +71,27 @@ The build script runs the content tests and poster audit before Vite builds the 
 ## Change policy
 
 Prefer small, reviewable commits. Avoid broad rewrites until the baseline and its tests are verified. After every change, inspect the resulting deployment and report exactly what passed, failed, or remains unverified.
+
+
+## Platform refresh — Next.js, design system, and persistence
+
+The refresh branch feat/nextjs-moonwitness-ix-refresh ports the existing experience into a Next.js App Router shell and adopts the calmer, more consistent layout principles used by MOONWITNESS IX: semantic color tokens, clearer type hierarchy, spacious cards, restrained borders, responsive navigation, and consistent evidence/status language.
+
+### Stack
+
+- Next.js App Router + React 19
+- Existing project content and interactive modules retained during the first migration pass
+- PostgreSQL via Prisma ORM, with an explicit migration and a read-only registry API
+- The database is **not connected to production yet**. Configure a dedicated DATABASE_URL, run npm run db:migrate:deploy, then npm run db:seed. Do not reuse IX production credentials or run migrations against a shared database without a separate decision.
+- GET /api/health reports the runtime and whether a database URL is configured. GET /api/registry is read-only and returns a clear 503 until the database is configured and migrated.
+
+### Local setup
+
+1. Copy .env.example to .env.local and set DATABASE_URL for a dedicated PostgreSQL database.
+2. Run npm install.
+3. Run npm run db:generate.
+4. Apply the reviewed schema with npm run db:migrate:deploy.
+5. Run npm run db:seed to seed the #033 record with its source/provenance caveat intact.
+6. Run npm run build and npm run test:browser.
+
+This branch is a migration candidate, not a claim that the production site or database has already been switched over.
