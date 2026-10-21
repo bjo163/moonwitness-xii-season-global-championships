@@ -2,9 +2,31 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {ecosystemSystems,ecosystemLifecycle,ecosystemRules} from '../src/data/ecosystemRegistry.js';
 import {relatedConcepts} from '../src/data/relatedConceptCatalog.js';
+import {registryEntries,registrySummary} from '../src/data/bugPatchRegistry.js';
 
 const allowedStatuses = new Set(['planned','proposed','partially-covered','in-development','validated','operational','blocked']);
 assert.ok(ecosystemSystems.length >= 10, 'Canonical ecosystem registry must cover the core systems');
+
+// The championship registry is separate from the system index and must stay at exactly 33 slots.
+assert.equal(registryEntries.length, 33, 'Master championship register must preserve 33 slots');
+assert.deepEqual(registryEntries.map(x => x.id), Array.from({length:33}, (_,i) => String(i+1).padStart(3,'0')), 'Championship IDs must remain unique and sequential');
+assert.equal(new Set(registryEntries.map(x => x.id)).size, 33, 'Championship IDs must be unique');
+for (const entry of registryEntries) {
+  for (const field of ['title','scope','summary','recordStatus','provenance','reviewNeeded']) assert.ok(typeof entry[field] === 'string' && entry[field].trim(), entry.id + ' missing ' + field);
+}
+assert.equal(registrySummary.total, 33);
+assert.equal(registrySummary.verifiedApprovals, 0, 'No approval may be counted without evidence');
+const slot014 = registryEntries.find(x => x.id === '014');
+assert.equal(slot014.recordStatus, 'number_conflict');
+assert.equal(slot014.conflictingCandidate?.title, 'THE WRONG WAY / HELLROAD', '#014 conflict candidate must remain preserved');
+const slot033 = registryEntries.find(x => x.id === '033');
+assert.equal(slot033.title, 'KOPIHITAM - SIACENG');
+assert.equal(slot033.recordStatus, 'user_submitted_in_chat');
+assert.equal(slot033.externalSubmission, 'not_evidenced');
+assert.equal(slot033.approvalStatus, 'not_verified');
+assert.ok(registryEntries.slice(0,8).every(x => x.recordStatus === 'registered'), '#001–#008 provenance must remain chat-reported');
+assert.ok(registryEntries.slice(8,13).every(x => x.recordStatus === 'recovered_draft' || x.recordStatus === 'number_conflict'), '#009–#013 must remain recovered drafts unless conflict evidence says otherwise');
+assert.ok(registryEntries.slice(14,32).every(x => x.recordStatus === 'proposed'), '#015–#032 must remain editorial proposals unless primary evidence changes status');
 const ids = new Set(ecosystemSystems.map(x => x.id));
 assert.equal(ids.size, ecosystemSystems.length, 'System IDs must be unique');
 for (const s of ecosystemSystems) {
