@@ -32,6 +32,9 @@ assert.ok(page.includes('Next.js App Router') && !page.includes('React + Vite'),
 assert.ok(!ecosystemRules.some(rule => rule.includes('React + Vite')), 'Ecosystem rules must not describe the retired Vite platform');
 assert.ok(page.includes('s.acceptanceCriteria') && page.includes('s.sourceProvenance') && page.includes('s.decisionRole'), 'Ecosystem UI must expose system governance metadata');
 assert.ok(page.includes('x.acceptanceCriteria') && page.includes('x.sourceProvenance') && page.includes('x.decisionRole'), 'Ecosystem UI must expose related-concept governance metadata');
+const commandCenter = readFileSync('src/pages-ui/CommandCenter.tsx','utf8');
+assert.ok(commandCenter.includes('ecosystemSummary') && commandCenter.includes('relatedConcepts') && commandCenter.includes('href=\"/ecosystem\"'), 'Command Center must derive ecosystem health from canonical data');
+for (const field of ['planned','partial','inDevelopment','validated','operational','blocked','sourceRecovery']) assert.ok(commandCenter.includes(field), 'Command Center is missing ecosystem status ' + field);
 assert.ok(ecosystemSystems.every(s => /^\d{4}-\d{2}-\d{2}$/.test(s.reviewedAt)), 'Each system needs a review date');
 assert.ok(architecture.includes('Next.js App Router') && !architecture.includes('Public XII remains React + Vite'), 'Architecture must reflect the actual platform');
 console.log('Ecosystem integrity PASS: ' + ecosystemSystems.length + ' canonical systems, ' + relatedConcepts.length + ' related concepts, valid IDs/dependencies/lifecycle fields, and no operational claims without evidence.');

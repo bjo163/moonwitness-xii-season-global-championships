@@ -7,7 +7,19 @@ import {Head,Notice} from '../components/UI';
 import {cleanBookmarks,WORKSPACE_EVENT,WORKSPACE_KEYS} from '../utils/workspaceBackup.js';
 import {registrySummary} from '../data/bugPatchRegistry.js';
 import {verifiedPosterAssets} from '../data/posterManifest.js';
+import {ecosystemSystems} from '../data/ecosystemRegistry.js';
+import {relatedConcepts} from '../data/relatedConceptCatalog.js';
 const boardKey=WORKSPACE_KEYS.bookmarks;
+const ecosystemSummary={
+ total:ecosystemSystems.length,
+ planned:ecosystemSystems.filter(s=>['planned','proposed'].includes(s.status)).length,
+ partial:ecosystemSystems.filter(s=>s.status==='partially-covered').length,
+ inDevelopment:ecosystemSystems.filter(s=>s.status==='in-development').length,
+ validated:ecosystemSystems.filter(s=>s.status==='validated').length,
+ operational:ecosystemSystems.filter(s=>s.status==='operational').length,
+ blocked:relatedConcepts.filter(c=>c.status==='blocked').length,
+ sourceRecovery:relatedConcepts.filter(c=>['source-recovery','source-review','asset-review','scope-review'].includes(c.status)).length
+};
 const safeRead=()=>{try{const v=JSON.parse(localStorage.getItem(boardKey)||'[]');return Array.isArray(v)?v.filter(x=>typeof x==='string'&&/^EVT-\d{3}$/.test(x)):[]}catch{return[]}};
 export default function CommandCenter(){
  const {completed,toggle}=useWorldProgress();
@@ -31,6 +43,7 @@ export default function CommandCenter(){
    <article className="card"><small>04 / MASTER 33</small><h3>{registrySummary.total}/{registrySummary.target} SLOTS INDEXED</h3><p>{registrySummary.registered} reported in chat · {registrySummary.recovered} recovered drafts · {registrySummary.conflicted} numbering conflict · {registrySummary.proposed} editorial proposals · {registrySummary.submittedInChat} submitted in chat. Indexing is not external delivery.</p><Link className="textlink" href="/syafaat-status">REVIEW MASTER REGISTER ↗</Link></article>
    <article className="card"><small>05 / SOURCE REVIEW</small><h3>INDEPENDENT REVIEW PENDING</h3><p>Champion identities, video relevance, story-source context, and poster provenance remain review tasks. Link availability alone is not evidence of endorsement.</p><Link className="textlink" href="/research">OPEN EVIDENCE DESK ↗</Link></article>
    <article className="card"><small>06 / NEXT ACTION</small><h3>VERIFY BEFORE RELEASE</h3><p>Pastikan rute Next.js App Router, akses domain publik, serta pengujian desktop dan mobile terverifikasi pada run terbaru sebelum menandai rilis selesai.</p><a className="textlink" href="https://github.com/bjo163/moonwitness-xii-season-global-championships/blob/main/docs/PROJECT-AUDIT-2026-10-21.md" target="_blank" rel="noopener noreferrer">READ AUDIT REPORT ↗</a></article>
+   <article className="card"><small>07 / ACTIVE ECOSYSTEM</small><h3>{ecosystemSummary.total} CANONICAL SYSTEMS</h3><p>{ecosystemSummary.planned} planned/proposed · {ecosystemSummary.partial} partially covered · {ecosystemSummary.inDevelopment} in development · {ecosystemSummary.validated} validated · {ecosystemSummary.operational} operational.</p><p>{ecosystemSummary.blocked} blocked concept conflict · {ecosystemSummary.sourceRecovery} concepts awaiting source/scope/asset review. Counts come from the canonical registry, not manual labels.</p><Link className="textlink" href="/ecosystem">OPEN ECOSYSTEM MAP ↗</Link></article>
   </div>
  </section>
  <Notice><b>SIMULATION MODE:</b> Checklists and saved-event bookmarks are local to this browser. Guilds are proposed roles, not real members or authorities. All events are unscheduled suggestions; nothing has been submitted, registered, or approved by Allah.</Notice>
