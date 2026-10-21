@@ -1,14 +1,14 @@
 import { notFound, redirect } from "next/navigation";
-import Characters from "../../pages/Characters.jsx";
-import Champions from "../../pages/Champions.jsx";
-import CommandCenter from "../../pages/CommandCenter.jsx";
-import Grand from "../../pages/Grand.jsx";
-import Paradise from "../../pages/Paradise.jsx";
-import Patch033 from "../../pages/Patch033.jsx";
-import Research from "../../pages/Research.jsx";
-import { StoryArchive, StoryDetail } from "../../pages/Stories.jsx";
-import Syafaat from "../../pages/Syafaat.jsx";
-import Workspace from "../../pages/Workspace.jsx";
+import Characters from "../../pages-ui/Characters.jsx";
+import Champions from "../../pages-ui/Champions.jsx";
+import CommandCenter from "../../pages-ui/CommandCenter.jsx";
+import Grand from "../../pages-ui/Grand.jsx";
+import Paradise from "../../pages-ui/Paradise.jsx";
+import Patch033 from "../../pages-ui/Patch033.jsx";
+import Research from "../../pages-ui/Research.jsx";
+import { StoryArchive, StoryDetail } from "../../pages-ui/Stories.jsx";
+import Syafaat from "../../pages-ui/Syafaat.jsx";
+import Workspace from "../../pages-ui/Workspace.jsx";
 
 export default async function RoutedPage({ params }) {
   const { slug = [] } = await params;
