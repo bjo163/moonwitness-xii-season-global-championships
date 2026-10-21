@@ -35,7 +35,7 @@ The build script runs the content tests and poster audit before Vite builds the 
 
 ### P0 — Deployment and access
 - Verify the intended public production domain and test it without an authenticated Vercel session.
-- Vercel access configuration is now SSO-protected for preview deployments only; password protection is disabled. This aligns production configuration with the site's explicit public/no-account intent while keeping previews protected. Direct unauthenticated HTTP access still needs one external browser check before the access ticket can be closed.
+- Vercel access configuration is now SSO-protected for preview deployments only; password protection is disabled. An unauthenticated external `curl` check returned HTTP 200 for `/`, `/paradise`, `/syafaat-status`, `/syafaat-status/033`, `/command-center`, and `/research`. Preview deployments remain protected.
 - Investigate the recent failed deployment attempts; keep the latest READY deployment as the baseline unless a newer verified build supersedes it.
 
 ### P1 — Registry integrity
