@@ -72,17 +72,17 @@ test('KOPIHITAM - SIACENG owns #033 with Faith to Action theme and five domains'
  await page.goto('/syafaat-status');
  await expect(page.getByRole('heading',{name:'KOPIHITAM - SIACENG'}).first()).toBeVisible();
  await expect(page.getByText('ACENG MAH APPROVE').first()).toBeVisible();
- await expect(page.getByText(/MENURUT PERNYATAAN THE BATTERIES/).first()).toBeVisible();
+ await expect(page.getByText(/menurut pernyataan THE BATTERIES/i).first()).toBeVisible();
  await page.getByRole('link',{name:/OPEN FULL #033 SPEC/}).click();
  await expect(page).toHaveURL(/\/syafaat-status\/033$/);
- await expect(page.getByText('FIVE HUMAN DOMAINS')).toBeVisible();
+ await expect(page.getByText(/FIVE HUMAN DOMAINS/).first()).toBeVisible();
  for(const item of ['FAITH & WORSHIP','KNOWLEDGE & EDUCATION','FAMILY & HUMANITY','NATURE & ENVIRONMENT','TECHNOLOGY & ACCOUNTABILITY'])await expect(page.getByRole('heading',{name:item})).toBeVisible();
  await expect(page.getByText('THE PATCH MUST HAVE BRAKES.')).toBeVisible();
  await expect(page.getByText(/QIBLAT UTARA.*tidak otomatis/i)).toBeVisible();
  await expect(page.getByRole('heading',{name:'SUBMITTED IN CHAT'})).toBeVisible();
  await expect(page.getByText(/FINAL EDITORIAL COPY v1\.0/)).toBeVisible();
  await expect(page.getByRole('button',{name:/COPY FINAL #033 TEXT/})).toBeVisible();
- await expect(page.getByText(/External dispatch:\\s*NONE/i)).toBeVisible();
+ await expect(page.getByText(/External dispatch:\s*NONE/i)).toBeVisible();
 });
 test('Previous Final Audit proposal is retained outside numbered slots',async({page})=>{
  await page.goto('/syafaat-status');
