@@ -8,7 +8,7 @@
 
 - **Content/build quality gate:** PASS on commit `7697d62bc445d9dbe57e65db4119f95561aedbff` (GitHub Actions run 39531703197).
 - **Vercel production deployment:** READY for that commit; deployment alias exists. This confirms deployment/build state only, not unrestricted public access or correct behavior of every route.
-- **Browser UI smoke tests:** PASS on commit `cad62907` (run 39534170472): 18 passed across desktop and mobile Chromium. A further regression run includes direct navigation to legacy `.html` aliases.
+- **Browser UI smoke tests:** PASS on commit `6cf2d5d3` (run 39534269872): 18 passed across desktop and mobile Chromium, including direct navigation to `/paradise.html` and `/syafaat-status.html` aliases.
 - **Verified poster manifest:** 0 entries. The poster audit passes because there are no claimed verified poster assets; this does not establish that all poster artwork is present.
 - **Registry:** 33 indexed slots, with distinct provenance categories. Indexed does not mean formally delivered or accepted.
 
@@ -55,7 +55,7 @@ Project metadata previously showed SSO protection on all deployments except cust
 - [x] Isolate the Playwright Vite server on a strict port.
 - [x] Correct two UI text assertions without removing substantive checks.
 - [x] Re-run desktop and mobile Chromium: 18/18 passed on commit `c3ee697d`.
-- [x] Confirm the latest report-only commit's quality gate passed; its browser smoke rerun is tracked in [CI](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions).
+- [x] Confirm quality gate and browser smoke passed after adding legacy-route alias regression coverage; the 18/18 result is recorded in [CI](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions).
 
 ### P1 — Public access and production domain — resolved
 - [x] Confirmed canonical production alias: `moonwitness-xii-season-global-champ.vercel.app`.
@@ -92,4 +92,4 @@ Project metadata previously showed SSO protection on all deployments except cust
 - 2026-10-21: Verified documentation commit `7697d62` deployed READY and the quality gate passed; identified browser UI smoke failures from CI logs.
 - 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Browser UI Smoke passed 18/18 on commit `c3ee697d`; latest documentation-only commit is being rechecked.
 - 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; an unauthenticated external HTTP check returned 200 for all six primary routes and access issue #2 was closed.
-- 2026-10-21: Browser UI Smoke passed 18/18 on commit `cad62907`; added a regression check for `/paradise.html` and `/syafaat-status.html` so legacy routes cannot silently return.
+- 2026-10-21: Browser UI Smoke passed 18/18 on commit `6cf2d5d3`; regression coverage now directly visits `/paradise.html` and `/syafaat-status.html` so legacy routes cannot silently return.
