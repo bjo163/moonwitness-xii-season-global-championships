@@ -2,6 +2,7 @@ import React,{useMemo,useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Head,Notice} from '../components/UI.jsx';
 import {ecosystemSystems,ecosystemLifecycle,ecosystemRules} from '../data/ecosystemRegistry.js';
+import {relatedConcepts,conceptStatusLabels} from '../data/relatedConceptCatalog.js';
 
 const labels={planned:'PLANNED',proposed:'PROPOSED','partially-covered':'PARTIALLY COVERED','in-development':'IN DEVELOPMENT',validated:'VALIDATED',operational:'OPERATIONAL',blocked:'BLOCKED'};
 export default function Ecosystem(){
@@ -25,6 +26,9 @@ export default function Ecosystem(){
  <div className="ecosystem-subsection"><b>GUARDRAILS</b><ul>{s.guardrails.map(x=><li key={x}>{x}</li>)}</ul></div>
  <div className="ecosystem-next"><b>NEXT ACTION</b><p>{s.nextAction}</p></div><small>Evidence / maturity: {s.evidence}</small>
  </article>)}</div>{!filtered.length&&<Notice>No system records match these filters.</Notice>}<p>{filtered.length} of {ecosystemSystems.length} system records shown.</p></section>
+ <section className="section"><Head eyebrow="// RELATED CONCEPTS / SOURCE RECOVERY" title="COLLECT. RECONCILE. REBUILD." sub="Konsep lintas sistem, narasi, dan aset yang perlu dicocokkan dengan sumber asli. Catatan ini tidak otomatis menjadi slot championship atau bukti bahwa aset final tersedia."/>
+ <div className="grid two">{relatedConcepts.map(x=><article className="card" key={x.id}><small>{x.id} / {x.type.toUpperCase()} / {conceptStatusLabels[x.status]||x.status.toUpperCase()}</small><h3>{x.title}</h3><p><b>Aliases:</b> {x.aliases.join(' · ')}</p><p>{x.scope}</p><div className="ecosystem-next"><b>NEXT ACTION</b><p>{x.nextAction}</p></div><small>{x.boundary}</small></article>)}</div>
+ </section>
  <section className="section alt"><Head eyebrow="// SHARED LIFECYCLE" title="FROM IDEA TO OPERATION." sub="Tidak ada lompatan status hanya karena konsep sudah dibahas atau dokumen sudah dibuat."/><div className="grid three">{ecosystemLifecycle.map((x,i)=><article className="card" key={x.id}><small>STAGE {String(i+1).padStart(2,'0')}</small><h3>{x.label}</h3><p>{x.description}</p></article>)}</div></section>
  <section className="section"><Head eyebrow="// GLOBAL CONFLICT PREVENTION" title="RULES FOR EVERY MODULE."/><div className="grid two">{ecosystemRules.map((x,i)=><article className="card" key={x}><small>RULE {String(i+1).padStart(2,'0')}</small><p>{x}</p></article>)}</div>
  <Notice><b>CHAMPIONSHIP INTEGRITY:</b> Keep the existing 33-slot registry intact. System concepts are indexed separately. The #014 conflict remains unresolved until primary evidence settles it.</Notice></section>
