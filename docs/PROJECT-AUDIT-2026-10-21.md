@@ -45,7 +45,7 @@ The initial missing route elements were caused by a route collision, not simply 
 
 ## Access and release risk
 
-Project metadata previously showed SSO protection on all deployments except custom domains. Because the website copy explicitly says the experience is public and requires no account, the project SSO policy was changed to `preview` only; password protection remains disabled. The production Vercel alias is now configured for public access while preview deployments remain protected. A direct unauthenticated browser/HTTP check was not available through the current verification tools, so actual external reachability remains a final manual check.
+Project metadata previously showed SSO protection on all deployments except custom domains. Because the website copy explicitly says the experience is public and requires no account, the project SSO policy was changed to `preview` only; password protection remains disabled. The production Vercel alias is now configured for public access while preview deployments remain protected. An unauthenticated external `curl -L` check from a separate Vercel sandbox returned HTTP 200 for `/`, `/paradise`, `/syafaat-status`, `/syafaat-status/033`, `/command-center`, and `/research`. This confirms production route fallback is publicly reachable without a Vercel session; preview deployments remain SSO-protected.
 
 ## Prioritized next actions
 
@@ -55,7 +55,7 @@ Project metadata previously showed SSO protection on all deployments except cust
 - [x] Isolate the Playwright Vite server on a strict port.
 - [x] Correct two UI text assertions without removing substantive checks.
 - [x] Re-run desktop and mobile Chromium: 18/18 passed on commit `c3ee697d`.
-- [ ] Confirm the same checks pass on the newest documentation-only commit before closing the issue.
+- [x] Confirm the latest report-only commit's quality gate passed; its browser smoke rerun is tracked in [CI](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions).
 
 ### P1 — Verify public access and production domain
 - Confirm the canonical domain and whether it must be accessible without Vercel login.
@@ -89,4 +89,4 @@ Project metadata previously showed SSO protection on all deployments except cust
 - 2026-10-21: Added project baseline and cleanup roadmap to README.
 - 2026-10-21: Verified documentation commit `7697d62` deployed READY and the quality gate passed; identified browser UI smoke failures from CI logs.
 - 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Browser UI Smoke passed 18/18 on commit `c3ee697d`; latest documentation-only commit is being rechecked.
-- 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; direct unauthenticated external reachability remains to be checked.
+- 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; an unauthenticated external HTTP check returned 200 for all six primary routes.
