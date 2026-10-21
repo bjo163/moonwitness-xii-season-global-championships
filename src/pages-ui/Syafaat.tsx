@@ -48,7 +48,7 @@ export default function Syafaat(){
   {e.id==='033'&&<p><Link href="/syafaat-status/033" className="textlink">READ COMPLETE GLOBAL PATCH / FIVE DOMAINS ↗</Link></p>}
   <p className="patch-scope">{e.scope}</p>
   <p>{e.summary}</p>
-  {e.recordStatus==='number_conflict'&&<div className="patch-conflict"><b>ANOTHER #014 CANDIDATE</b><p>{e.conflictingCandidate.title}</p><p>{e.conflictingCandidate.summary}</p><small>Konflik tetap terbuka; kedua konsep tidak otomatis digabung.</small></div>}
+  {e.recordStatus==='number_conflict'&&e.conflictingCandidate&&<div className="patch-conflict"><b>ANOTHER #014 CANDIDATE</b><p>{e.conflictingCandidate.title}</p><p>{e.conflictingCandidate.summary}</p><small>Konflik tetap terbuka; kedua konsep tidak otomatis digabung.</small></div>}
   <details><summary>DETAILS / SOURCES / REVIEW ↓</summary>
    <div className="patch-detail"><p><b>Proposed benefit:</b> {e.benefit}</p><p><b>Scripture / source references:</b> {e.references}</p><p><b>Documentation note:</b> {e.note}</p><p><b>Origin:</b> {e.provenance}</p><p><b>Next review:</b> {e.reviewNeeded}</p>
    {e.reportedApproval&&<p><b>Reported status:</b> {reportLabel[e.reportedApproval]} — NOT INDEPENDENTLY VERIFIED</p>}
