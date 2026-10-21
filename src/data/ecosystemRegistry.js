@@ -253,5 +253,5 @@ export const ecosystemRules = [
   'Primary sources, interpretations, testimony, hypotheses and measured results remain distinct.',
   'Unresolved conflicts stay visible until evidence supports a resolution.',
   'System concepts do not change the fixed 33-slot championship numbering.',
-  'MoonWitness XII remains static React + Vite for this phase; no backend or ORM is required.'
+  'MoonWitness XII uses Next.js App Router + React + TypeScript/TSX with version-controlled static data; no backend, database, or ORM is required in this phase.'
 ];
