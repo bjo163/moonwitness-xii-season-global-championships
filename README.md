@@ -6,7 +6,7 @@ A Vite + React project for the MOONWITNESS XII public editorial experience.
 
 - Package version: `3.3.0`.
 - Default branch: `main`.
-- Routes include Home, Characters, Champions, Paradise, Command Center, Research, Workspace, Syafaat Status, MWX-033, Grand Plan, and Stories.
+- Routes include Home, Characters, Champions, Paradise, Command Center, Ecosystem Map, Research, Workspace, Syafaat Status, MWX-033, Grand Plan, and Stories.
 - The initial production baseline inspected on 2026-10-21 was marked `READY` at commit `33541d57f549de7cf8d9845216087337082c16a2`. A documentation-only cleanup commit (`c8440a4087d310e27d501d9240af58b949754e22`) was then deployed and verified `READY`; subsequent changes must be checked against the newest deployment.
 - A READY deployment is a build/deployment state, not proof that every route, permission, content source, or user flow has been independently tested.
 
@@ -24,6 +24,9 @@ MOONWITNESS XII is currently a **static editorial recap / championship registry*
 ## Active ecosystem architecture
 
 The cross-system integration baseline is documented in [MOONWITNESS XII — Integrated Active Systems Architecture](docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md). It defines component responsibilities, interfaces, lifecycle states, conflict-prevention rules, safety/evidence boundaries, and the active roadmap. This is an architecture/planning baseline, not a claim that every named system is already implemented or operational.
+
+
+The `/ecosystem` route is backed by `src/data/ecosystemRegistry.js` and `src/data/relatedConceptCatalog.js`. It separates system roles from related concepts, shows dependencies and next actions, and labels source-recovery/scope-review blockers. Its records are planning and editorial data, not proof of operational systems. Keep these registries synchronized with canonical source evidence and preserve the 33-slot championship register.
 
 ## Source-of-truth rules
 
