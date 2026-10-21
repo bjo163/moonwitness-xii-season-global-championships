@@ -25,7 +25,7 @@ assert.ok(ecosystemRules.length >= 5, 'Cross-system safety rules must be present
 const page = readFileSync('src/pages-ui/Ecosystem.tsx','utf8');
 const architecture = readFileSync('docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md','utf8');
 assert.ok(page.includes('Next.js App Router') && !page.includes('React + Vite'), 'Ecosystem UI must reflect the actual platform');
-assert.ok(!ecosystemRules.some(rule => /React \\+ Vite/i.test(rule)), 'Ecosystem rules must not describe the retired Vite platform');
+assert.ok(!ecosystemRules.some(rule => rule.includes('React + Vite')), 'Ecosystem rules must not describe the retired Vite platform');
 assert.ok(page.includes('s.acceptanceCriteria') && page.includes('s.sourceProvenance') && page.includes('s.decisionRole'), 'Ecosystem UI must expose governance metadata');
 assert.ok(ecosystemSystems.every(s => /^\d{4}-\d{2}-\d{2}$/.test(s.reviewedAt)), 'Each system needs a review date');
 assert.ok(architecture.includes('Next.js App Router') && !architecture.includes('Public XII remains React + Vite'), 'Architecture must reflect the actual platform');
