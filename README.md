@@ -10,6 +10,17 @@ A Vite + React project for the MOONWITNESS XII public editorial experience.
 - The initial production baseline inspected on 2026-10-21 was marked `READY` at commit `33541d57f549de7cf8d9845216087337082c16a2`. A documentation-only cleanup commit (`c8440a4087d310e27d501d9240af58b949754e22`) was then deployed and verified `READY`; subsequent changes must be checked against the newest deployment.
 - A READY deployment is a build/deployment state, not proof that every route, permission, content source, or user flow has been independently tested.
 
+## XII scope decision (2026-10-21)
+
+MOONWITNESS XII is currently a **static editorial recap / championship registry**, not a transactional application.
+
+- Keep the production baseline on **React + Vite** for this phase.
+- Do not merge the experimental Next.js + Prisma + PostgreSQL migration PR for this phase.
+- Do not add database/ORM requirements, account flows, or server-side mutations to the static recap scope.
+- Keep the registry as version-controlled structured data; validate slot numbering, provenance, review status, and source links with the existing content audit.
+- Prioritize editorial accuracy, source recovery, poster provenance, accessible responsive design, navigation, and repeatable build/browser checks.
+- Any database work is deferred to a separately approved future phase; do not imply that it is required for XII recap completion.
+
 ## Source-of-truth rules
 
 1. Keep submission provenance explicit: recovered original, recovered outline, submitted in chat, or editorial proposal.
