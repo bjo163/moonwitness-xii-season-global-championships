@@ -1,4 +1,9 @@
 import {test,expect} from '@playwright/test';
+test.beforeEach(async({page})=>{
+ page.on('pageerror',error=>console.error('[BROWSER PAGE ERROR]',error.stack||error.message));
+ page.on('console',message=>{if(message.type()==='error')console.error('[BROWSER CONSOLE ERROR]',message.text());});
+});
+
 test('Homepage and key routes render without overflow',async({page})=>{
  for(const path of ['/','/characters','/paradise','/command-center','/research','/workspace','/stories','/champions']){
   await page.goto(path);await expect(page.locator('#main-content')).toBeVisible();
@@ -39,7 +44,7 @@ test('Event board and evidence desk disclose their limits',async({page})=>{
  await expect(page.getByText(/NOT SCHEDULED/).first()).toBeVisible();
  await page.goto('/research');
  await expect(page.getByText('SHOW THE RECEIPTS.')).toBeVisible();
- await expect(page.getByText('0').first()).toBeVisible();
+ await expect(page.locator('.stats > div').nth(2).locator('b')).toHaveText('0');
 });
 
 test('Workspace rejects an invalid backup without touching progress',async({page})=>{
