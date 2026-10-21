@@ -3,14 +3,15 @@ import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
 import {Card,Head,Notice} from '../components/UI.jsx';
 import {registryEntries,registrySummary,registryStatusLabels,registryNote,displacedPatchConcepts} from '../data/bugPatchRegistry.js';
-import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions.ts';
+import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions.js';
 
+const entries = registryEntries as any[];
 const reportLabel={approved:'APPROVED — PERSONAL REPORT ONLY',approved_with_condition:'CONDITIONAL APPROVAL — PERSONAL REPORT ONLY',submitted:'SUBMITTED IN CHAT — PERSONAL REPORT'};
 const options=[['all','ALL 33'],['registered','REGISTERED'],['recovered_draft','RECOVERED DRAFTS'],['number_conflict','CONFLICT'],['user_submitted_in_chat','SUBMITTED IN CHAT'],['proposed','PROPOSALS']];
 export default function Syafaat(){
  const [filter,setFilter]=useState('all');
  const [q,setQ]=useState('');
- const visible=useMemo(()=>registryEntries.filter(e=>(filter==='all'||e.recordStatus===filter)&&[e.id,e.title,e.summary,e.scope,e.benefit,e.references,e.conflictingCandidate?.title||''].join(' ').toLowerCase().includes(q.trim().toLowerCase())),[filter,q]);
+ const visible=useMemo(()=>entries.filter(e=>(filter==='all'||e.recordStatus===filter)&&[e.id,e.title,e.summary,e.scope,e.benefit,e.references,e.conflictingCandidate?.title||''].join(' ').toLowerCase().includes(q.trim().toLowerCase())),[filter,q]);
  return <main className="container page patch-register">
  <Head eyebrow="// THE BATTERIES • CHAOS MEDIC" title="PATCH IT BRO! — MASTER 33." sub="Satu peta 33 slot Bug Patch, dengan jejak asal-usul yang jujur: laporan yang tercatat, draf yang dipulihkan, konflik nomor, dan proposal baru."/>
  <div className="stats patch-stats" aria-label="Patch register completion">
