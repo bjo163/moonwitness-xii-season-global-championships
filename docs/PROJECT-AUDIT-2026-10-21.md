@@ -8,7 +8,7 @@
 
 - **Content/build quality gate:** PASS on commit `7697d62bc445d9dbe57e65db4119f95561aedbff` (GitHub Actions run 39531703197).
 - **Vercel production deployment:** READY for that commit; deployment alias exists. This confirms deployment/build state only, not unrestricted public access or correct behavior of every route.
-- **Browser UI smoke tests:** FAIL on the same commit (run 39531703147): 7 passed, 11 failed across desktop and mobile Chromium.
+- **Browser UI smoke tests:** PASS on commit `c3ee697d` (run 39533909192): 18 passed across desktop and mobile Chromium. The latest report-only commit is undergoing a new run.
 - **Verified poster manifest:** 0 entries. The poster audit passes because there are no claimed verified poster assets; this does not establish that all poster artwork is present.
 - **Registry:** 33 indexed slots, with distinct provenance categories. Indexed does not mean formally delivered or accepted.
 
@@ -24,7 +24,7 @@ The current registry model and its quality assertions describe:
 
 Approval labels in older records are submitter-reported claims. The current model correctly keeps independent approval status unverified.
 
-## Browser smoke failures to investigate
+## Initial browser smoke failures and resolution
 
 Workflow log for run [39531703147](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions/runs/39531703147) reports 11 failures and 7 passes. The failing test categories are:
 1. Main route smoke test cannot find visible `#main-content`.
@@ -45,15 +45,17 @@ The initial missing route elements were caused by a route collision, not simply 
 
 ## Access and release risk
 
-Project metadata previously indicated SSO protection for deployments except custom domains. The intended public domain and unauthenticated access have not been verified in this audit. Do not change access settings until the intended audience and domain are confirmed.
+Project metadata previously showed SSO protection on all deployments except custom domains. Because the website copy explicitly says the experience is public and requires no account, the project SSO policy was changed to `preview` only; password protection remains disabled. The production Vercel alias is now configured for public access while preview deployments remain protected. A direct unauthenticated browser/HTTP check was not available through the current verification tools, so actual external reachability remains a final manual check.
 
 ## Prioritized next actions
 
-### P0 — Fix browser runtime/route smoke failures
-- Reproduce the root-page failure and inspect the attached trace/error context.
-- Check browser console and network errors; verify Vite app mount, direct-route fallback and runtime imports.
-- Fix the underlying issue first, then rerun browser smoke tests in both desktop and mobile projects.
-- Tighten ambiguous Research assertions to target a named metric or labelled value rather than the first text node matching `0`.
+### P0 — Browser route smoke failures — resolved in CI
+- [x] Inspect trace/error context and identify legacy clean-URL shadowing.
+- [x] Archive legacy standalone HTML sources and remove conflicting root-level files.
+- [x] Isolate the Playwright Vite server on a strict port.
+- [x] Correct two UI text assertions without removing substantive checks.
+- [x] Re-run desktop and mobile Chromium: 18/18 passed on commit `c3ee697d`.
+- [ ] Confirm the same checks pass on the newest documentation-only commit before closing the issue.
 
 ### P1 — Verify public access and production domain
 - Confirm the canonical domain and whether it must be accessible without Vercel login.
@@ -86,4 +88,5 @@ Project metadata previously indicated SSO protection for deployments except cust
 
 - 2026-10-21: Added project baseline and cleanup roadmap to README.
 - 2026-10-21: Verified documentation commit `7697d62` deployed READY and the quality gate passed; identified browser UI smoke failures from CI logs.
-- 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Latest browser verification pending.
+- 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Browser UI Smoke passed 18/18 on commit `c3ee697d`; latest documentation-only commit is being rechecked.
+- 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; direct unauthenticated external reachability remains to be checked.
