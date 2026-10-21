@@ -33,11 +33,11 @@ This is a repository inventory, not a claim that every concept is fully implemen
 | Ad-Deen / Four-Orbit / Mizan Equation | `MWX-CON-006`; related to `MWX-SYS-004` | Partial / scope review. The proposed formula is not a validated religious ruling or algorithm |
 | Syafaat / SHADOW ZILL / ZILL | `MWX-CON-007` | Partial / source review. Reconcile original narrative text and references |
 | Standard Iman Storyteller / 4-LAH | `MWX-CON-008` | Partial / source review. Keep collective positive voice as editorial guidance, not approval evidence |
-| KINGSLAYER / THE BATTERIES poster series | `MWX-CON-009`, `docs/POSTER_ASSET_GUIDE.md`, `src/data/posterManifest.js` | Not verified as repository image assets: manifest has zero entries and `public/posters/` is absent |
+| KINGSLAYER / THE BATTERIES poster series | `MWX-CON-009`, `docs/POSTER_ASSET_GUIDE.md`, `docs/POSTER_RECOVERY_KINGSLAYER_UNITY_AGREEMENT.md`, `src/data/posterManifest.js` | Five original source PNGs were visually inspected and checksummed from the Library; binaries are not committed, manifest has zero entries and `public/posters/` is absent |
 | Astronomy Festival prayer poster | `MWX-CON-010` | Partial / source review. Exact final copy and published image need recovery |
 | MWX-033 — KOPIHITAM - SIACENG | `MWX-CON-011`, championship slot `033` | Title preserved exactly. Chat record exists; external delivery and independent approval are not evidenced |
 | Championship slot #014 | `MWX-CON-012` and master register | Blocked by source conflict between FAMILY WITHOUT FEAR and THE WRONG WAY / HELLROAD; neither candidate is silently chosen |
-| SYAFAAT unified registry and impact engine | `MWX-CON-013`, `docs/SYAFAAT_UNIFIED_REGISTRY_AND_IMPACT_ENGINE.md`, `src/data/syafaatMetrics.js`, tests | Specification and pure calculation utility exist; operational dataset, reviewed 99-entry source catalog, pilot and outcome evidence remain unverified |
+| SYAFAAT unified registry and impact engine | `MWX-CON-013`, `docs/SYAFAAT_UNIFIED_REGISTRY_AND_IMPACT_ENGINE.md`, `src/data/syafaatMetrics.js`, tests | Specification, pure calculation utility, automated tests, and local-only `/syafaat-engine` prototype exist; operational dataset, reviewed 99-entry source catalog, pilot and outcome evidence remain unverified |
 | Story archive / manuscripts | `src/data/storyArchive.js`, `src/data/episodeManuscripts.js`, `src/pages-ui/Stories.tsx` | 15 editorial synopsis/manuscript entries and 63 reconstructed editorial pages are tracked. They are not represented as verbatim originals; original poster artwork is absent from the verified manifest |
 
 ## Invariants checked by existing automated gates
@@ -59,3 +59,20 @@ This is a repository inventory, not a claim that every concept is fully implemen
 5. Independent confirmation of any external submission, approval, deployment or effect.
 
 These blockers are intentionally visible. Closing an issue or marking a system “operational” without the evidence above would reduce, not improve, archive integrity.
+
+
+## Added audit and implementation artifacts — 2026-10-21
+
+- `docs/MASTER_33_SLOT_EVIDENCE_AUDIT.md`: full title/status/provenance table for all 33 slots; primary-source recovery and #014 resolution remain open.
+- `docs/CROSS_SYSTEM_INTERFACE_CONTRACTS.md`: ownership, data direction, shared envelope, failure handling, and human gates for the tracked interface groups. Contracts are statically checked; no live service-to-service runtime is claimed.
+- `docs/POSTER_RECOVERY_KINGSLAYER_UNITY_AGREEMENT.md`: five original 1055 × 1491 PNGs visually inspected and checksummed. This is a recovery record, not the committed poster manifest.
+- `src/pages-ui/SyafaatEngine.tsx` at `/syafaat-engine`: local-only submission/patch metrics prototype; session state is not persisted and no external dispatch occurs.
+- `scripts/check-syafaat-metrics.mjs` and browser tests cover denominator behavior, N/A states, temporary records, clearing session state, route response, and unknown-route 404 behavior.
+
+## Latest verified code and deployment snapshot
+
+- `main` commit: `e9f8cb736126cbfefaf37492e55974befc3c5d6d`.
+- Quality Gate: PASS — https://github.com/bjo163/moonwitness-xii-season-global-championships/actions/runs/39563339315.
+- Browser UI Smoke: PASS — https://github.com/bjo163/moonwitness-xii-season-global-championships/actions/runs/39563339269.
+- Production deployment: READY — https://moonwitness-xii-season-global-champ.vercel.app.
+- Live HTTP checks: `/`, `/ecosystem`, `/command-center`, `/syafaat-status`, `/syafaat-engine`, `/syafaat-status/033` return 200; unknown route returns 404.
