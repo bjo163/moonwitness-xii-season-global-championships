@@ -1,7 +1,7 @@
 "use client";
 import React,{useEffect,useMemo,useState} from 'react';
 import Link from 'next/link';
-import {Head,Notice} from '../components/UI.jsx';
+import {Head,Notice} from '../components/UI.tsx';
 import {captureWorkspace,parseWorkspaceBackup,restoreWorkspace,saveDrafts,cleanReviewDrafts,REVIEW_TARGETS,DRAFT_STATES,WORKSPACE_KEYS,WORKSPACE_EVENT} from '../utils/workspaceBackup.js';
 const readDrafts=()=>{try{return cleanReviewDrafts(JSON.parse(localStorage.getItem(WORKSPACE_KEYS.reviews)||'[]'));}catch{return[];}};
 const choiceLabel={needs_source:'NEEDS SOURCE',investigating:'INVESTIGATING',ready_for_independent_review:'READY FOR INDEPENDENT REVIEW'};

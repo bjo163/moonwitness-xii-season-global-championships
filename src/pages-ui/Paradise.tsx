@@ -3,7 +3,7 @@ import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
 import {worldLevels,worldPhases,guilds,communityEvents} from '../data/worldSystems.js';
 import {useWorldProgress,exportWorldProgress} from '../hooks/useWorldProgress.js';
-import {Head,Hero,Notice} from '../components/UI.jsx';
+import {Head,Hero,Notice} from '../components/UI.tsx';
 export default function Paradise(){
  const {completed,toggle,reset}=useWorldProgress();const [q,setQ]=useState('');const[phase,setPhase]=useState('all');const[filter,setFilter]=useState('all');const[selected,setSelected]=useState(1);
  const visible=useMemo(()=>worldLevels.filter(x=>(phase==='all'||x.phase===phase)&&(filter==='all'||(filter==='done'?completed.includes(x.id):!completed.includes(x.id)))&&[x.name,x.mission,String(x.id),x.phase].join(' ').toLowerCase().includes(q.trim().toLowerCase())),[q,phase,filter,completed]);

@@ -2,7 +2,7 @@
 import React,{useState} from 'react';
 import Link from 'next/link';
 import {faithToAction as patch} from '../data/faithToAction.js';
-import {Head,Notice,Card} from '../components/UI.jsx';
+import {Head,Notice,Card} from '../components/UI.tsx';
 
 const makeSubmission=()=>[
  'MOONWITNESS XII — FINAL SUBMISSION RECORD V'+patch.finalCopy.version,
