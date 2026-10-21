@@ -118,8 +118,8 @@ Separate primary text, translation, interpretation, personal testimony, creative
 **Exit:** a traceable inventory without unsupported “missing” or “complete” labels.
 
 ### B — Canonical ecosystem index
-- [ ] Give each system/initiative a stable ID and canonical name.
-- [ ] Define dependencies, interfaces, lifecycle state, decision role, risks and next action.
+- [x] Give each system/initiative a stable ID and canonical name.
+- [x] Define dependencies, interfaces, lifecycle state, decision role, risks and next action.
 - [ ] Link system concepts to registry entries only where evidence supports the relationship.
 
 **Exit:** every active concept has one canonical home and a next step.

@@ -199,3 +199,19 @@ th { background: color-mix(in srgb, var(--mw-panel) 72%, var(--pink) 28%); color
   .filters input, .filters select, .filters button { min-width: 0; max-width: 100%; }
   .tablewrap { max-width: 100%; }
 }
+
+
+/* Expandable governance notes keep the ecosystem cards compact while preserving the full contract. */
+.ecosystem-evidence { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--mw-line); color: var(--mw-muted); }
+.ecosystem-evidence > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 14px; color: var(--mw-teal); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.ecosystem-evidence > summary::-webkit-details-marker { display: none; }
+.ecosystem-evidence > summary::after { content: "+"; font-size: 18px; line-height: 1; color: var(--mw-teal); }
+.ecosystem-evidence[open] > summary::after { content: "−"; }
+.ecosystem-evidence .ecosystem-subsection { margin-top: 12px; }
+.ecosystem-evidence .ecosystem-subsection > b { color: var(--mw-text); font-size: 10px; letter-spacing: .08em; }
+.ecosystem-evidence p { margin: 4px 0 0; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.ecosystem-evidence > small { display: block; margin-top: 14px; font-size: 11px; }
+@media (max-width: 640px) {
+  .ecosystem-evidence { padding-top: 10px; }
+  .ecosystem-evidence > summary { font-size: 9px; }
+}
