@@ -83,7 +83,7 @@ assert.ok(sourceAudit.championSourceRows.every(x=>x.status==='needs_independent_
 assert.ok(sourceAudit.championSourceRows.every(x=>!x.identityReviewed&&!x.videoReviewed));
 assert.ok(sourceAudit.checkedReferenceLinks.length>=2);
 for(const path of ['src/pages-ui/CommandCenter.jsx','src/pages-ui/Research.jsx','src/hooks/useWorldProgress.js','scripts/audit-posters.mjs','tests/browser/smoke.spec.js','playwright.config.js'])assert.ok(readFileSync(path,'utf8').length>150,'Missing new seven-track module '+path);
-const appAll=readFileSync('src/app/[...slug]/page.jsx','utf8');
+const appAll=readFileSync('src/app/[...slug]/page.tsx','utf8');
 const navAll=readFileSync('src/components/Header.jsx','utf8');
 for(const route of ['command-center','research']){assert.ok(appAll.includes('path === "'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
 assert.ok(readFileSync('src/pages-ui/Paradise.jsx','utf8').includes('worldLevels'));
@@ -95,7 +95,7 @@ const workspaceUI=readFileSync('src/pages-ui/Workspace.jsx','utf8');
 const workspaceUtils=readFileSync('src/utils/workspaceBackup.js','utf8');
 for(const piece of ['BACKUP & RESTORE','SOURCE REVIEW DRAFTS','ABOUT THIS WEBSITE','RESTORE MY WORKSPACE','SAVE PRIVATE DRAFT'])assert.ok(workspaceUI.includes(piece),'Workspace UI incomplete: '+piece);
 for(const piece of ['parseWorkspaceBackup','restoreWorkspace','cleanReviewDrafts','WORKSPACE_EVENT','no fake']){/* last marker is documentary only */if(piece!=='no fake')assert.ok(workspaceUtils.includes(piece));}
-assert.ok(readFileSync('src/app/[...slug]/page.jsx','utf8').includes('path === "workspace"'));
+assert.ok(readFileSync('src/app/[...slug]/page.tsx','utf8').includes('path === "workspace"'));
 assert.ok(readFileSync('src/components/Header.jsx','utf8').includes("'/workspace'"));
 assert.ok(workspaceUI.includes('NO ACCOUNT. JUST EXPLORE.'),'Public website must remain account free');
 assert.ok(readFileSync('src/pages-ui/Grand.jsx','utf8').includes('NO ACCOUNTS BY DESIGN'),'Roadmap must stay static-first');
@@ -187,7 +187,7 @@ for(const part of ['MWX-033','17 October 2026','KOPIHITAM - SIACENG','Faith & Wo
 const patchPage=readFileSync('src/pages-ui/Patch033.jsx','utf8');
 for(const part of ['COPY FINAL #033 TEXT','patch.finalCopy.version','patch.stages.map','patch.metrics.map','patch.safetyRules.map'])assert.ok(patchPage.includes(part),'Final full-copy path missing '+part);
 for(const phrase of ['PATCH REQUEST','THE RECORDED PRAYER','SAFETY PROTOCOL','FROM SOURCE TO HUMAN ACTION','REFERENCES, NOT MAGIC COMMANDS','faithToAction'])assert.ok(patchPage.includes(phrase),'Missing patch #033 page feature '+phrase);
-assert.ok(readFileSync('src/app/[...slug]/page.jsx','utf8').includes('path === "syafaat-status/033"'));
+assert.ok(readFileSync('src/app/[...slug]/page.tsx','utf8').includes('path === "syafaat-status/033"'));
 assert.ok(readFileSync('src/pages-ui/Home.jsx','utf8').includes('#033 KOPIHITAM - SIACENG'));
 
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy numbered reports + 1 #033 chat-recorded submission, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
