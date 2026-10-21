@@ -5,9 +5,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function AppShell({ children }) {
-  const [theme, setTheme] = useState("moonlit");
+  const [theme, setTheme] = useState("riot");
   useEffect(() => {
-    try { setTheme(localStorage.getItem("moonwitness-theme") || "moonlit"); } catch {}
+    try { setTheme(localStorage.getItem("moonwitness-theme") || "riot"); } catch {}
   }, []);
   useEffect(() => {
     document.body.dataset.theme = theme;
