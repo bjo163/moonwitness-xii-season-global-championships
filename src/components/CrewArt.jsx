@@ -1,30 +1,81 @@
-import React from 'react';
-const configs={
-  'ROCKSOUL':{a:'#e7ff68',b:'#66f7dc',coat:'#151b29',hair:'#1e2636',mark:'★',role:'THE WITNESS'},
-  'ISROCKFEEL':{a:'#56edff',b:'#85a2ff',coat:'#203154',hair:'#182232',mark:'⚡',role:'FIELD MENTOR'},
-  'WALTERWHITE':{a:'#ff74b6',b:'#ffb45e',coat:'#482846',hair:'#181b2b',mark:'✚',role:'CHAOS ENGINEER'},
-  '4-LAH / THE BATTERIES':{a:'#d2a2ff',b:'#ff78d3',coat:'#27213e',hair:'#141526',mark:'◆',role:'COMMAND CENTER'}
+"use client";
+
+import React from "react";
+
+const configs = {
+  ROCKSOUL: { a: "#82e4d1", b: "#b9b2ff", coat: "#14283a", hair: "#17202d", mark: "◈", role: "THE WITNESS" },
+  ISROCKFEEL: { a: "#8ad8ff", b: "#a5b4fc", coat: "#1a2b43", hair: "#161a2a", mark: "ϟ", role: "FIELD MENTOR" },
+  WALTERWHITE: { a: "#f3b8dc", b: "#f2d49a", coat: "#30263d", hair: "#1a1a29", mark: "✳", role: "IDEA ENGINEER" },
+  "4-LAH / THE BATTERIES": { a: "#d0c4ff", b: "#f5a9d6", coat: "#302943", hair: "#171526", mark: "✦", role: "SIGNAL QUEEN" },
 };
-export default function CrewArt({name,hero=false,cap='green'}){const c=configs[name]||configs.ROCKSOUL;const punk=name==='ISROCKFEEL';const queen=name==='4-LAH / THE BATTERIES';const rocksoul=name==='ROCKSOUL';const uid=React.useId().replace(/[^a-zA-Z0-9_-]/g,'');return <svg className={hero?'crew-svg crew-svg-hero':'crew-svg'} viewBox="0 0 360 450" role="img" aria-label={name+' faceless original vector portrait'} xmlns="http://www.w3.org/2000/svg">
-<defs><linearGradient id={'sky'+uid} x1="0" x2="1" y1="0" y2="1"><stop stopColor={c.a} stopOpacity=".18"/><stop offset="1" stopColor={c.b} stopOpacity=".03"/></linearGradient><linearGradient id={'coat'+uid} x1="0" x2="1" y1="0" y2="1"><stop stopColor={c.coat}/><stop offset=".75" stopColor="#080d19"/></linearGradient><filter id={'glow'+uid}><feGaussianBlur stdDeviation="5"/></filter></defs>
-<rect x="4" y="4" width="352" height="442" rx="18" fill="#101325" stroke={c.a} strokeWidth="2"/>
-<path d="M0 84L360 0M0 185L360 60M0 450L360 260" stroke={c.a} strokeOpacity=".17" strokeWidth="17"/>
-<circle cx="180" cy="163" r="120" fill={c.a} opacity=".16" filter={'url(#glow'+uid+')'}/>
-<circle cx="180" cy="163" r="115" fill={'url(#sky'+uid+')'} stroke={c.a} strokeOpacity=".7" strokeWidth="2"/>
-<path d="M75 87H285M49 163H311M74 238H285" stroke={c.b} strokeWidth="1" strokeOpacity=".35" strokeDasharray="5 9"/>
-<path d="M4 445L50 313Q95 257 156 257H205Q268 256 312 322L357 445Z" fill={'url(#coat'+uid+')'} stroke={c.a} strokeWidth="2"/>
-<path d="M93 335L141 277L181 332L219 278L275 338" fill="none" stroke={c.b} strokeOpacity=".8" strokeWidth="5"/>
-<path d="M150 246V296L181 329L209 297V246Z" fill="#252333" stroke={c.a} strokeWidth="2"/>
-<path d="M123 166Q116 103 180 93Q245 102 239 165L231 230Q220 265 180 273Q141 266 130 231Z" fill="#0a0d1a" stroke={c.a} strokeWidth="3"/>
-{punk?<><path d="M113 173L117 114L141 130L149 72L172 101L189 55L211 107L243 90L250 175L223 143L178 129L139 152Z" fill="#121018" stroke="#fb4b6d" strokeWidth="5"/><path d="M87 315L124 285L139 313L175 295L206 311L237 287L274 322" stroke="#ff526d" fill="none" strokeWidth="8"/></>:queen?<><path d="M106 183Q82 75 181 67Q277 73 258 187L237 269L212 271L231 155Q186 123 143 160L151 272L120 270Z" fill="#17131e" stroke="#ff81d5" strokeWidth="4"/><path d="M79 335Q90 284 151 267L181 306L212 267Q278 285 287 338L308 445H55Z" fill="#452344" stroke="#f9a5e1" strokeWidth="4"/></>:<path d="M114 165Q109 80 180 77Q246 79 249 162L226 141Q188 146 169 125Q143 152 114 165Z" fill={c.hair} stroke={c.b} strokeWidth="3"/>}
-{rocksoul?<><path d="M101 122Q111 76 183 77Q241 78 254 123L246 143H110Z" fill={cap==='black'?'#151521':'#77d95b'} stroke={cap==='black'?'#cad0df':'#e8ff9c'} strokeWidth="4"/><path d="M120 109Q181 89 248 114L264 126Q213 145 155 136Z" fill={cap==='black'?'#070b12':'#213a26'} stroke={cap==='black'?'#c9d0de':'#9ffc74'} strokeWidth="3"/></>:null}
-<path d="M119 176Q179 204 240 176" stroke={c.a} strokeOpacity=".26" strokeWidth="2" fill="none"/>
-<path d="M130 201H227" stroke={c.a} strokeOpacity=".35" strokeWidth="2"/>
-<path d="M94 333L160 432M274 333L205 432" stroke={c.a} strokeWidth="2" strokeOpacity=".75"/>
-<path d="M163 330H197L212 365L181 399L150 365Z" fill={c.a} stroke="#0b1020" strokeWidth="6"/>
-<text x="181" y="372" textAnchor="middle" fontSize="26" fill="#101325" fontWeight="900">{c.mark}</text>
-<text x="24" y="39" fill={c.a} fontSize="13" fontFamily="monospace" letterSpacing="3">MWX / XII</text>
-<text x="337" y="39" textAnchor="end" fill={c.b} fontSize="15" fontFamily="monospace">NO FACE</text>
-<text x="24" y="62" fill={c.b} fontSize="10" fontFamily="monospace">{punk?'PUNK ROCK / FIELD ACTION':queen?'SIGNAL QUEEN':rocksoul?'HOODIE / BACKWARD CAP':'WILD IDEA ENGINEER'}</text>
-<text x="20" y="420" fill="#ffffff" fontWeight="900" fontSize="23" letterSpacing="1">{name==='4-LAH / THE BATTERIES'?'4-LAH':name}</text>
-</svg>}
+
+export default function CrewArt({ name, hero = false, cap = "green" }) {
+  const c = configs[name] || configs.ROCKSOUL;
+  const punk = name === "ISROCKFEEL";
+  const queen = name === "4-LAH / THE BATTERIES";
+  const rocksoul = name === "ROCKSOUL"; // cap==='black' selects the resolve palette for the witness.
+  const uid = React.useId().replace(/[^a-zA-Z0-9_-]/g, "");
+  return (
+    <svg className={hero ? "crew-svg crew-svg-hero" : "crew-svg"} viewBox="0 0 360 450" role="img" aria-label={name + " faceless original vector portrait"} xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id={"back" + uid} x1="0" y1="0" x2="1" y2="1"><stop stopColor={c.a} stopOpacity=".16"/><stop offset=".56" stopColor="#142237" stopOpacity=".2"/><stop offset="1" stopColor={c.b} stopOpacity=".06"/></linearGradient>
+        <linearGradient id={"skin" + uid} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#25354b"/><stop offset=".48" stopColor="#0d1727"/><stop offset="1" stopColor="#1b273b"/></linearGradient>
+        <linearGradient id={"coat" + uid} x1="0" y1="0" x2="1" y2="1"><stop stopColor={c.coat}/><stop offset=".58" stopColor="#111b2b"/><stop offset="1" stopColor="#080f1c"/></linearGradient>
+        <linearGradient id={"metal" + uid} x1="0" y1="0" x2="1" y2="0"><stop stopColor={c.a}/><stop offset=".5" stopColor="#f4f8ff"/><stop offset="1" stopColor={c.b}/></linearGradient>
+        <radialGradient id={"halo" + uid}><stop stopColor={c.a} stopOpacity=".22"/><stop offset="1" stopColor={c.a} stopOpacity="0"/></radialGradient>
+        <filter id={"softGlow" + uid} x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"/></filter>
+        <clipPath id={"portraitClip" + uid}><rect x="8" y="8" width="344" height="434" rx="24"/></clipPath>
+      </defs>
+      <g clipPath={"url(#portraitClip" + uid + ")"}>
+        <rect x="8" y="8" width="344" height="434" rx="24" fill={"url(#back" + uid + ")"} />
+        <circle cx="180" cy="166" r="145" fill={"url(#halo" + uid + ")"} />
+        <circle cx="180" cy="166" r="118" fill="none" stroke={c.a} strokeOpacity=".3" strokeWidth="1.2"/>
+        <circle cx="180" cy="166" r="128" fill="none" stroke={c.b} strokeOpacity=".25" strokeDasharray="2 9" strokeWidth="1.5"/>
+        <path d="M34 160H84M276 160H326M48 220H86M274 220H312" stroke={c.a} strokeOpacity=".4" strokeWidth="1.2"/>
+        <circle cx="180" cy="166" r="93" fill={c.a} opacity=".13" filter={"url(#softGlow" + uid + ")"} />
+        <path d="M28 450L45 357Q57 302 111 278L145 265H215L249 278Q303 302 315 357L332 450Z" fill={"url(#coat" + uid + ")"} stroke={c.a} strokeOpacity=".8" strokeWidth="1.5"/>
+        <path d="M114 292L149 268L180 302L211 268L246 292L226 450H134Z" fill="#0a1422" stroke={c.b} strokeOpacity=".6" strokeWidth="1.3"/>
+        <path d="M148 266L180 304L212 266L202 332L180 352L158 332Z" fill={"url(#metal" + uid + ")"} opacity=".88"/>
+        <path d="M179 305V421" stroke={c.a} strokeOpacity=".6" strokeWidth="1.5"/>
+        <path d="M78 345L127 316M282 345L233 316" stroke={c.a} strokeOpacity=".65" strokeWidth="2"/>
+        <path d="M96 369L133 349M264 369L227 349" stroke={c.b} strokeOpacity=".7" strokeWidth="1.5"/>
+        <path d="M112 140Q108 85 180 77Q252 85 248 140L236 222Q222 263 180 271Q138 263 124 222Z" fill={"url(#skin" + uid + ")"} stroke={c.a} strokeOpacity=".8" strokeWidth="1.7"/>
+        <path d="M126 171Q180 188 234 171" stroke={c.b} strokeOpacity=".5" strokeWidth="1.5" fill="none"/>
+        <path d="M135 200H225" stroke={c.a} strokeOpacity=".3" strokeWidth="1.2"/>
+        <path d="M180 145V225" stroke={c.a} strokeOpacity=".22" strokeWidth="1"/>
+        {punk ? (
+          <g>
+            <path d="M112 158L111 111L137 128L143 82L166 108L183 61L202 108L226 83L234 128L250 112L248 163L224 143L202 150L181 132L158 151L136 142Z" fill={c.hair} stroke={c.a} strokeWidth="2.5" strokeLinejoin="round"/>
+            <path d="M144 104L157 119M183 79L188 111M220 105L210 123" stroke={c.b} strokeWidth="3" strokeLinecap="round"/>
+            <path d="M74 326L112 299L132 318L158 301M286 326L248 299L228 318L202 301" stroke={c.a} strokeWidth="3" fill="none"/>
+            <path d="M132 355L150 371M228 355L210 371" stroke={c.b} strokeWidth="2"/>
+          </g>
+        ) : queen ? (
+          <g>
+            <path d="M111 183Q84 78 180 65Q277 78 249 183L239 260L219 279L229 154Q180 125 131 154L141 279L121 260Z" fill={c.hair} stroke={c.b} strokeWidth="2.5" strokeLinejoin="round"/>
+            <path d="M111 186Q104 121 139 93M249 186Q256 121 221 93" stroke={c.a} strokeWidth="2" strokeOpacity=".8" fill="none"/>
+            <path d="M63 352Q86 293 143 277L180 314L217 277Q274 293 297 352L314 450H46Z" fill={"url(#coat" + uid + ")"} stroke={c.b} strokeWidth="1.8"/>
+            <path d="M141 292L180 326L219 292" stroke={c.a} strokeWidth="2.5" fill="none"/>
+            <circle cx="180" cy="346" r="8" fill={c.b}/><circle cx="180" cy="346" r="3" fill="#fff"/>
+          </g>
+        ) : (
+          <path d="M112 161Q104 84 180 76Q256 84 248 161L225 140Q193 146 171 123Q145 151 112 161Z" fill={c.hair} stroke={c.b} strokeWidth="2.2" strokeLinejoin="round"/>
+        )}
+        {rocksoul ? (
+          <g>
+            <path d="M103 123Q111 77 183 78Q241 79 254 123L246 143H110Z" fill={cap === "black" ? "#151521" : "#77d95b"} stroke={cap === "black" ? "#cad0df" : "#e8ff9c"} strokeWidth="3.5" strokeLinejoin="round"/>
+            <path d="M120 109Q181 89 248 114L264 126Q213 145 155 136Z" fill={cap === "black" ? "#070b12" : "#213a26"} stroke={cap === "black" ? "#c9d0de" : "#9ffc74"} strokeWidth="2.8" strokeLinejoin="round"/>
+            <path d="M179 89L179 106M170 96H188" stroke="#f5f7fa" strokeOpacity=".7" strokeWidth="1.4"/>
+          </g>
+        ) : null}
+        <path d="M150 230Q180 244 210 230" stroke={c.a} strokeOpacity=".3" strokeWidth="1.4" fill="none"/>
+        <path d="M161 329L180 345L199 329" stroke={c.b} strokeWidth="1.5" fill="none"/>
+        <text x="24" y="35" fill={c.a} fontSize="10" fontFamily="ui-monospace,monospace" letterSpacing="2.2">MWX / XII</text>
+        <text x="336" y="35" textAnchor="end" fill="#c2d0e2" fontSize="9" fontFamily="ui-monospace,monospace" letterSpacing="1.2">ORIGINAL CAST</text>
+        <text x="24" y="420" fill="#f1f5fb" fontWeight="800" fontSize={name === "4-LAH / THE BATTERIES" ? "18" : "21"} letterSpacing=".3">{name === "4-LAH / THE BATTERIES" ? "4-LAH" : name}</text>
+        <text x="24" y="435" fill={c.b} fontSize="8" fontFamily="ui-monospace,monospace" letterSpacing="1.5">{c.role}</text>
+      </g>
+      <rect x="8.5" y="8.5" width="343" height="433" rx="23.5" fill="none" stroke="#d9e7fa" strokeOpacity=".22"/>
+    </svg>
+  );
+}
