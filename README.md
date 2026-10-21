@@ -21,6 +21,10 @@ MOONWITNESS XII is currently a **static editorial recap / championship registry*
 - Prioritize editorial accuracy, source recovery, poster provenance, accessible responsive design, navigation, and repeatable build/browser checks.
 - Any database work is deferred to a separately approved future phase; do not imply that it is required for XII recap completion.
 
+## Active ecosystem architecture
+
+The cross-system integration baseline is documented in [MOONWITNESS XII — Integrated Active Systems Architecture](docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md). It defines component responsibilities, interfaces, lifecycle states, conflict-prevention rules, safety/evidence boundaries, and the active roadmap. This is an architecture/planning baseline, not a claim that every named system is already implemented or operational.
+
 ## Source-of-truth rules
 
 1. Keep submission provenance explicit: recovered original, recovered outline, submitted in chat, or editorial proposal.
