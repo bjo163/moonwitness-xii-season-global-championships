@@ -12,12 +12,12 @@ const safeRead=()=>{try{const v=JSON.parse(localStorage.getItem(boardKey)||'[]')
 export default function CommandCenter(){
  const {completed,toggle}=useWorldProgress();
  const [cycle,setCycle]=useState('All');const [guild,setGuild]=useState('All');
- const [selectedEvent,setSelectedEvent]=useState(0);const[saved,setSaved]=useState(safeRead);
+ const [selectedEvent,setSelectedEvent]=useState(0);const[saved,setSaved]=useState([]);
  const [view,setView]=useState('dashboard');
  const events=useMemo(()=>communityEvents.filter(e=>(cycle==='All'||e.cycle===cycle)&&(guild==='All'||e.domain===guild)),[cycle,guild]);
  const chosen=events.length?events[Math.min(selectedEvent,events.length-1)]:null;
  const markEvent=id=>setSaved(v=>{const next=cleanBookmarks(v.includes(id)?v.filter(x=>x!==id):[...v,id]);try{localStorage.setItem(boardKey,JSON.stringify(next))}catch{}return next;});
- useEffect(()=>{const sync=()=>setSaved(safeRead());window.addEventListener(WORKSPACE_EVENT,sync);const onStorage=e=>{if(e.key===boardKey)sync();};window.addEventListener('storage',onStorage);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('storage',onStorage)};},[]);
+ useEffect(()=>{const sync=()=>setSaved(safeRead());sync();window.addEventListener(WORKSPACE_EVENT,sync);const onStorage=e=>{if(e.key===boardKey)sync();};window.addEventListener('storage',onStorage);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('storage',onStorage)};},[]);
  const nextEvent=()=>{if(events.length)setSelectedEvent(n=>(n+1)%events.length);};
  return <main className="container page">
  <Head eyebrow="// THE BATTERIES • MISSION CONTROL" title="PARADISE COMMAND CENTER." sub="Local-first interactive prototype: mission tracking, creative event ideas, guild charters and safety-by-design. No claims of actual heavenly government."/>

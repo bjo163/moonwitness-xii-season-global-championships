@@ -7,13 +7,13 @@ const readDrafts=()=>{try{return cleanReviewDrafts(JSON.parse(localStorage.getIt
 const choiceLabel={needs_source:'NEEDS SOURCE',investigating:'INVESTIGATING',ready_for_independent_review:'READY FOR INDEPENDENT REVIEW'};
 export default function Workspace(){
  const [tab,setTab]=useState('backup'),[preview,setPreview]=useState(null),[accepted,setAccepted]=useState(false),[message,setMessage]=useState('');
- const [drafts,setDrafts]=useState(readDrafts),[target,setTarget]=useState('champion:1'),[query,setQuery]=useState('');
+ const [drafts,setDrafts]=useState([]),[target,setTarget]=useState('champion:1'),[query,setQuery]=useState('');
  const [state,setState]=useState('needs_source'),[note,setNote]=useState(''),[sourceUrl,setSourceUrl]=useState('');
- const [summary,setSummary]=useState(()=>{try{return captureWorkspace(localStorage).data}catch{return{completed:[],bookmarks:[],reviews:[]}}});
+ const [summary,setSummary]=useState({completed:[],bookmarks:[],reviews:[]});
  const items=useMemo(()=>REVIEW_TARGETS.filter(x=>[x.label,x.subtitle,x.key].join(' ').toLowerCase().includes(query.toLowerCase())),[query]);
  const chosen=REVIEW_TARGETS.find(x=>x.key===target)||REVIEW_TARGETS[0];
  const sync=()=>{try{setDrafts(readDrafts());setSummary(captureWorkspace(localStorage).data);}catch{}};
- useEffect(()=>{window.addEventListener(WORKSPACE_EVENT,sync);window.addEventListener('mwx:reviews-updated',sync);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('mwx:reviews-updated',sync)};},[]);
+ useEffect(()=>{sync();window.addEventListener(WORKSPACE_EVENT,sync);window.addEventListener('mwx:reviews-updated',sync);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('mwx:reviews-updated',sync)};},[]);
  useEffect(()=>{const draft=drafts.find(x=>x.key===target);setState(draft?.state||'needs_source');setNote(draft?.note||'');setSourceUrl(draft?.sourceUrl||'');},[target,drafts]);
  const save=()=>{try{if(sourceUrl.trim()&&!/^https:\/\/[^\s<>"']{1,480}$/i.test(sourceUrl.trim()))throw new Error('Source URL must start with HTTPS and be under 480 characters.');saveDrafts(localStorage,[...drafts.filter(x=>x.key!==target),{key:target,state,note,sourceUrl}]);setMessage('Draft saved on this device only. No published review or verification status has changed.');}catch(e){setMessage(e.message);}};
  const remove=()=>{try{saveDrafts(localStorage,drafts.filter(x=>x.key!==target));setMessage('Local review draft cleared.');}catch(e){setMessage(e.message);}};
