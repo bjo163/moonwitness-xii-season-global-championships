@@ -3,10 +3,11 @@ import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
 import {Card,Head,Notice} from '../components/UI';
 import {registryEntries,registrySummary,registryStatusLabels,registryNote,displacedPatchConcepts} from '../data/bugPatchRegistry.js';
+import type { ReportedApproval } from '../types';
 import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions';
 
-const entries = registryEntries as any[];
-const reportLabel={approved:'APPROVED — PERSONAL REPORT ONLY',approved_with_condition:'CONDITIONAL APPROVAL — PERSONAL REPORT ONLY',submitted:'SUBMITTED IN CHAT — PERSONAL REPORT'};
+const entries = registryEntries;
+const reportLabel: Record<ReportedApproval, string> = {approved:'APPROVED — PERSONAL REPORT ONLY',approved_with_condition:'CONDITIONAL APPROVAL — PERSONAL REPORT ONLY',submitted:'SUBMITTED IN CHAT — PERSONAL REPORT'};
 const options=[['all','ALL 33'],['registered','REGISTERED'],['recovered_draft','RECOVERED DRAFTS'],['number_conflict','CONFLICT'],['user_submitted_in_chat','SUBMITTED IN CHAT'],['proposed','PROPOSALS']];
 export default function Syafaat(){
  const [filter,setFilter]=useState('all');
