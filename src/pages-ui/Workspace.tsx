@@ -6,7 +6,7 @@ import {captureWorkspace,parseWorkspaceBackup,restoreWorkspace,saveDrafts,cleanR
 const readDrafts=()=>{try{return cleanReviewDrafts(JSON.parse(localStorage.getItem(WORKSPACE_KEYS.reviews)||'[]'));}catch{return[];}};
 const choiceLabel={needs_source:'NEEDS SOURCE',investigating:'INVESTIGATING',ready_for_independent_review:'READY FOR INDEPENDENT REVIEW'};
 export default function Workspace(){
- const [tab,setTab]=useState('backup'),[preview,setPreview]=useState(null),[accepted,setAccepted]=useState(false),[message,setMessage]=useState('');
+ const [tab,setTab]=useState('backup'),[preview,setPreview]=useState<ReturnType<typeof parseWorkspaceBackup> | null>(null),[accepted,setAccepted]=useState(false),[message,setMessage]=useState('');
  const [drafts,setDrafts]=useState<Array<{key:string;state:string;note:string;sourceUrl:string}>>([]),[target,setTarget]=useState('champion:1'),[query,setQuery]=useState('');
  const [state,setState]=useState('needs_source'),[note,setNote]=useState(''),[sourceUrl,setSourceUrl]=useState('');
  const [summary,setSummary]=useState<{completed:unknown[];bookmarks:unknown[];reviews:unknown[]}>({completed:[],bookmarks:[],reviews:[]});
