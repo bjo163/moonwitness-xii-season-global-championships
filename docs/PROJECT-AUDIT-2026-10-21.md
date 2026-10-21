@@ -34,7 +34,7 @@ Workflow log for run [39531703147](https://github.com/bjo163/moonwitness-xii-sea
 5. Syafaat registry smoke test cannot find heading `KOPIHITAM - SIACENG`.
 6. Syafaat registry smoke test cannot find the archived `THE FINAL AUDIT` concept.
 
-The missing app/root and route-specific elements may indicate a runtime/rendering issue or outdated test assumptions. The current evidence does not identify the root cause conclusively. Inspect the browser failure artifact and runtime/console output before changing assertions or application behavior. Do not weaken tests merely to make CI green.
+The initial missing route elements were caused by a route collision, not simply by stale test selectors: root-level `paradise.html` and `syafaat-status.html` are legacy standalone pages and can be served for their extensionless paths, bypassing the React router. Trace screenshots showed those older screens while the source components contained the newer AETHERION/MASTER 33 UI. The legacy files have now been preserved as `.html.txt` under `docs/archive/` and removed from the repository root. Playwright was also moved to port 4179 with `--strictPort` and `reuseExistingServer:false`. Two wording assertions were corrected to match the actual UI casing/whitespace; no substantive content assertions were removed. The final browser run after these changes is still required before marking this issue resolved.
 
 ## Poster and content findings
 
@@ -73,7 +73,17 @@ Project metadata previously indicated SSO protection for deployments except cust
 - Review cited scripture passages in context and distinguish scripture text, interpretation, personal testimony and editorial proposal.
 - Review the 105 champion source records independently before labelling identities or videos verified.
 
+
+## Follow-up remediation after trace inspection
+
+- **Root cause identified:** the root-level legacy files `paradise.html` and `syafaat-status.html` shadowed the intended React routes under clean-URL handling. The browser trace showed the legacy Paradise and Syafaat Status screens instead of the current 100-level explorer and Master 33 registry.
+- **Preservation:** original HTML source was archived to `docs/archive/legacy-paradise-v3.html.txt` and `docs/archive/legacy-syafaat-status-audit.html.txt`; the root-level conflicting files were removed. Canonical React routes remain `/paradise` and `/syafaat-status`; compatibility redirects are handled by the React router.
+- **Browser harness:** Playwright now uses `http://127.0.0.1:4179` and Vite `--strictPort`, with server reuse disabled, to prevent tests from silently connecting to another server on port 4173.
+- **Assertions:** fixed case-sensitive/correct-whitespace matching for the current #033 narrative. The tests continue to assert the actual #033 content, five domains, source-status caveats, progress restore, and route render.
+- **Release state:** the quality gate passed on the preceding commit; browser smoke must pass on the latest commit before the UI issue is marked closed. Vercel deployments report READY, which is not equivalent to verified public access.
+
 ## Change log
 
 - 2026-10-21: Added project baseline and cleanup roadmap to README.
 - 2026-10-21: Verified documentation commit `7697d62` deployed READY and the quality gate passed; identified browser UI smoke failures from CI logs.
+- 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Latest browser verification pending.
