@@ -8,7 +8,7 @@
     "build": "npm run test && npm run audit:posters && npm run typecheck && next build",
     "start": "next start --hostname 0.0.0.0",
     "preview": "next start --hostname 0.0.0.0",
-    "test": "node scripts/check-content.mjs && node scripts/test-workspace.mjs",
+    "test": "node scripts/check-content.mjs && node scripts/check-ecosystem.mjs && node scripts/test-workspace.mjs",
     "typecheck": "tsc --noEmit",
     "check": "npm run build",
     "test:browser": "playwright test",

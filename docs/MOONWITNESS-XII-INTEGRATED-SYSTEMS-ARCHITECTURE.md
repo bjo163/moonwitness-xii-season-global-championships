@@ -11,7 +11,7 @@ XII is more than a passive archive: it is the static **ecosystem map, evidence r
 ## Scope rules
 
 - One repository, one branch: `main`.
-- Public XII remains React + Vite with version-controlled data; no backend, database or ORM for this phase.
+- Public XII uses Next.js App Router + React + TypeScript/TSX, with version-controlled static data; no backend, database or ORM for this phase.
 - Preserve the existing 33-slot championship registry. Do not assign new slots to system concepts just because they need documentation.
 - Link related concepts through a separate ecosystem index. Do not merge adjacent projects into the 33-slot registry without evidence.
 - Label proposals, hypotheses, recovered outlines, chat-only records and implemented systems differently.
@@ -31,7 +31,7 @@ Human decision and accountability (100CENTER)
 
 SIDRA TREE connects the knowledge graph: concepts, sources, systems, dependencies, stories, posters and registry records. It is an index, not a second source of truth.
 
-Divine Command Center Hub coordinates life-care initiatives. Atmosphere OS supplies verified, timestamped environmental observations and uncertainty. HELIOGRID manages energy generation, storage, distribution and metering. ARSY coordinates approved compute/research workloads. Material Forge owns experimental materials and physical-device research. XII's editorial registry preserves championship submissions, narratives, citations and creative-asset provenance.
+Divine Command Center Hub coordinates life-care initiatives. Atmosphere OS supplies verified, timestamped environmental observations and uncertainty. HELIOGRID manages energy generation, storage, distribution and metering. ARSY coordinates approved compute/research workloads. Material Forge owns experimental materials and physical-device research. XII's editorial registry preserves championship records, narratives, citations and creative-asset provenance inside the Next.js static-data application.
 
 This is a conceptual architecture. Component names describe roles; they do not prove that modules exist as running software. Sacred texts and religious values are not software actors, APIs or energy sources. Engineering claims require engineering evidence.
 
@@ -167,4 +167,4 @@ A concept is **operational** only after implementation, real use and appropriate
 
 MoonWitness XII is the **coherence and evidence layer** that connects concepts, sources, dependencies, decisions, creative assets and progress. It does not replace specialist scientific systems, physical safety controllers, human governance or future dedicated applications.
 
-**Integration principle:** one lifecycle, one evidence discipline, clear module contracts, explicit dependencies, human authorization, and a visible next action for every active concept — while preserving the 33-slot registry and static React + Vite scope.
+**Integration principle:** one lifecycle, one evidence discipline, clear module contracts, explicit dependencies, human authorization, and a visible next action for every active concept — while preserving the 33-slot registry and static Next.js App Router + React + TypeScript/TSX scope.

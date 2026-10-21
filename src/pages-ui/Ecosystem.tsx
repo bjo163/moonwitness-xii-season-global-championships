@@ -12,10 +12,13 @@ export default function Ecosystem(){
  const filtered=useMemo(()=>ecosystemSystems.filter(x=>[x.id,x.title,...x.aliases,x.domain,x.purpose,x.nextAction].join(' ').toLowerCase().includes(query.toLowerCase())&&(status==='all'||x.status===status)&&(domain==='all'||x.domain===domain)),[query,status,domain]);
  const partial=ecosystemSystems.filter(x=>x.status==='partially-covered').length;
  const planned=ecosystemSystems.filter(x=>['planned','proposed'].includes(x.status)).length;
+ const operational=ecosystemSystems.filter(x=>x.status==='operational').length;
+ const inDevelopment=ecosystemSystems.filter(x=>x.status==='in-development').length;
+ const validated=ecosystemSystems.filter(x=>x.status==='validated').length;
  return <main className="container page">
  <Head eyebrow="// ECOSYSTEM MAP / ACTIVE SYSTEM BLUEPRINT" title="ONE ECOSYSTEM. CLEAR ROLES." sub="Indeks sistem kanonis MoonWitness XII: fungsi, koneksi, batas, bukti yang tersedia, dan tindakan berikutnya."/>
- <div className="stats"><div><b>{ecosystemSystems.length}</b> SYSTEM RECORDS</div><div><b>{partial}</b> PARTIALLY COVERED</div><div><b>{planned}</b> PLANNED / PROPOSED</div><div><b>0</b> VERIFIED OPERATIONAL</div></div>
- <Notice><b>STATUS HONESTY:</b> “Active” berarti ada peran dan langkah kerja dalam roadmap, bukan bukti bahwa sistem fisik atau AI sudah berjalan. XII tetap React + Vite statis, tanpa backend/ORM pada fase ini.</Notice>
+ <div className="stats"><div><b>{ecosystemSystems.length}</b> SYSTEM RECORDS</div><div><b>{partial}</b> PARTIALLY COVERED</div><div><b>{planned}</b> PLANNED / PROPOSED</div><div><b>{operational}</b> OPERATIONAL</div></div>
+ <Notice><b>STATUS HONESTY:</b> “Active” berarti ada peran dan langkah kerja dalam roadmap, bukan bukti bahwa sistem fisik atau AI sudah berjalan. XII memakai Next.js App Router + React + TypeScript/TSX dengan data statis berversi; tanpa backend, database, atau ORM pada fase ini. {inDevelopment} in development · {validated} validated · {operational} operational menurut status registry saat ini.</Notice>
  <section className="section"><Head eyebrow="// CANONICAL SYSTEM INDEX" title="FIND A SYSTEM."/>
  <div className="filters"><input aria-label="Search ecosystem systems" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search system, alias, purpose..."/>
  <select aria-label="Filter by status" value={status} onChange={e=>setStatus(e.target.value)}><option value="all">ALL STATUSES</option>{Object.entries(labels).map(([k,v])=><option key={k} value={k}>{v}</option>)}</select>
