@@ -34,9 +34,9 @@ The build script runs the content tests and poster audit before Vite builds the 
 ## Cleanup and update queue
 
 ### P0 — Deployment and access
-- Verify the intended public production domain and test it without an authenticated Vercel session.
-- Vercel access configuration is now SSO-protected for preview deployments only; password protection is disabled. An unauthenticated external `curl` check returned HTTP 200 for `/`, `/paradise`, `/syafaat-status`, `/syafaat-status/033`, `/command-center`, and `/research`. Preview deployments remain protected.
-- Investigate the recent failed deployment attempts; keep the latest READY deployment as the baseline unless a newer verified build supersedes it.
+- [x] Canonical production alias `moonwitness-xii-season-global-champ.vercel.app` verified via unauthenticated HTTP checks; `/`, `/paradise`, `/syafaat-status`, `/syafaat-status/033`, `/command-center`, and `/research` returned 200.
+- [x] Vercel SSO is preview-only; password protection remains disabled. Preview deployments remain protected.
+- Check the newest Vercel deployment after future changes; a READY state confirms deployment completion, not route-level UI behavior.
 
 ### P1 — Registry integrity
 - Audit all 33 slots for correct status, source/provenance, numbering, and consistent wording.
@@ -44,7 +44,7 @@ The build script runs the content tests and poster audit before Vite builds the 
 - Recover primary texts for #001–#008 where possible. The current register contains eight chat-reported summary records, not complete original submission texts.
 - Keep #009–#013 marked as recovered outlines and #015–#032 as editorial proposals unless primary evidence changes their status.
 - Keep #033 recorded as submitted in chat/project registry only; do not imply delivery to an external recipient.
-- Initial audit 2026-10-21 found 11 browser failures / 7 passes. Trace inspection identified root-level legacy HTML pages (`paradise.html`, `syafaat-status.html`) shadowing the React routes. Their source is preserved in `docs/archive/` as `.html.txt`; the conflicting root files are removed. Playwright now uses a dedicated strict port, and the corrected route suite passed **18/18 desktop + mobile checks** on commit `c3ee697d`. The latest report-only commit is undergoing the same CI checks. See [Project Audit Report](docs/PROJECT-AUDIT-2026-10-21.md).
+- Initial audit 2026-10-21 found 11 browser failures / 7 passes. Trace inspection identified root-level legacy HTML pages (`paradise.html`, `syafaat-status.html`) shadowing the React routes. Their source is preserved in `docs/archive/` as `.html.txt`; the conflicting root files are removed. Playwright now uses a dedicated strict port, and the corrected route suite passed **18/18 desktop + mobile checks** on commit `c3ee697d`. The latest completed full browser run passed 18/18 on commit `cad62907`; an additional regression run now includes the legacy `.html` aliases. See [Project Audit Report](docs/PROJECT-AUDIT-2026-10-21.md).
 
 ### P2 — Content and asset quality
 - Check Scripture/reference citations and context, distinguish sources from interpretations and personal testimony, and record corrections.
