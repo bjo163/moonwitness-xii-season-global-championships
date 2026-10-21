@@ -90,3 +90,27 @@ test('Previous Final Audit proposal is retained outside numbered slots',async({p
  await expect(page.locator('#patch-033')).toContainText('KOPIHITAM - SIACENG');
  await expect(page.locator('#patch-033')).not.toContainText('THE FINAL AUDIT');
 });
+
+
+test('SYAFAAT local metrics lab uses explicit denominators and clears session state',async({page})=>{
+ await page.goto('/syafaat-engine');
+ await expect(page.getByText('SUBMISSION & IMPACT LAB.')).toBeVisible();
+ await expect(page.getByText('N/A').first()).toBeVisible();
+ await page.getByLabel('Judul submission').fill('Pending test');
+ await page.getByLabel('Status keputusan').selectOption('pending');
+ await page.getByRole('button',{name:'ADD SESSION RECORD'}).click();
+ await expect(page.getByText('S-001')).toBeVisible();
+ await expect(page.getByText('N/A').first()).toBeVisible();
+ await page.getByLabel('Judul submission').fill('Approved test');
+ await page.getByLabel('Status keputusan').selectOption('approved');
+ await page.getByRole('button',{name:'ADD SESSION RECORD'}).click();
+ await expect(page.getByText('100.0%').first()).toBeVisible();
+ await page.getByLabel('Judul patch').fill('Verified patch');
+ await page.getByLabel('Status implementasi/evaluasi').selectOption('verified_success');
+ await page.getByRole('button',{name:'ADD SESSION PATCH'}).click();
+ await expect(page.getByText('P-001')).toBeVisible();
+ await expect(page.getByText('VERIFIED SUCCESS')).toBeVisible();
+ await page.getByRole('button',{name:'CLEAR SESSION DATA'}).click();
+ await expect(page.getByText('Belum ada submission dalam sesi ini.')).toBeVisible();
+ await expect(page.getByText('Belum ada patch dalam sesi ini.')).toBeVisible();
+});
