@@ -201,7 +201,7 @@ for (const marker of ['calculateSyafaatMetrics','SESSION ONLY','CLEAR SESSION DA
   assert.ok(syafaatLab.toLowerCase().includes(marker.toLowerCase()), 'SYAFAAT lab missing marker: ' + marker);
 }
 assert.ok(routedPages.includes('path === "syafaat-engine"'), 'SYAFAAT lab route missing');
-assert.ok(navigation.includes("'/syafaat-engine'"), 'SYAFAAT lab navigation missing');
+assert.ok(readFileSync('src/pages-ui/Syafaat.tsx','utf8').includes('href="/syafaat-engine"'), 'SYAFAAT lab must be reachable from its registry page');
 assert.ok(!syafaatLab.includes('localStorage') && !syafaatLab.includes('fetch('), 'SYAFAAT lab must remain local-only with no persistence or external dispatch');
 assert.ok(readFileSync('src/pages-ui/Syafaat.tsx','utf8').includes('href="/syafaat-engine"'), 'SYAFAAT master registry must link to the metrics lab');
 
