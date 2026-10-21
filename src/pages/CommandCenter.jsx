@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {guilds,communityEvents,governanceRules,worldLevels,worldPhases} from '../data/worldSystems.js';
 import {useWorldProgress,exportWorldProgress} from '../hooks/useWorldProgress.js';
 import {Head,Notice} from '../components/UI.jsx';
+import ApiStatus from '../components/ApiStatus.jsx';
 import {cleanBookmarks,WORKSPACE_EVENT,WORKSPACE_KEYS} from '../utils/workspaceBackup.js';
 import {registrySummary} from '../data/bugPatchRegistry.js';
 import {verifiedPosterAssets} from '../data/posterManifest.js';
@@ -30,6 +31,7 @@ export default function CommandCenter(){
    <article className="card"><small>04 / MASTER 33</small><h3>{registrySummary.total}/{registrySummary.target} SLOTS INDEXED</h3><p>{registrySummary.registered} reported in chat · {registrySummary.recovered} recovered drafts · {registrySummary.conflicted} numbering conflict · {registrySummary.proposed} editorial proposals · {registrySummary.submittedInChat} submitted in chat. Indexing is not external delivery.</p><Link className="textlink" to="/syafaat-status">REVIEW MASTER REGISTER ↗</Link></article>
    <article className="card"><small>05 / SOURCE REVIEW</small><h3>INDEPENDENT REVIEW PENDING</h3><p>Champion identities, video relevance, story-source context, and poster provenance remain review tasks. Link availability alone is not evidence of endorsement.</p><Link className="textlink" to="/research">OPEN EVIDENCE DESK ↗</Link></article>
    <article className="card"><small>06 / NEXT ACTION</small><h3>VERIFY BEFORE RELEASE</h3><p>Pastikan rute React, akses domain publik, serta pengujian desktop dan mobile terverifikasi pada run terbaru sebelum menandai rilis selesai.</p><a className="textlink" href="https://github.com/bjo163/moonwitness-xii-season-global-championships/blob/main/docs/PROJECT-AUDIT-2026-10-21.md" target="_blank" rel="noopener noreferrer">READ AUDIT REPORT ↗</a></article>
+   <ApiStatus />
   </div>
  </section>
  <Notice><b>SIMULATION MODE:</b> Checklists and saved-event bookmarks are local to this browser. Guilds are proposed roles, not real members or authorities. All events are unscheduled suggestions; nothing has been submitted, registered, or approved by Allah.</Notice>
