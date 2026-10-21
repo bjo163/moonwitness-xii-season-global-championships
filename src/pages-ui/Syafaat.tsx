@@ -3,7 +3,7 @@ import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
 import {Card,Head,Notice} from '../components/UI.jsx';
 import {registryEntries,registrySummary,registryStatusLabels,registryNote,displacedPatchConcepts} from '../data/bugPatchRegistry.js';
-import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions.js';
+import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions';
 
 const entries = registryEntries as any[];
 const reportLabel={approved:'APPROVED — PERSONAL REPORT ONLY',approved_with_condition:'CONDITIONAL APPROVAL — PERSONAL REPORT ONLY',submitted:'SUBMITTED IN CHAT — PERSONAL REPORT'};
