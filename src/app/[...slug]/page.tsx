@@ -1,15 +1,15 @@
 import { notFound, redirect } from "next/navigation";
-import Characters from "../../pages-ui/Characters.tsx";
-import Champions from "../../pages-ui/Champions.tsx";
-import CommandCenter from "../../pages-ui/CommandCenter.tsx";
-import Ecosystem from "../../pages-ui/Ecosystem.tsx";
-import Grand from "../../pages-ui/Grand.tsx";
-import Paradise from "../../pages-ui/Paradise.tsx";
-import Patch033 from "../../pages-ui/Patch033.tsx";
-import Research from "../../pages-ui/Research.tsx";
-import { StoryArchive, StoryDetail } from "../../pages-ui/Stories.tsx";
-import Syafaat from "../../pages-ui/Syafaat.tsx";
-import Workspace from "../../pages-ui/Workspace.tsx";
+import Characters from "../../pages-ui/Characters";
+import Champions from "../../pages-ui/Champions";
+import CommandCenter from "../../pages-ui/CommandCenter";
+import Ecosystem from "../../pages-ui/Ecosystem";
+import Grand from "../../pages-ui/Grand";
+import Paradise from "../../pages-ui/Paradise";
+import Patch033 from "../../pages-ui/Patch033";
+import Research from "../../pages-ui/Research";
+import { StoryArchive, StoryDetail } from "../../pages-ui/Stories";
+import Syafaat from "../../pages-ui/Syafaat";
+import Workspace from "../../pages-ui/Workspace";
 
 type RouteProps = { params: Promise<{ slug?: string[] }> };
 export default async function RoutedPage({ params }: RouteProps) {

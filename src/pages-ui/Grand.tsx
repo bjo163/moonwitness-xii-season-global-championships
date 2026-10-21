@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';import Link from 'next/link';import {Card,Head,Notice} from '../components/UI.tsx';import {worldPhases} from '../data/worldSystems.js';
+import React from 'react';import Link from 'next/link';import {Card,Head,Notice} from '../components/UI';import {worldPhases} from '../data/worldSystems.js';
 const phases=[
 {number:'01',title:'VISUAL & ACCESSIBILITY',status:'IMPLEMENTED + CI QA ADDED',items:['Four main and six supporting original SVG designs','Responsive layout, mobile menu and keyboard aids','Browser automation specification; real cross-device review still needed'],to:'/characters'},
 {number:'02',title:'STORY & POSTERS',status:'PARTIAL — SOURCES PENDING',items:['15 episodes, 63 editorial pages','Shareable reader and manifest-backed galleries','0 original poster assets verified; original transcripts need recovery'],to:'/stories'},

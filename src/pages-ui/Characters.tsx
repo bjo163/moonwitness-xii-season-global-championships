@@ -1,5 +1,5 @@
 "use client";
-import React,{useState} from 'react';import Link from 'next/link';import CrewArt from '../components/CrewArt.tsx';import SupportArt from '../components/SupportArt.tsx';import {supportingCrew} from '../data/supportingCrew.js';
+import React,{useState} from 'react';import Link from 'next/link';import CrewArt from '../components/CrewArt';import SupportArt from '../components/SupportArt';import {supportingCrew} from '../data/supportingCrew.js';
 const main=[
 {name:'ROCKSOUL',role:'MAIN WITNESS • SOUL MODES',color:'#dfff75',bio:'A hooded, faceless witness wearing a backward green or black cap. Inspired by moral examples and virtues of messengers, without asserting prophetic identity.',tags:'GREEN: MERCY / HOPE • BLACK: RESOLVE / ENDURANCE'},
 {name:'ISROCKFEEL',role:'PUNK-ROCK FIELD MENTOR',color:'#ff536d',bio:'The action coach: punk hair, patched streetwear, distorted-guitar energy, practical work. Creatively inspired by themes associated with Israfil.',tags:'NO TALK. JUST MOVE.'},

@@ -1,2 +1,2 @@
-import Home from "../pages-ui/Home.tsx";
+import Home from "../pages-ui/Home";
 export default function Page() { return <Home />; }

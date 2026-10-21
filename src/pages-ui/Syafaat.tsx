@@ -1,7 +1,7 @@
 "use client";
 import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
-import {Card,Head,Notice} from '../components/UI.tsx';
+import {Card,Head,Notice} from '../components/UI';
 import {registryEntries,registrySummary,registryStatusLabels,registryNote,displacedPatchConcepts} from '../data/bugPatchRegistry.js';
 import {unnumberedReports,wildYouthReport} from '../data/bugSubmissions';
 

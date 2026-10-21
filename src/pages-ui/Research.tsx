@@ -1,7 +1,7 @@
 "use client";
 import React,{useMemo,useState} from 'react';
 import Link from 'next/link';
-import {Head,Notice} from '../components/UI.tsx';
+import {Head,Notice} from '../components/UI';
 import {championSourceRows,storySourceRows,checkedReferenceLinks,evidencePolicy} from '../data/sourceAudit.js';
 import {verifiedPosterAssets} from '../data/posterManifest.js';
 const countVideos=championSourceRows.filter(x=>x.evidenceUrl).length;

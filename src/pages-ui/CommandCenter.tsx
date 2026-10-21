@@ -3,7 +3,7 @@ import React,{useEffect,useMemo,useState} from 'react';
 import Link from 'next/link';
 import {guilds,communityEvents,governanceRules,worldLevels,worldPhases} from '../data/worldSystems.js';
 import {useWorldProgress,exportWorldProgress} from '../hooks/useWorldProgress.js';
-import {Head,Notice} from '../components/UI.tsx';
+import {Head,Notice} from '../components/UI';
 import {cleanBookmarks,WORKSPACE_EVENT,WORKSPACE_KEYS} from '../utils/workspaceBackup.js';
 import {registrySummary} from '../data/bugPatchRegistry.js';
 import {verifiedPosterAssets} from '../data/posterManifest.js';
