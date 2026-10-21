@@ -13,11 +13,11 @@ assert.equal((bugs.match(/\"approvalStatus\": \"not_verified\"/g)||[]).length,8)
 for(const s of ['Yesaya 65:20','Al-Mu\'minun 23:99–100','approved_with_condition'])assert.ok(bugs.includes(s));
 assert.ok(bugs.includes('MWX-SYF-00752'));
 assert.ok(bugs.includes('WILD YOUTH'));
-for(const path of ['src/pages-ui/Home.jsx','src/pages-ui/Champions.jsx','src/pages-ui/Paradise.jsx','src/pages-ui/Syafaat.jsx','src/pages-ui/Grand.jsx'])assert.ok(readFileSync(path,'utf8').length>100);
+for(const path of ['src/pages-ui/Home.tsx','src/pages-ui/Champions.tsx','src/pages-ui/Paradise.tsx','src/pages-ui/Syafaat.tsx','src/pages-ui/Grand.tsx'])assert.ok(readFileSync(path,'utf8').length>100);
 const archive=JSON.parse(readFileSync('src/data/storyArchive.js','utf8').replace(/^export const archiveEpisodes = /,'').replace(/;\s*$/,''));
 assert.ok(archive.length>=15,'Story archive must contain 15 seeded synopses');
 assert.equal(new Set(archive.map(x=>x.slug)).size,archive.length);
-const reader=readFileSync('src/pages-ui/Stories.jsx','utf8');
+const reader=readFileSync('src/pages-ui/Stories.tsx','utf8');
 for(const part of ['StoryDetail','PREVIOUS PAGE','NEXT PAGE','NEXT EPISODE','EDITORIAL PAGE SET'])assert.ok(reader.includes(part),'Missing reader feature '+part);
 const scripts=JSON.parse(readFileSync('src/data/episodeManuscripts.js','utf8').replace(/^export const episodeManuscripts = /,'').replace(/;\s*$/,''));
 assert.equal(scripts.length,15);assert.equal(scripts.find(x=>x.slug==='digimon-jogress').pages.length,7);
@@ -31,7 +31,7 @@ const manifest=readFileSync('src/data/posterManifest.js','utf8');
 assert.ok(manifest.includes('verifiedPosterAssets = []'),'No unverified art may be preloaded');
 assert.ok(manifest.includes('getPosterAsset'));
 assert.ok(reader.includes('POSTER GALLERY') && reader.includes('getPosterAsset'));
-const home=readFileSync('src/pages-ui/Home.jsx','utf8');const art=readFileSync('src/components/CrewArt.jsx','utf8');const css=readFileSync('src/style.css','utf8');
+const home=readFileSync('src/pages-ui/Home.tsx','utf8');const art=readFileSync('src/components/CrewArt.jsx','utf8');const css=readFileSync('src/style.css','utf8');
 for(const k of ['WHERE','LEGEND.','ROCKSOUL','ISROCKFEEL','WALTERWHITE','4-LAH / THE BATTERIES'])assert.ok(home.includes(k));
 for(const k of ['<svg','linearGradient','viewBox'])assert.ok(art.includes(k));
 for(const k of ['.mw-hero','.mw-crew-grid','@media(max-width:500px)'])assert.ok(css.includes(k));
@@ -86,7 +86,7 @@ for(const path of ['src/pages-ui/CommandCenter.jsx','src/pages-ui/Research.jsx',
 const appAll=readFileSync('src/app/[...slug]/page.tsx','utf8');
 const navAll=readFileSync('src/components/Header.jsx','utf8');
 for(const route of ['command-center','research']){assert.ok(appAll.includes('path === "'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
-assert.ok(readFileSync('src/pages-ui/Paradise.jsx','utf8').includes('worldLevels'));
+assert.ok(readFileSync('src/pages-ui/Paradise.tsx','utf8').includes('worldLevels'));
 assert.ok(readFileSync('src/pages-ui/CommandCenter.jsx','utf8').includes('communityEvents'));
 assert.ok(readFileSync('src/pages-ui/Research.jsx','utf8').includes('EXPORT AUDIT CSV'));
 
@@ -98,7 +98,7 @@ for(const piece of ['parseWorkspaceBackup','restoreWorkspace','cleanReviewDrafts
 assert.ok(readFileSync('src/app/[...slug]/page.tsx','utf8').includes('path === "workspace"'));
 assert.ok(readFileSync('src/components/Header.jsx','utf8').includes("'/workspace'"));
 assert.ok(workspaceUI.includes('NO ACCOUNT. JUST EXPLORE.'),'Public website must remain account free');
-assert.ok(readFileSync('src/pages-ui/Grand.jsx','utf8').includes('NO ACCOUNTS BY DESIGN'),'Roadmap must stay static-first');
+assert.ok(readFileSync('src/pages-ui/Grand.tsx','utf8').includes('NO ACCOUNTS BY DESIGN'),'Roadmap must stay static-first');
 for(const file of ['api/health.js','db/schema.sql','db/001_secure_foundation.sql'])assert.ok(!existsSync(file),'Unused backend/server file should not ship: '+file);
 assert.ok(readFileSync('src/pages-ui/CommandCenter.jsx','utf8').includes('No events match this combination.'));
 assert.ok(readFileSync('src/hooks/useWorldProgress.js','utf8').includes('WORKSPACE_EVENT'));
@@ -145,7 +145,7 @@ assert.equal(selected.acengUserReportedCaption,'ACENG MAH APPROVE');
 assert.equal(selected.acengCaptionEvidence,'user_attributed_to_the_batteries_in_chat_not_independently_verified');
 assert.equal(selected.acengCaptionAttribution,'THE BATTERIES');
 assert.equal(fullPatch.faithToAction.acengApproval.attributedTo,'THE BATTERIES');
-assert.ok(readFileSync('src/pages-ui/Syafaat.jsx','utf8').includes('menurut pernyataan THE BATTERIES'));
+assert.ok(readFileSync('src/pages-ui/Syafaat.tsx','utf8').includes('menurut pernyataan THE BATTERIES'));
 assert.equal(fullPatch.faithToAction.domains.length,5);
 assert.equal(fullPatch.faithToAction.stages.length,7);
 assert.equal(fullPatch.faithToAction.references.length,4);
@@ -176,7 +176,7 @@ assert.equal(candidates.filter(x=>x.recordStatus==='proposed').length,18);
 assert.equal(candidates.filter(x=>x.recordStatus==='user_submitted_in_chat').length,1);
 assert.ok(patchUIReady());
 function patchUIReady(){return readFileSync('src/pages-ui/Patch033.jsx','utf8').includes('PROJECT SUBMISSION RECEIPT / ARCHIVE ONLY');}
-const patchUI=readFileSync('src/pages-ui/Syafaat.jsx','utf8');
+const patchUI=readFileSync('src/pages-ui/Syafaat.tsx','utf8');
 for(const marker of ['registryEntries','registrySummary','registryStatusLabels','RECOVERED DRAFTS','THE WRONG WAY / HELLROAD','wildYouthReport','reportedApproval','NOT VERIFIED','33 SLOTS','KOPIHITAM - SIACENG','user_submitted_in_chat','displacedPatchConcepts'])assert.ok(patchUI.includes(marker),'Master 33 UI missing '+marker);
 assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('THE FINAL AUDIT'));
 assert.ok(readFileSync('docs/MASTER_BUG_PATCH_33_V2.md','utf8').includes('FAITH TO ACTION'));
@@ -188,6 +188,6 @@ const patchPage=readFileSync('src/pages-ui/Patch033.jsx','utf8');
 for(const part of ['COPY FINAL #033 TEXT','patch.finalCopy.version','patch.stages.map','patch.metrics.map','patch.safetyRules.map'])assert.ok(patchPage.includes(part),'Final full-copy path missing '+part);
 for(const phrase of ['PATCH REQUEST','THE RECORDED PRAYER','SAFETY PROTOCOL','FROM SOURCE TO HUMAN ACTION','REFERENCES, NOT MAGIC COMMANDS','faithToAction'])assert.ok(patchPage.includes(phrase),'Missing patch #033 page feature '+phrase);
 assert.ok(readFileSync('src/app/[...slug]/page.tsx','utf8').includes('path === "syafaat-status/033"'));
-assert.ok(readFileSync('src/pages-ui/Home.jsx','utf8').includes('#033 KOPIHITAM - SIACENG'));
+assert.ok(readFileSync('src/pages-ui/Home.tsx','utf8').includes('#033 KOPIHITAM - SIACENG'));
 
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy numbered reports + 1 #033 chat-recorded submission, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
