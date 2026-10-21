@@ -60,3 +60,26 @@ for (const field of ['planned','partial','inDevelopment','validated','operationa
 assert.ok(ecosystemSystems.every(s => /^\d{4}-\d{2}-\d{2}$/.test(s.reviewedAt)), 'Each system needs a review date');
 assert.ok(architecture.includes('Next.js App Router') && !architecture.includes('Public XII remains React + Vite'), 'Architecture must reflect the actual platform');
 console.log('Ecosystem integrity PASS: ' + ecosystemSystems.length + ' canonical systems, ' + relatedConcepts.length + ' related concepts, valid IDs/dependencies/lifecycle fields, and no operational claims without evidence.');
+
+
+// Cross-system interface contracts: ownership, direction, and safety boundaries.
+const interfaceContracts = readFileSync('docs/CROSS_SYSTEM_INTERFACE_CONTRACTS.md','utf8');
+for (const required of [
+  'Atmosphere OS → Divine Command Center',
+  'Divine Command Center → Atmosphere OS',
+  'HELIOGRID → ARSY',
+  'ARSY → Material Forge',
+  'Material Forge → ARSY',
+  'Semantic Engine',
+  'FURQAN',
+  'MIZAN',
+  'AMANAH',
+  'SHURA',
+  '100CENTER',
+  'KITAB',
+  'SIDRA TREE',
+  'no service-to-service transport',
+  'not a tamper-proof external ledger'
+]) assert.ok(interfaceContracts.includes(required), 'Cross-system interface contract missing invariant: ' + required);
+assert.ok(interfaceContracts.includes('sourceSystemId'), 'Shared envelope must preserve source ownership');
+assert.ok(interfaceContracts.includes('humanDecisionRequired'), 'Shared envelope must declare human decision gate');
