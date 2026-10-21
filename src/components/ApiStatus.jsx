@@ -54,8 +54,8 @@ export default function ApiStatus() {
       <p className="mw-api-status-label" role="status" aria-live="polite">{statusLabels[status] ?? 'UNKNOWN STATUS'}</p>
       <p>{result.message}</p>
       <dl className="mw-api-details">
-        <div><dt>DATABASE</dt><dd>{result.database.toUpperCase()}</dd></div>
-        <div><dt>MODELS REPORTED</dt><dd>{result.models.length || '—'}</dd></div>
+        <div><dt>DATABASE</dt><dd>{String(result.database ?? 'unknown').toUpperCase()}</dd></div>
+        <div><dt>MODELS REPORTED</dt><dd>{result.models?.length || '—'}</dd></div>
       </dl>
       {config.configured && <p className="mw-api-endpoint"><code>{config.healthUrl}</code></p>}
       <button className="btn secondary" type="button" onClick={() => void refresh()} disabled={status === 'checking'}>
