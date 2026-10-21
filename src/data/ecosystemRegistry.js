@@ -1,0 +1,187 @@
+// Canonical system-concept registry for the static XII ecosystem map.
+// These are planning records, not proof that the systems are implemented or operational.
+export const ecosystemSystems = [
+  {
+    id: 'MWX-SYS-001', title: 'MoonWitness OS', aliases: ['MW OS', 'Ecosystem Orchestrator'],
+    domain: 'Coordination', status: 'planned', maturity: 'architecture',
+    purpose: 'Coordinate system records, dependencies, lifecycle, blockers and release evidence.',
+    inputs: ['Canonical concept records', 'Review decisions', 'Test and deployment evidence'],
+    outputs: ['Ecosystem map', 'Status and blocker summaries', 'Next-action queue'],
+    dependsOn: ['MWX-SYS-002', 'MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-005', 'MWX-SYS-006'],
+    connectsTo: ['MWX-SYS-010', 'MWX-SYS-011', 'MWX-SYS-012'],
+    guardrails: ['Do not mark unbuilt modules operational', 'Keep canonical source records version-controlled'],
+    nextAction: 'Map existing XII data files and routes to canonical records.',
+    evidence: 'Proposed architecture; application integration pending.'
+  },
+  {
+    id: 'MWX-SYS-002', title: 'Semantic Engine', aliases: ['Semantic Interpretation Layer'],
+    domain: 'Interpretation', status: 'proposed', maturity: 'concept',
+    purpose: 'Normalize text into candidate entities, claims, relationships and ambiguity flags.',
+    inputs: ['User-provided text', 'Manuscripts', 'Structured records'],
+    outputs: ['Normalized draft record', 'Claim list', 'Ambiguity report'],
+    dependsOn: [], connectsTo: ['MWX-SYS-003', 'MWX-SYS-004'],
+    guardrails: ['Interpretation is not fact', 'Ambiguity must be surfaced, not guessed away'],
+    nextAction: 'Recover original specification and determine whether this is a distinct system or a role within MoonWitness OS.',
+    evidence: 'Concept candidate; implementation not verified.'
+  },
+  {
+    id: 'MWX-SYS-003', title: 'FURQAN Evidence Gate', aliases: ['Evidence Desk', 'Source Gate'],
+    domain: 'Evidence', status: 'partially-covered', maturity: 'prototype',
+    purpose: 'Track provenance, source identity, context, uncertainty and evidence gaps for claims.',
+    inputs: ['Atomic claims', 'Primary sources', 'External references', 'Data provenance'],
+    outputs: ['Evidence bundle', 'Source quality status', 'Open questions'],
+    dependsOn: [], connectsTo: ['MWX-SYS-004', 'MWX-SYS-006', 'MWX-SYS-010'],
+    guardrails: ['Never fabricate citations', 'A link is not proof of endorsement', 'Separate testimony from independent verification'],
+    nextAction: 'Align existing Research page and sourceAudit.js with a shared claim/provenance contract.',
+    evidence: 'Research and source audit already exist in the app; full system integration not verified.'
+  },
+  {
+    id: 'MWX-SYS-004', title: 'MIZAN Consistency & Impact Review', aliases: ['Mizan Engine', 'Conflict Review'],
+    domain: 'Governance', status: 'proposed', maturity: 'concept',
+    purpose: 'Identify contradictions, duplicated functions, trade-offs, safety risks and unintended effects.',
+    inputs: ['Evidence bundles', 'System contracts', 'Impact and risk notes'],
+    outputs: ['Conflict register', 'Risk findings', 'Alternatives and recommendation'],
+    dependsOn: ['MWX-SYS-003'], connectsTo: ['MWX-SYS-005', 'MWX-SYS-006'],
+    guardrails: ['Do not present a score as objective moral truth', 'Do not silently resolve source conflicts'],
+    nextAction: 'Create a deterministic checklist for duplicate concepts, source conflicts, safety and scope collisions.',
+    evidence: 'Concept candidate; no independent runtime engine verified.'
+  },
+  {
+    id: 'MWX-SYS-005', title: 'AMANAH Responsibility & Access', aliases: ['Responsibility Layer'],
+    domain: 'Governance', status: 'proposed', maturity: 'concept',
+    purpose: 'Define accountable decision roles, permission boundaries, privacy, consent and safety limits.',
+    inputs: ['Proposed action', 'Risk level', 'Role and data sensitivity'],
+    outputs: ['Accountability record', 'Permission boundary', 'Required human review'],
+    dependsOn: ['MWX-SYS-004'], connectsTo: ['MWX-SYS-006', 'MWX-SYS-007'],
+    guardrails: ['A title or game level grants no authority over others', 'Use least privilege and minimum necessary data'],
+    nextAction: 'Define the decision-role template and privacy rules for public records.',
+    evidence: 'Concept candidate; governance workflow not operationally verified.'
+  },
+  {
+    id: 'MWX-SYS-006', title: 'SHURA Deliberation', aliases: ['Consultation and Dissent Register'],
+    domain: 'Governance', status: 'proposed', maturity: 'concept',
+    purpose: 'Preserve stakeholder viewpoints, alternatives, disagreement and unresolved questions.',
+    inputs: ['Evidence findings', 'Impact review', 'Stakeholder positions'],
+    outputs: ['Options', 'Objections', 'Decision rationale or unresolved status'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004'], connectsTo: ['MWX-SYS-007', 'MWX-SYS-008'],
+    guardrails: ['Do not manufacture consensus', 'Keep unresolved disagreements visible'],
+    nextAction: 'Define a structured format for options, dissent and resolution evidence.',
+    evidence: 'Concept candidate; no live consultation workflow verified.'
+  },
+  {
+    id: 'MWX-SYS-007', title: '100CENTER Human Decision Layer', aliases: ['Human Approval Gate', '100 Center'],
+    domain: 'Decision', status: 'proposed', maturity: 'concept',
+    purpose: 'Keep accountable human decisions and bounded authorization separate from analysis.',
+    inputs: ['Evidence bundle', 'Risk review', 'Consultation record'],
+    outputs: ['Decision', 'Rationale', 'Accountable role', 'Authorized next step'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-005', 'MWX-SYS-006'],
+    connectsTo: ['MWX-SYS-008', 'MWX-SYS-009'],
+    guardrails: ['AI cannot infer approval', 'Do not imply divine authorization or authority over other people'],
+    nextAction: 'Define decision records and approval states for editorial/system roadmap work.',
+    evidence: 'Concept candidate; not an actual authority or operating institution.'
+  },
+  {
+    id: 'MWX-SYS-008', title: 'KITAB Change & Evidence Ledger', aliases: ['Append-only Audit Trail'],
+    domain: 'Traceability', status: 'partially-covered', maturity: 'editorial-records',
+    purpose: 'Preserve version history, source links, decisions, rationale and test evidence.',
+    inputs: ['Source records', 'Decisions', 'Commits', 'Test results'],
+    outputs: ['Change history', 'Traceable release evidence', 'Revision links'],
+    dependsOn: ['MWX-SYS-007'], connectsTo: ['MWX-SYS-010', 'MWX-SYS-011'],
+    guardrails: ['Do not silently rewrite history', 'Do not describe a static file as a cryptographic ledger'],
+    nextAction: 'Use repository commits and structured change notes as the actual traceability mechanism in this phase.',
+    evidence: 'Git history and editorial audits exist; a separate ledger service is not implemented.'
+  },
+  {
+    id: 'MWX-SYS-009', title: 'SIDRA TREE Knowledge Graph', aliases: ['Concept and Dependency Graph'],
+    domain: 'Knowledge', status: 'planned', maturity: 'architecture',
+    purpose: 'Connect concepts, sources, projects, stories, posters and system dependencies without duplicating their source records.',
+    inputs: ['Canonical IDs', 'Aliases', 'Dependencies', 'Source links'],
+    outputs: ['Navigable relationships', 'Impact paths', 'Cross-project links'],
+    dependsOn: ['MWX-SYS-001', 'MWX-SYS-008'],
+    connectsTo: ['MWX-SYS-010', 'MWX-SYS-011', 'MWX-SYS-012'],
+    guardrails: ['Graph is an index, not a second source of truth', 'Do not merge adjacent projects without provenance'],
+    nextAction: 'Create static relation data and link it from the Command Center.',
+    evidence: 'Proposed architecture; graph UI not verified.'
+  },
+  {
+    id: 'MWX-SYS-010', title: 'Divine Command Center Hub', aliases: ['Catatan Suara Qalbu', 'Life-Care Coordination'],
+    domain: 'Life care', status: 'partially-covered', maturity: 'concept-plus-ui',
+    purpose: 'Coordinate care-oriented initiatives, cases, responsible responders, resources and follow-up.',
+    inputs: ['Verified observations', 'Community reports', 'Risk and resource notes'],
+    outputs: ['Case summary', 'Assigned response role', 'Action status', 'Follow-up record'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-005', 'MWX-SYS-007'],
+    connectsTo: ['MWX-SYS-011', 'MWX-SYS-012'],
+    guardrails: ['Do not claim divine authorization', 'Do not replace emergency or professional services', 'Separate spiritual reflection from factual incident reporting'],
+    nextAction: 'Recover the canonical Divine Command Center Hub narrative and map it to existing Command Center features without claiming a live response network.',
+    evidence: 'A Command Center UI exists, but it is a local-first creative prototype, not a real operations center.'
+  },
+  {
+    id: 'MWX-SYS-011', title: 'Atmosphere OS', aliases: ['Atmosphere Command Center', 'PM2.5 / Pollution OS'],
+    domain: 'Environment', status: 'proposed', maturity: 'engineering-spec-needed',
+    purpose: 'Observe and analyze atmospheric conditions with quality flags, uncertainty and time/location context.',
+    inputs: ['PM2.5/PM10 sensors', 'Weather context', 'Satellite/model sources', 'Calibration metadata'],
+    outputs: ['Condition snapshot', 'Uncertainty-aware risk context', 'Mitigation options and evidence links'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-010'],
+    connectsTo: ['MWX-SYS-010', 'MWX-SYS-012'],
+    guardrails: ['One sensor cannot establish a global condition', 'Public-health advice requires qualified sources', 'No intervention without authorized and tested controls'],
+    nextAction: 'Recover the detailed engineering specification; define data units, calibration, quality, exposure context and acceptance tests.',
+    evidence: 'Discussed in project conversations; implementation and original complete specification not verified in the repository.'
+  },
+  {
+    id: 'MWX-SYS-012', title: 'HELIOGRID Energy System', aliases: ['Solar Energy Ecosystem'],
+    domain: 'Energy', status: 'proposed', maturity: 'feasibility-needed',
+    purpose: 'Model and eventually manage generation, storage, distribution, loads and energy accounting.',
+    inputs: ['Solar/grid generation', 'Metered loads', 'Battery and inverter telemetry', 'Safety limits'],
+    outputs: ['Energy balance', 'Availability and efficiency metrics', 'Alarms and operational recommendations'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-005'],
+    connectsTo: ['MWX-SYS-013', 'MWX-SYS-014'],
+    guardrails: ['No perpetual-energy claims', 'No double counting energy flows', 'Certified electrical protection takes precedence over AI recommendations'],
+    nextAction: 'Recover original ARS/solar/quantum-proton concepts, separate feasible near-term solar technologies from speculative hypotheses, and create a measured feasibility roadmap.',
+    evidence: 'Concept candidate; no installed energy infrastructure or measured performance verified.'
+  },
+  {
+    id: 'MWX-SYS-013', title: 'ARSY Compute & Research Orchestration', aliases: ['ARS', 'Research and Compute Ecosystem'],
+    domain: 'Research', status: 'proposed', maturity: 'concept',
+    purpose: 'Coordinate approved software, simulation and research workloads under energy, compute, cost and safety constraints.',
+    inputs: ['Approved tasks', 'Compute budget', 'Energy/thermal limits', 'Research hypotheses'],
+    outputs: ['Reproducible outputs', 'Resource use', 'Logs', 'Uncertainty and limitations'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-012'],
+    connectsTo: ['MWX-SYS-014'],
+    guardrails: ['Quantum/proton terminology is not proof of capability', 'Distinguish simulation from physical implementation', 'Track costs and resource use'],
+    nextAction: 'Confirm canonical name and original source; map each claimed technology to readiness level and falsifiable tests.',
+    evidence: 'Related concepts discussed in project history; exact scope and implementation are not verified.'
+  },
+  {
+    id: 'MWX-SYS-014', title: 'Material Forge & Experimental R&D', aliases: ['Materials and Device Research'],
+    domain: 'Research', status: 'proposed', maturity: 'concept',
+    purpose: 'Keep physical-material and device hypotheses testable, safe and traceable.',
+    inputs: ['Research questions', 'Designs', 'Lab measurements', 'Safety protocols'],
+    outputs: ['Reproducible experiments', 'Measured performance', 'Safety notes', 'Readiness assessment'],
+    dependsOn: ['MWX-SYS-003', 'MWX-SYS-004', 'MWX-SYS-012', 'MWX-SYS-013'],
+    connectsTo: [],
+    guardrails: ['Proposal is not deployed hardware', 'No unmeasured efficiency or capability claims', 'Qualified laboratory and electrical safety review required'],
+    nextAction: 'Determine which concepts have source documents and convert each into a falsifiable test plan or mark it as a speculative concept.',
+    evidence: 'Proposed integration role; physical lab or device implementation not verified.'
+  }
+];
+
+export const ecosystemLifecycle = [
+  {id:'captured',label:'Captured',description:'Recorded as a candidate; not yet validated.'},
+  {id:'source-recovery',label:'Source recovery',description:'Original text, evidence or asset is being located.'},
+  {id:'specified',label:'Specified',description:'Purpose, boundaries, interfaces and success criteria are defined.'},
+  {id:'consistency-review',label:'Consistency review',description:'Sources, collisions, risks and dependencies are checked.'},
+  {id:'approved-next-step',label:'Approved next step',description:'A bounded action and rationale are recorded.'},
+  {id:'in-development',label:'In development',description:'Testable implementation work exists.'},
+  {id:'validated',label:'Validated',description:'Acceptance criteria passed for a defined version and scope.'},
+  {id:'operational',label:'Operational',description:'Real use and monitoring evidence exists.'},
+  {id:'blocked',label:'Blocked / paused',description:'A blocker, reason and next review are visible.'}
+];
+
+export const ecosystemRules = [
+  'A discussed concept is not automatically implemented or operational.',
+  'An archive record is not proof of external submission, acceptance or endorsement.',
+  'Primary sources, interpretations, testimony, hypotheses and measured results remain distinct.',
+  'Unresolved conflicts stay visible until evidence supports a resolution.',
+  'System concepts do not change the fixed 33-slot championship numbering.',
+  'MoonWitness XII remains static React + Vite for this phase; no backend or ORM is required.'
+];
