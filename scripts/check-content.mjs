@@ -54,12 +54,12 @@ assert.ok(art.includes('React.useId'), 'Main crew gradients must have unique IDs
 assert.ok(home.includes('<SupportArt') && characterView.includes('<SupportArt'),'Both character galleries should show vector art');
 assert.ok(!characterView.includes('typographic SVG-style emblems'),'Outdated artwork placeholder claim');
 assert.ok(characterView.includes("cap==='black'") && art.includes("cap==='black'"),'ROCKSOUL cap toggle must be operative');
-assert.ok(home.includes('to="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes("'/characters'"),'Character Universe must be accessible');
+assert.ok(home.includes('href="/characters"') && readFileSync('src/components/Header.jsx','utf8').includes("'/characters'"),'Character Universe must be accessible');
 
 
 const header=readFileSync('src/components/Header.jsx','utf8');
 const appSource=readFileSync('src/App.jsx','utf8');
-for(const marker of ['nav-menu-toggle','aria-expanded','aria-controls','useLocation','Escape','<nav'])assert.ok(header.includes(marker),'Missing accessible navigation '+marker);
+for(const marker of ['nav-menu-toggle','aria-expanded','aria-controls','usePathname','Escape','<nav'])assert.ok(header.includes(marker),'Missing accessible navigation '+marker);
 for(const marker of ['skip-link','main-content','RouteFocus','focus({preventScroll:true})'])assert.ok(appSource.includes(marker),'Missing route keyboard support '+marker);
 for(const marker of ['.navlinks.is-open',':focus-visible','.skip-link:focus','@media(max-width:900px)'])assert.ok(css.includes(marker),'Missing accessibility CSS '+marker);
 const storyEffect=reader.indexOf("useEffect(()=>{const value=Math.max(0,(Number(params.get('page'))");
@@ -83,9 +83,9 @@ assert.ok(sourceAudit.championSourceRows.every(x=>x.status==='needs_independent_
 assert.ok(sourceAudit.championSourceRows.every(x=>!x.identityReviewed&&!x.videoReviewed));
 assert.ok(sourceAudit.checkedReferenceLinks.length>=2);
 for(const path of ['src/pages/CommandCenter.jsx','src/pages/Research.jsx','src/hooks/useWorldProgress.js','scripts/audit-posters.mjs','tests/browser/smoke.spec.js','playwright.config.js'])assert.ok(readFileSync(path,'utf8').length>150,'Missing new seven-track module '+path);
-const appAll=readFileSync('src/App.jsx','utf8');
+const appAll=readFileSync('app/[...slug]/page.jsx','utf8');
 const navAll=readFileSync('src/components/Header.jsx','utf8');
-for(const route of ['command-center','research']){assert.ok(appAll.includes('path="/'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
+for(const route of ['command-center','research']){assert.ok(appAll.includes('path === "'+route+'"'));assert.ok(navAll.includes("'/"+route+"'"));}
 assert.ok(readFileSync('src/pages/Paradise.jsx','utf8').includes('worldLevels'));
 assert.ok(readFileSync('src/pages/CommandCenter.jsx','utf8').includes('communityEvents'));
 assert.ok(readFileSync('src/pages/Research.jsx','utf8').includes('EXPORT AUDIT CSV'));
