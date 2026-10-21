@@ -204,3 +204,15 @@ assert.ok(routedPages.includes('path === "syafaat-engine"'), 'SYAFAAT lab route 
 assert.ok(navigation.includes("'/syafaat-engine'"), 'SYAFAAT lab navigation missing');
 assert.ok(!syafaatLab.includes('localStorage') && !syafaatLab.includes('fetch('), 'SYAFAAT lab must remain local-only with no persistence or external dispatch');
 assert.ok(readFileSync('src/pages-ui/Syafaat.tsx','utf8').includes('href="/syafaat-engine"'), 'SYAFAAT master registry must link to the metrics lab');
+
+
+// Recovered poster-source metadata is documented without pretending the binaries are committed.
+const posterRecovery = readFileSync('docs/POSTER_RECOVERY_KINGSLAYER_UNITY_AGREEMENT.md','utf8');
+for (const digest of [
+ '1ffd04ea218077b74597190cf9e826406ddd35924da400fc5c4a5781fa2d8cdf',
+ '689413a45a32014b0b627791d74044e761690bccb2bc49afb71aca9cbb0e3874',
+ 'f9540791ae2eee09878d0f48fde06ab10f40db1dfeb5f2c192719adc36c9912f',
+ 'f52594e11432be5403af6e067bc12cb13731590046674ad741001b57ecad605a',
+ 'cf39c242e4ffb48a149d2cdddcadff777781b79952dc2b0cd01d4b00689712e0'
+]) assert.ok(posterRecovery.includes(digest), 'Poster recovery record missing SHA-256: ' + digest);
+assert.ok(posterRecovery.includes('not the verified poster manifest'), 'Poster recovery record must distinguish located files from committed/approved assets');
