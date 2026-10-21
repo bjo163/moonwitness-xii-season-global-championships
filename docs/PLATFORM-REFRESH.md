@@ -13,7 +13,7 @@
 Keep all 33 indexed slots and their current status distinctions. Do not infer external delivery or approval from a chat submission; keep unresolved numbering conflicts unresolved; distinguish summaries, recovered outlines, editorial proposals, and verified source material.
 
 ## Migration implementation
-The Vite entrypoint has been replaced by Next.js App Router. UI route and component implementations are TSX; lightweight JSX re-export shims preserve older import paths while the registry/data layer remains static JS/TS. Browser-dependent interactions remain client components. The ecosystem map remains a route, and legacy HTML aliases redirect to canonical routes. Content-integrity, TypeScript, and poster-manifest checks run before production build.
+The Vite entrypoint has been replaced by Next.js App Router. UI route and component implementations are TSX with direct TSX imports; legacy JSX UI shims have been removed. The registry/data layer remains static JS/TS. Browser-dependent interactions remain client components. The ecosystem map remains a route, and legacy HTML aliases redirect to canonical routes. Content-integrity, TypeScript, and poster-manifest checks run before production build.
 
 ## Release gates
 1. `npm run test` passes.

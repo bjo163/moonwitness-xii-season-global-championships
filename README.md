@@ -7,7 +7,7 @@ A static editorial archive and championship registry built with **Next.js App Ro
 - Repository: `bjo163/moonwitness-xii-season-global-championships`
 - Deployment branch: `main`
 - Framework: Next.js App Router
-- UI implementation: TSX modules; thin JSX compatibility re-exports preserve existing import paths during migration
+- UI implementation: App Router pages and UI components are TSX; legacy JSX UI shims have been removed
 - Data: version-controlled static files; **no database and no ORM**
 - Deployment target: Vercel
 
@@ -31,6 +31,6 @@ npm run test:browser
 No database credentials or migrations are required. Static registry changes are reviewed and versioned in Git.
 
 ## Migration policy
-The Vite entrypoint has been replaced with Next.js App Router. UI route and component implementations have been moved to TSX; small JSX re-export shims remain for compatibility with existing imports. Static content registries remain in JS/TS as appropriate and are not database-backed. Continue tightening prop types without changing archive meaning or approval/provenance labels.
+The Vite entrypoint has been replaced with Next.js App Router. UI route and component implementations are TSX; legacy JSX UI shims have been removed, while static content registries remain in JS/TS. Static content registries remain in JS/TS as appropriate and are not database-backed. Continue tightening prop types without changing archive meaning or approval/provenance labels.
 
 A successful build/deployment is not by itself proof that every source, poster, route, or claim has been independently verified.
