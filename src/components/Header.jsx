@@ -6,7 +6,7 @@ const navigation=[
   ['/characters','CHARACTERS'],
   ['/champions','105 CHAMPIONS'],
   ['/paradise','PARADISE'],
-  ['/command-center','COMMAND CENTER'],
+  ['/command-center','COMMAND CENTER'],['/ecosystem','SYSTEM MAP'],
   ['/workspace','LOCAL TOOLS'],
   ['/research','RESEARCH DESK'],
   ['/stories','STORIES'],
