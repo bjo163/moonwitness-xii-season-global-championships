@@ -5,7 +5,7 @@ test.beforeEach(async({page})=>{
 });
 
 test('Homepage and key routes render without overflow',async({page})=>{
- for(const path of ['/','/characters','/paradise','/paradise.html','/command-center','/research','/workspace','/stories','/champions','/syafaat-status','/syafaat-status.html']){
+ for(const path of ['/','/characters','/champions','/paradise','/paradise.html','/command-center','/ecosystem','/grand-plan','/research','/workspace','/stories','/syafaat-status','/syafaat-status/033','/syafaat-engine','/syafaat-status.html']){
   await page.goto(path);await expect(page.locator('#main-content')).toBeVisible();
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
   expect(overflow,path+' has horizontal overflow').toBeFalsy();
@@ -113,4 +113,11 @@ test('SYAFAAT local metrics lab uses explicit denominators and clears session st
  await page.getByRole('button',{name:'CLEAR SESSION DATA'}).click();
  await expect(page.getByText('Belum ada submission dalam sesi ini.')).toBeVisible();
  await expect(page.getByText('Belum ada patch dalam sesi ini.')).toBeVisible();
+});
+
+
+test('Unknown routes return a real 404 rather than a blank successful page',async({page})=>{
+ const response=await page.goto('/this-route-does-not-exist');
+ expect(response?.status()).toBe(404);
+ await expect(page.locator('body')).not.toBeEmpty();
 });
