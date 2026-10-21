@@ -33,8 +33,12 @@ export default function ApiStatus() {
       return;
     }
     setResult((current) => ({ ...current, status: 'checking', message: 'Checking API readiness…' }));
-    const next = await checkMoonWitnessApi({ signal });
-    if (!signal?.aborted) setResult(next);
+    try {
+      const next = await checkMoonWitnessApi({ signal });
+      if (!signal?.aborted) setResult(next);
+    } catch (error) {
+      if (error?.name !== 'AbortError') throw error;
+    }
   }, [config.configured]);
 
   useEffect(() => {
