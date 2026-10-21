@@ -44,7 +44,7 @@ The build script runs the content tests and poster audit before Vite builds the 
 - Recover primary texts for #001–#008 where possible. The current register contains eight chat-reported summary records, not complete original submission texts.
 - Keep #009–#013 marked as recovered outlines and #015–#032 as editorial proposals unless primary evidence changes their status.
 - Keep #033 recorded as submitted in chat/project registry only; do not imply delivery to an external recipient.
-- Audit 2026-10-21: quality/build gate passed and Vercel reported READY, but browser smoke tests had 11 failures and 7 passes across desktop/mobile. See [Project Audit Report](docs/PROJECT-AUDIT-2026-10-21.md) before treating the release as fully validated.
+- Initial audit 2026-10-21: quality/build gate passed, but browser smoke tests had 11 failures and 7 passes. Trace inspection then identified two root-level legacy HTML pages (`paradise.html`, `syafaat-status.html`) shadowing the React routes. Their source has been preserved in `docs/archive/` as `.html.txt`, and the conflicting root files have been removed. Playwright now uses a dedicated strict port; final browser verification is tracked in [GitHub Actions](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions). See [Project Audit Report](docs/PROJECT-AUDIT-2026-10-21.md).
 
 ### P2 — Content and asset quality
 - Check Scripture/reference citations and context, distinguish sources from interpretations and personal testimony, and record corrections.
@@ -54,6 +54,12 @@ The build script runs the content tests and poster audit before Vite builds the 
 ### P3 — Command Center and release report
 - Present registry totals by provenance/status, unresolved conflicts, verification gaps, build/test results, and last-updated commit.
 - Mark a task complete only when its corresponding evidence exists.
+
+## Route integrity follow-up (2026-10-21)
+
+- Canonical interactive routes are `/paradise` and `/syafaat-status`; legacy standalone page sources are archived as `docs/archive/legacy-paradise-v3.html.txt` and `docs/archive/legacy-syafaat-status-audit.html.txt`.
+- Do not reintroduce root-level `paradise.html` or `syafaat-status.html`: Vite/Vercel clean-URL handling can serve those legacy pages for extensionless routes and bypass the React application.
+- Playwright uses `127.0.0.1:4179` with `--strictPort` so a port collision cannot silently send tests to another server.
 
 ## Known project facts from the current source
 
