@@ -83,3 +83,14 @@ for (const required of [
 ]) assert.ok(interfaceContracts.includes(required), 'Cross-system interface contract missing invariant: ' + required);
 assert.ok(interfaceContracts.includes('sourceSystemId'), 'Shared envelope must preserve source ownership');
 assert.ok(interfaceContracts.includes('humanDecisionRequired'), 'Shared envelope must declare human decision gate');
+
+
+// Master 33-slot evidence audit: all slots must expose source/review metadata.
+const slotAudit = readFileSync('docs/MASTER_33_SLOT_EVIDENCE_AUDIT.md','utf8');
+assert.ok(slotAudit.includes('FAMILY WITHOUT FEAR vs THE WRONG WAY / HELLROAD'), 'Slot audit must preserve #014 conflict');
+assert.ok(slotAudit.includes('KOPIHITAM - SIACENG'), 'Slot audit must preserve #033 canonical title');
+assert.ok(slotAudit.includes('MWX-CON-013'), 'SYAFAAT must remain outside the 33-slot registry');
+for (const entry of registryEntries) {
+  for (const field of ['benefit','references','origin']) assert.ok(typeof entry[field] === 'string' && entry[field].trim(), entry.id + ' missing audit field ' + field);
+}
+assert.equal(registryEntries.length, 33, 'Slot audit and canonical registry must remain exactly 33 records');
