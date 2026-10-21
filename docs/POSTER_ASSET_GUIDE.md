@@ -1,5 +1,12 @@
 # Poster Asset Intake — MOONWITNESS XII
-Status: 0 original poster image files verified as of 2026-10-16.
+Status: 0 original poster image files verified as of 2026-10-21. A recursive Git tree inventory of the current main branch found no PNG, JPG/JPEG, WebP, or SVG image files and no `public/posters/` directory; the manifest is intentionally empty.
+
+## Current inventory result
+- Repository tree audit on 2026-10-21: 73 tracked tree entries inspected.
+- Raster/vector artwork candidates found by file extension: 0.
+- `public/posters/` directory: absent.
+- `verifiedPosterAssets` entries: 0.
+- Conclusion: original poster assets are not currently available in the tracked repository. This is an inventory finding, not a claim that no artwork exists in prior chats or outside the repository.
 
 ## Why galleries show placeholders
 The 63 storyboard pages are editorial reconstructions; their original illustrated posters are not present in the verified manifest. **Do not claim historical source artwork is recovered when it is not.**
