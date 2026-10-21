@@ -109,7 +109,7 @@ test('SYAFAAT local metrics lab uses explicit denominators and clears session st
  await page.getByLabel('Status implementasi/evaluasi').selectOption('verified_success');
  await page.getByRole('button',{name:'ADD SESSION PATCH'}).click();
  await expect(page.getByText('P-001')).toBeVisible();
- await expect(page.getByText('VERIFIED SUCCESS')).toBeVisible();
+ await expect(page.getByText('VERIFIED SUCCESS',{exact:true})).toBeVisible();
  await page.getByRole('button',{name:'CLEAR SESSION DATA'}).click();
  await expect(page.getByText('Belum ada submission dalam sesi ini.')).toBeVisible();
  await expect(page.getByText('Belum ada patch dalam sesi ini.')).toBeVisible();
