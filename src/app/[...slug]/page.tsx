@@ -9,6 +9,7 @@ import Patch033 from "../../pages-ui/Patch033";
 import Research from "../../pages-ui/Research";
 import { StoryArchive, StoryDetail } from "../../pages-ui/Stories";
 import Syafaat from "../../pages-ui/Syafaat";
+import SyafaatEngine from "../../pages-ui/SyafaatEngine";
 import Workspace from "../../pages-ui/Workspace";
 
 type RouteProps = { params: Promise<{ slug?: string[] }> };
@@ -26,6 +27,7 @@ export default async function RoutedPage({ params }: RouteProps) {
   if (path === "research") return <Research />;
   if (path === "workspace") return <Workspace />;
   if (path === "syafaat-status") return <Syafaat />;
+  if (path === "syafaat-engine") return <SyafaatEngine />;
   if (path === "syafaat-status/033") return <Patch033 />;
   if (path === "stories") return <StoryArchive />;
   if (path.startsWith("stories/")) return <StoryDetail />;
