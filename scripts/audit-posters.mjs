@@ -1,10 +1,22 @@
 import assert from 'node:assert/strict';
-import {existsSync,readFileSync} from 'node:fs';
+import {existsSync,readFileSync,readdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {verifiedPosterAssets} from '../src/data/posterManifest.js';
 import {archiveEpisodes} from '../src/data/storyArchive.js';
 import {episodeManuscripts} from '../src/data/episodeManuscripts.js';
 const names=new Set(archiveEpisodes.map(x=>x.slug));const seen=new Set();
+const posterRoot='public/posters';
+const diskPosterFiles=[];
+function walkPosterDirectory(dir){
+ for(const entry of readdirSync(dir,{withFileTypes:true})){
+  const path=dir+'/'+entry.name;
+  if(entry.isDirectory())walkPosterDirectory(path);
+  else if(entry.isFile()&&/\.(webp|png|jpg)$/i.test(entry.name))diskPosterFiles.push(path);
+ }
+}
+if(existsSync(posterRoot))walkPosterDirectory(posterRoot);
+const manifestPaths=new Set(verifiedPosterAssets.map(a=>'public'+a.src));
+for(const path of diskPosterFiles)assert.ok(manifestPaths.has(path),'Poster image exists on disk but is not registered/reviewed: '+path);
 for(const a of verifiedPosterAssets){
  assert.ok(names.has(a.slug),'Unknown episode: '+a.slug);
  const script=episodeManuscripts.find(x=>x.slug===a.slug);
@@ -19,7 +31,7 @@ for(const a of verifiedPosterAssets){
  if(a.sha256){assert.match(a.sha256,/^[0-9a-f]{64}$/);const sha=createHash('sha256').update(readFileSync(local)).digest('hex');assert.equal(sha,a.sha256,'Image hash mismatch: '+local);}
 }
 if(verifiedPosterAssets.length===0){
- console.warn('POSTER INVENTORY: 0 verified poster files are registered. The manifest audit passed, but poster completeness is NOT verified; editorial placeholders remain until original assets and publication rights are reviewed.');
+ console.warn('POSTER INVENTORY: '+diskPosterFiles.length+' poster image files found on disk; 0 verified poster files are registered. The audit can inventory committed files but cannot infer historical completeness; editorial placeholders remain until original assets, provenance and publication rights are reviewed.');
 }else{
- console.log('Poster manifest audit PASS: '+verifiedPosterAssets.length+' reviewed image assets. This validates registered assets only; it does not prove every expected poster exists.');
+ console.log('Poster manifest audit PASS: '+verifiedPosterAssets.length+' reviewed image assets; '+diskPosterFiles.length+' image files found on disk. Every image under public/posters must be registered, but this does not prove every expected historical poster exists.');
 }
