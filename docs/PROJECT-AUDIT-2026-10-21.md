@@ -8,7 +8,7 @@
 
 - **Content/build quality gate:** PASS on commit `7697d62bc445d9dbe57e65db4119f95561aedbff` (GitHub Actions run 39531703197).
 - **Vercel production deployment:** READY for that commit; deployment alias exists. This confirms deployment/build state only, not unrestricted public access or correct behavior of every route.
-- **Browser UI smoke tests:** PASS on commit `c3ee697d` (run 39533909192): 18 passed across desktop and mobile Chromium. The latest report-only commit is undergoing a new run.
+- **Browser UI smoke tests:** PASS on commit `cad62907` (run 39534170472): 18 passed across desktop and mobile Chromium. A further regression run includes direct navigation to legacy `.html` aliases.
 - **Verified poster manifest:** 0 entries. The poster audit passes because there are no claimed verified poster assets; this does not establish that all poster artwork is present.
 - **Registry:** 33 indexed slots, with distinct provenance categories. Indexed does not mean formally delivered or accepted.
 
@@ -57,9 +57,11 @@ Project metadata previously showed SSO protection on all deployments except cust
 - [x] Re-run desktop and mobile Chromium: 18/18 passed on commit `c3ee697d`.
 - [x] Confirm the latest report-only commit's quality gate passed; its browser smoke rerun is tracked in [CI](https://github.com/bjo163/moonwitness-xii-season-global-championships/actions).
 
-### P1 — Verify public access and production domain
-- Confirm the canonical domain and whether it must be accessible without Vercel login.
-- Test the intended URL in an unauthenticated session; retain current access controls until confirmed.
+### P1 — Public access and production domain — resolved
+- [x] Confirmed canonical production alias: `moonwitness-xii-season-global-champ.vercel.app`.
+- [x] Set Vercel SSO to preview-only; password protection remains disabled.
+- [x] Unauthenticated external HTTP checks returned 200 for six primary routes: `/`, `/paradise`, `/syafaat-status`, `/syafaat-status/033`, `/command-center`, and `/research`.
+- [x] Closed access verification issue #2. Preview deployments remain protected.
 
 ### P1 — Recover registry primary texts
 - Recover source texts for #001–#008 where possible and link evidence for each record.
@@ -89,4 +91,5 @@ Project metadata previously showed SSO protection on all deployments except cust
 - 2026-10-21: Added project baseline and cleanup roadmap to README.
 - 2026-10-21: Verified documentation commit `7697d62` deployed READY and the quality gate passed; identified browser UI smoke failures from CI logs.
 - 2026-10-21: Inspected browser traces and identified root-level legacy HTML route shadowing; preserved legacy source, removed conflicting files, isolated the Playwright port, and corrected two text-matching assertions. Browser UI Smoke passed 18/18 on commit `c3ee697d`; latest documentation-only commit is being rechecked.
-- 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; an unauthenticated external HTTP check returned 200 for all six primary routes.
+- 2026-10-21: Changed Vercel SSO protection to preview-only (password protection remains disabled) to align production configuration with the public/no-account site intent; an unauthenticated external HTTP check returned 200 for all six primary routes and access issue #2 was closed.
+- 2026-10-21: Browser UI Smoke passed 18/18 on commit `cad62907`; added a regression check for `/paradise.html` and `/syafaat-status.html` so legacy routes cannot silently return.
