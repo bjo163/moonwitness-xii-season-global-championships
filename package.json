@@ -20,14 +20,11 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.0",
     "next": "16.2.6",
     "@prisma/client": "^6.19.0",
     "lucide-react": "^1.27.0"
   },
   "devDependencies": {
-    "vite": "^7.1.0",
-    "@vitejs/plugin-react": "^5.0.0",
     "typescript": "^5.9.2",
     "@playwright/test": "^1.56.1",
     "prisma": "^6.19.0"
