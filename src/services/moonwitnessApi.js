@@ -1,7 +1,7 @@
 const configuredBaseUrl = import.meta.env?.VITE_MW_API_BASE_URL?.trim() ?? '';
 
 export function getMoonWitnessApiConfig(baseUrlOverride = configuredBaseUrl) {
-  const baseUrl = String(baseUrlOverride ?? '').trim().replace(/\\/+$/, '');
+  const baseUrl = String(baseUrlOverride ?? '').trim().replace(new RegExp('/+$'), '');
   return { configured: Boolean(baseUrl), baseUrl, healthUrl: baseUrl ? `${baseUrl}/readyz` : null };
 }
 
