@@ -1,5 +1,6 @@
+"use client";
 import React,{useMemo,useState} from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 import {worldLevels,worldPhases,guilds,communityEvents} from '../data/worldSystems.js';
 import {useWorldProgress,exportWorldProgress} from '../hooks/useWorldProgress.js';
 import {Head,Hero,Notice} from '../components/UI.jsx';
@@ -11,7 +12,7 @@ export default function Paradise(){
  <Hero label="// THE BATTERIES / PARADISE WORLD" lines={<>THE ROAD TO<br/><em>AETHERION.</em></>} description="100 voluntary creative-education challenges: 33 Self Aura foundations + 67 new community and stewardship prototypes. This is worldbuilding, not an actual afterlife map."/>
  <div className="stats"><div><b>{completed.length}/100</b> TOTAL COMPLETED</div><div><b>{selfDone}/33</b> SELF AURA</div><div><b>{Math.round(completed.length)}%</b> WORLD PROGRESS</div><div><b>{communityEvents.length}</b> EVENT IDEAS</div></div>
  <div className="progress" role="progressbar" aria-label="World level completion" aria-valuenow={completed.length} aria-valuemin={0} aria-valuemax={100}><div style={{width:completed.length+'%'}}/></div>
- <p><Link to="/command-center" className="mw-button mw-button-primary">OPEN COMMAND CENTER ↗</Link></p>
+ <p><Link href="/command-center" className="mw-button mw-button-primary">OPEN COMMAND CENTER ↗</Link></p>
  <Notice><b>PERSONAL / LOCAL:</b> Tick marks show tasks you chose to practice, stored only in this browser. No spiritual score, divine approval, account, public ranking or shared community event is implied. Levels 34–100 are new editorial prototypes.</Notice>
  </div><section className="section alt"><div className="container"><Head eyebrow="// 100 LEVEL EXPLORER" title="THE THREE AURAS." sub="Filter, inspect, and mark your own voluntary learning progress. Earlier 33-level browser progress is migrated."/>
  <div className="grid three">{worldPhases.map(p=><button type="button" key={p.id} className={'mission '+(phase===p.name?'complete':'')} onClick={()=>setPhase(phase===p.name?'all':p.name)}><small>{String(p.start).padStart(3,'0')}–{p.end}</small><h3>{p.name}</h3><p>{p.description}</p><span>{completed.filter(n=>n>=p.start&&n<=p.end).length}/{p.end-p.start+1} COMPLETE</span></button>)}</div>
@@ -20,5 +21,5 @@ export default function Paradise(){
  {visible.length===0&&<Notice>No matching level. Change the filters.</Notice>}
  {current&&<div className="detail" role="region" aria-label="Selected level"><small>LEVEL {String(current.id).padStart(3,'0')} • {current.phase}</small><h3>{current.name}</h3><p>{current.mission}</p><p>{current.prototype?'Prototype task inspired by community good practices.':'Original Self Aura learning task.'}</p><button className="btn" onClick={()=>toggle(current.id)}>{completed.includes(current.id)?'MARK NOT COMPLETED':'MARK AS PRACTICED'}</button></div>}
  </div></section>
- <section className="section"><div className="container"><Head eyebrow="// BUILD THE WORLD" title="GUILDS. JOY. RECOVERY." sub="Ten editorial guild designs and 48 voluntary event ideas, not active organizations or scheduled gatherings."/><div className="grid three">{guilds.slice(0,6).map(g=><div className="card" key={g.id}><small>{g.id}</small><h3>{g.name}</h3><p>{g.mandate}</p></div>)}</div><p><Link to="/command-center" className="btn">EXPLORE ALL GUILDS & EVENTS ↗</Link></p></div></section></main>;
+ <section className="section"><div className="container"><Head eyebrow="// BUILD THE WORLD" title="GUILDS. JOY. RECOVERY." sub="Ten editorial guild designs and 48 voluntary event ideas, not active organizations or scheduled gatherings."/><div className="grid three">{guilds.slice(0,6).map(g=><div className="card" key={g.id}><small>{g.id}</small><h3>{g.name}</h3><p>{g.mandate}</p></div>)}</div><p><Link href="/command-center" className="btn">EXPLORE ALL GUILDS & EVENTS ↗</Link></p></div></section></main>;
 }

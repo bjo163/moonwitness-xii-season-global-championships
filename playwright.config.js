@@ -7,5 +7,5 @@ export default defineConfig({
   {name:'desktop-chromium',use:{...devices['Desktop Chrome']}},
   {name:'mobile-chromium',use:{...devices['Pixel 7']}}
  ],
- webServer:{command:'npm run dev -- --host 127.0.0.1 --port 4179 --strictPort',url:'http://127.0.0.1:4179',reuseExistingServer:false,timeout:120000}
+ webServer:{command:'npm run dev -- --hostname 127.0.0.1 --port 4179',url:'http://127.0.0.1:4179',reuseExistingServer:false,timeout:120000}
 });

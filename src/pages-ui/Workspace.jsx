@@ -1,18 +1,19 @@
+"use client";
 import React,{useEffect,useMemo,useState} from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 import {Head,Notice} from '../components/UI.jsx';
 import {captureWorkspace,parseWorkspaceBackup,restoreWorkspace,saveDrafts,cleanReviewDrafts,REVIEW_TARGETS,DRAFT_STATES,WORKSPACE_KEYS,WORKSPACE_EVENT} from '../utils/workspaceBackup.js';
 const readDrafts=()=>{try{return cleanReviewDrafts(JSON.parse(localStorage.getItem(WORKSPACE_KEYS.reviews)||'[]'));}catch{return[];}};
 const choiceLabel={needs_source:'NEEDS SOURCE',investigating:'INVESTIGATING',ready_for_independent_review:'READY FOR INDEPENDENT REVIEW'};
 export default function Workspace(){
  const [tab,setTab]=useState('backup'),[preview,setPreview]=useState(null),[accepted,setAccepted]=useState(false),[message,setMessage]=useState('');
- const [drafts,setDrafts]=useState(readDrafts),[target,setTarget]=useState('champion:1'),[query,setQuery]=useState('');
+ const [drafts,setDrafts]=useState([]),[target,setTarget]=useState('champion:1'),[query,setQuery]=useState('');
  const [state,setState]=useState('needs_source'),[note,setNote]=useState(''),[sourceUrl,setSourceUrl]=useState('');
- const [summary,setSummary]=useState(()=>{try{return captureWorkspace(localStorage).data}catch{return{completed:[],bookmarks:[],reviews:[]}}});
+ const [summary,setSummary]=useState({completed:[],bookmarks:[],reviews:[]});
  const items=useMemo(()=>REVIEW_TARGETS.filter(x=>[x.label,x.subtitle,x.key].join(' ').toLowerCase().includes(query.toLowerCase())),[query]);
  const chosen=REVIEW_TARGETS.find(x=>x.key===target)||REVIEW_TARGETS[0];
  const sync=()=>{try{setDrafts(readDrafts());setSummary(captureWorkspace(localStorage).data);}catch{}};
- useEffect(()=>{window.addEventListener(WORKSPACE_EVENT,sync);window.addEventListener('mwx:reviews-updated',sync);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('mwx:reviews-updated',sync)};},[]);
+ useEffect(()=>{sync();window.addEventListener(WORKSPACE_EVENT,sync);window.addEventListener('mwx:reviews-updated',sync);return()=>{window.removeEventListener(WORKSPACE_EVENT,sync);window.removeEventListener('mwx:reviews-updated',sync)};},[]);
  useEffect(()=>{const draft=drafts.find(x=>x.key===target);setState(draft?.state||'needs_source');setNote(draft?.note||'');setSourceUrl(draft?.sourceUrl||'');},[target,drafts]);
  const save=()=>{try{if(sourceUrl.trim()&&!/^https:\/\/[^\s<>"']{1,480}$/i.test(sourceUrl.trim()))throw new Error('Source URL must start with HTTPS and be under 480 characters.');saveDrafts(localStorage,[...drafts.filter(x=>x.key!==target),{key:target,state,note,sourceUrl}]);setMessage('Draft saved on this device only. No published review or verification status has changed.');}catch(e){setMessage(e.message);}};
  const remove=()=>{try{saveDrafts(localStorage,drafts.filter(x=>x.key!==target));setMessage('Local review draft cleared.');}catch(e){setMessage(e.message);}};
@@ -38,6 +39,6 @@ export default function Workspace(){
  <label className="workspace-field">Research notes, no personal data<textarea rows={6} maxLength={600} placeholder="What still needs to be checked?" value={note} onChange={e=>setNote(e.target.value)}/></label>
  <small>{note.length}/600 characters · LOCAL / UNVERIFIED</small><div className="filters"><button onClick={save}>SAVE PRIVATE DRAFT</button><button onClick={remove} disabled={!drafts.some(x=>x.key===target)}>CLEAR DRAFT</button></div></article></div>
  </section>}
- {tab==='readiness'&&<section className="section"><Head eyebrow="// OPEN WEBSITE" title="NO ACCOUNT. JUST EXPLORE." sub="MoonWitness XII is a public website. Read, browse, and explore without registering."/><div className="grid two">{[['OPEN FOR EVERYONE','Stories, Character Universe, Champions and Paradise can be visited directly.'],['NO LOGIN REQUIRED','There is no account, registration form, or password to manage.'],['OPTIONAL LOCAL PROGRESS','Level checkmarks and saved event ideas stay in this browser.'],['PRIVATE NOTES','Source review drafts are personal notes on your own device, not official approvals.'],['MANUAL BACKUP','Export and restore a JSON file only when you choose.'],['CONTENT FIRST','Future work focuses on stories, poster artwork, accessibility and verified references.']].map(([heading,details])=><article className="card" key={heading}><h3>{heading}</h3><p>{details}</p></article>)}</div><p><Link className="textlink" to="/stories">EXPLORE STORIES ↗</Link></p></section>}
+ {tab==='readiness'&&<section className="section"><Head eyebrow="// OPEN WEBSITE" title="NO ACCOUNT. JUST EXPLORE." sub="MoonWitness XII is a public website. Read, browse, and explore without registering."/><div className="grid two">{[['OPEN FOR EVERYONE','Stories, Character Universe, Champions and Paradise can be visited directly.'],['NO LOGIN REQUIRED','There is no account, registration form, or password to manage.'],['OPTIONAL LOCAL PROGRESS','Level checkmarks and saved event ideas stay in this browser.'],['PRIVATE NOTES','Source review drafts are personal notes on your own device, not official approvals.'],['MANUAL BACKUP','Export and restore a JSON file only when you choose.'],['CONTENT FIRST','Future work focuses on stories, poster artwork, accessibility and verified references.']].map(([heading,details])=><article className="card" key={heading}><h3>{heading}</h3><p>{details}</p></article>)}</div><p><Link className="textlink" href="/stories">EXPLORE STORIES ↗</Link></p></section>}
  </main>;
 }

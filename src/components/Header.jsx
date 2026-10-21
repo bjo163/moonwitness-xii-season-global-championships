@@ -1,5 +1,7 @@
+"use client";
 import React,{useEffect,useState} from 'react';
-import {Link,NavLink,useLocation} from 'react-router-dom';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
 
 const navigation=[
   ['/', 'HOME'],
@@ -15,7 +17,7 @@ const navigation=[
 ];
 
 export default function Header({theme,setTheme}){
-  const {pathname}=useLocation();
+  const pathname=usePathname();
   const [menuOpen,setMenuOpen]=useState(false);
   useEffect(()=>setMenuOpen(false),[pathname]);
   useEffect(()=>{
@@ -25,12 +27,12 @@ export default function Header({theme,setTheme}){
     return ()=>document.removeEventListener('keydown',closeOnEscape);
   },[menuOpen]);
   return <header className="nav" role="banner">
-    <Link to="/" className="brand" aria-label="MoonWitness XII, back to homepage">MOON<span>WITNESS</span> XII</Link>
+    <Link href="/" className="brand" aria-label="MoonWitness XII, back to homepage">MOON<span>WITNESS</span> XII</Link>
     <button type="button" className="nav-menu-toggle" aria-controls="site-navigation" aria-expanded={menuOpen} aria-label={menuOpen?'Close navigation menu':'Open navigation menu'} onClick={()=>setMenuOpen(open=>!open)}>
       <span aria-hidden="true">{menuOpen?'✕':'☰'}</span><span>MENU</span>
     </button>
     <nav id="site-navigation" className={'navlinks'+(menuOpen?' is-open':'')} aria-label="Main navigation">
-      {navigation.map(([to,label])=><NavLink key={to} to={to} end={to==='/' || to==='/stories'} onClick={()=>setMenuOpen(false)}>{label}</NavLink>)}
+      {navigation.map(([href,label])=><Link key={href} href={href} className={(pathname===href || (href!=='/' && pathname.startsWith(href+'/')))?'active':''} aria-current={pathname===href?'page':undefined} onClick={()=>setMenuOpen(false)}>{label}</Link>)}
     </nav>
     <div className="themes" role="group" aria-label="Color theme">
       {['riot','moonlit'].map(t=><button type="button" key={t} className={theme===t?'active':''} onClick={()=>setTheme(t)} aria-pressed={theme===t}>{t.toUpperCase()}</button>)}
