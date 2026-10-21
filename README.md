@@ -41,13 +41,14 @@ The build script runs the content tests and poster audit before Vite builds the 
 ### P1 — Registry integrity
 - Audit all 33 slots for correct status, source/provenance, numbering, and consistent wording.
 - Preserve the #014 conflict; do not guess which candidate is canonical.
-- Recover primary texts for #001–#005 where possible. The current register labels them as summarized records, not complete original submissions.
+- Recover primary texts for #001–#008 where possible. The current register contains eight chat-reported summary records, not complete original submission texts.
 - Keep #009–#013 marked as recovered outlines and #015–#032 as editorial proposals unless primary evidence changes their status.
 - Keep #033 recorded as submitted in chat/project registry only; do not imply delivery to an external recipient.
+- Audit 2026-10-21: quality/build gate passed and Vercel reported READY, but browser smoke tests had 11 failures and 7 passes across desktop/mobile. See [Project Audit Report](docs/PROJECT-AUDIT-2026-10-21.md) before treating the release as fully validated.
 
 ### P2 — Content and asset quality
 - Check Scripture/reference citations and context, distinguish sources from interpretations and personal testimony, and record corrections.
-- Audit poster files, source/permission provenance, alt text, dates, and checksums through `npm run audit:posters`.
+- Audit poster files, source/permission provenance, alt text, dates, and checksums through `npm run audit:posters`. The current verified poster manifest has zero entries, so poster coverage remains unverified.
 - Check champion data, story archive/manuscript parity, navigation, mobile layout, accessibility, and unknown-route handling.
 
 ### P3 — Command Center and release report
