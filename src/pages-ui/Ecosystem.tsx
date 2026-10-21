@@ -28,7 +28,14 @@ export default function Ecosystem(){
  <div className="ecosystem-subsection"><b>INPUTS</b><p>{s.inputs.join(' · ')}</p></div><div className="ecosystem-subsection"><b>OUTPUTS</b><p>{s.outputs.join(' · ')}</p></div>
  <div className="ecosystem-subsection"><b>DEPENDENCIES</b><p>{s.dependsOn.length?s.dependsOn.map(id=>ecosystemSystems.find(x=>x.id===id)?.title||id).join(' → '):'No upstream dependency recorded yet.'}</p></div>
  <div className="ecosystem-subsection"><b>GUARDRAILS</b><ul>{s.guardrails.map(x=><li key={x}>{x}</li>)}</ul></div>
- <div className="ecosystem-next"><b>NEXT ACTION</b><p>{s.nextAction}</p></div><small>Evidence / maturity: {s.evidence}</small>
+ <div className="ecosystem-next"><b>NEXT ACTION</b><p>{s.nextAction}</p></div>
+ <details className="ecosystem-evidence"><summary>GOVERNANCE & ACCEPTANCE</summary>
+ <div className="ecosystem-subsection"><b>SOURCE / PROVENANCE</b><p>{s.sourceProvenance}</p></div>
+ <div className="ecosystem-subsection"><b>DECISION ROLE</b><p>{s.decisionRole}</p></div>
+ <div className="ecosystem-subsection"><b>ACCEPTANCE CRITERIA</b><p>{s.acceptanceCriteria}</p></div>
+ <div className="ecosystem-subsection"><b>UNCERTAINTY / LIMITS</b><p>{s.uncertainty}</p></div>
+ <small>Reviewed: {s.reviewedAt} · Evidence / maturity: {s.evidence}</small>
+ </details>
  </article>)}</div>{!filtered.length&&<Notice>No system records match these filters.</Notice>}<p>{filtered.length} of {ecosystemSystems.length} system records shown.</p></section>
  <section className="section"><Head eyebrow="// RELATED CONCEPTS / SOURCE RECOVERY" title="COLLECT. RECONCILE. REBUILD." sub="Konsep lintas sistem, narasi, dan aset yang perlu dicocokkan dengan sumber asli. Catatan ini tidak otomatis menjadi slot championship atau bukti bahwa aset final tersedia."/>
  <div className="grid two">{relatedConcepts.map(x=><article className="card" key={x.id}><small>{x.id} / {x.type.toUpperCase()} / {conceptStatusLabels[x.status]||x.status.toUpperCase()}</small><h3>{x.title}</h3><p><b>Aliases:</b> {x.aliases.join(' · ')}</p><p>{x.scope}</p><div className="ecosystem-next"><b>NEXT ACTION</b><p>{x.nextAction}</p></div><small>{x.boundary}</small></article>)}</div>

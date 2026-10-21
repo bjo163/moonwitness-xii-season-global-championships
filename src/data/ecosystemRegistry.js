@@ -12,6 +12,11 @@ export const ecosystemSystems = [
     guardrails: ['Do not mark unbuilt modules operational', 'Keep canonical source records version-controlled'],
     nextAction: 'Map existing XII data files and routes to canonical records.',
     evidence: 'Proposed architecture; application integration pending.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Proposed architecture; application integration pending.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=planned. Proposed architecture; application integration pending. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-002', title: 'Semantic Engine', aliases: ['Semantic Interpretation Layer'],
@@ -23,6 +28,11 @@ export const ecosystemSystems = [
     guardrails: ['Interpretation is not fact', 'Ambiguity must be surfaced, not guessed away'],
     nextAction: 'Recover original specification and determine whether this is a distinct system or a role within MoonWitness OS.',
     evidence: 'Concept candidate; implementation not verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; implementation not verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; implementation not verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-003', title: 'FURQAN Evidence Gate', aliases: ['Evidence Desk', 'Source Gate'],
@@ -34,6 +44,11 @@ export const ecosystemSystems = [
     guardrails: ['Never fabricate citations', 'A link is not proof of endorsement', 'Separate testimony from independent verification'],
     nextAction: 'Align existing Research page and sourceAudit.js with a shared claim/provenance contract.',
     evidence: 'Research and source audit already exist in the app; full system integration not verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Research and source audit already exist in the app; full system integration not verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=partially-covered. Research and source audit already exist in the app; full system integration not verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-004', title: 'MIZAN Consistency & Impact Review', aliases: ['Mizan Engine', 'Conflict Review'],
@@ -45,6 +60,11 @@ export const ecosystemSystems = [
     guardrails: ['Do not present a score as objective moral truth', 'Do not silently resolve source conflicts'],
     nextAction: 'Create a deterministic checklist for duplicate concepts, source conflicts, safety and scope collisions.',
     evidence: 'Concept candidate; no independent runtime engine verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; no independent runtime engine verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; no independent runtime engine verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-005', title: 'AMANAH Responsibility & Access', aliases: ['Responsibility Layer'],
@@ -56,6 +76,11 @@ export const ecosystemSystems = [
     guardrails: ['A title or game level grants no authority over others', 'Use least privilege and minimum necessary data'],
     nextAction: 'Define the decision-role template and privacy rules for public records.',
     evidence: 'Concept candidate; governance workflow not operationally verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; governance workflow not operationally verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; governance workflow not operationally verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-006', title: 'SHURA Deliberation', aliases: ['Consultation and Dissent Register'],
@@ -67,6 +92,11 @@ export const ecosystemSystems = [
     guardrails: ['Do not manufacture consensus', 'Keep unresolved disagreements visible'],
     nextAction: 'Define a structured format for options, dissent and resolution evidence.',
     evidence: 'Concept candidate; no live consultation workflow verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; no live consultation workflow verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; no live consultation workflow verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-007', title: '100CENTER Human Decision Layer', aliases: ['Human Approval Gate', '100 Center'],
@@ -79,6 +109,11 @@ export const ecosystemSystems = [
     guardrails: ['AI cannot infer approval', 'Do not imply divine authorization or authority over other people'],
     nextAction: 'Define decision records and approval states for editorial/system roadmap work.',
     evidence: 'Concept candidate; not an actual authority or operating institution.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; not an actual authority or operating institution.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; not an actual authority or operating institution. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-008', title: 'KITAB Change & Evidence Ledger', aliases: ['Append-only Audit Trail'],
@@ -90,6 +125,11 @@ export const ecosystemSystems = [
     guardrails: ['Do not silently rewrite history', 'Do not describe a static file as a cryptographic ledger'],
     nextAction: 'Use repository commits and structured change notes as the actual traceability mechanism in this phase.',
     evidence: 'Git history and editorial audits exist; a separate ledger service is not implemented.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Git history and editorial audits exist; a separate ledger service is not implemented.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=partially-covered. Git history and editorial audits exist; a separate ledger service is not implemented. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-009', title: 'SIDRA TREE Knowledge Graph', aliases: ['Concept and Dependency Graph'],
@@ -102,6 +142,11 @@ export const ecosystemSystems = [
     guardrails: ['Graph is an index, not a second source of truth', 'Do not merge adjacent projects without provenance'],
     nextAction: 'Create static relation data and link it from the Command Center.',
     evidence: 'Proposed architecture; graph UI not verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Proposed architecture; graph UI not verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=planned. Proposed architecture; graph UI not verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-010', title: 'Divine Command Center Hub', aliases: ['Catatan Suara Qalbu', 'Life-Care Coordination'],
@@ -114,6 +159,11 @@ export const ecosystemSystems = [
     guardrails: ['Do not claim divine authorization', 'Do not replace emergency or professional services', 'Separate spiritual reflection from factual incident reporting'],
     nextAction: 'Recover the canonical Divine Command Center Hub narrative and map it to existing Command Center features without claiming a live response network.',
     evidence: 'A Command Center UI exists, but it is a local-first creative prototype, not a real operations center.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: A Command Center UI exists, but it is a local-first creative prototype, not a real operations center.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=partially-covered. A Command Center UI exists, but it is a local-first creative prototype, not a real operations center. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-011', title: 'Atmosphere OS', aliases: ['Atmosphere Command Center', 'PM2.5 / Pollution OS'],
@@ -126,6 +176,11 @@ export const ecosystemSystems = [
     guardrails: ['One sensor cannot establish a global condition', 'Public-health advice requires qualified sources', 'No intervention without authorized and tested controls'],
     nextAction: 'Recover the detailed engineering specification; define data units, calibration, quality, exposure context and acceptance tests.',
     evidence: 'Discussed in project conversations; implementation and original complete specification not verified in the repository.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Discussed in project conversations; implementation and original complete specification not verified in the repository.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Discussed in project conversations; implementation and original complete specification not verified in the repository. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-012', title: 'HELIOGRID Energy System', aliases: ['Solar Energy Ecosystem'],
@@ -138,6 +193,11 @@ export const ecosystemSystems = [
     guardrails: ['No perpetual-energy claims', 'No double counting energy flows', 'Certified electrical protection takes precedence over AI recommendations'],
     nextAction: 'Recover original ARS/solar/quantum-proton concepts, separate feasible near-term solar technologies from speculative hypotheses, and create a measured feasibility roadmap.',
     evidence: 'Concept candidate; no installed energy infrastructure or measured performance verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Concept candidate; no installed energy infrastructure or measured performance verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Concept candidate; no installed energy infrastructure or measured performance verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-013', title: 'ARSY Compute & Research Orchestration', aliases: ['ARS', 'Research and Compute Ecosystem'],
@@ -150,6 +210,11 @@ export const ecosystemSystems = [
     guardrails: ['Quantum/proton terminology is not proof of capability', 'Distinguish simulation from physical implementation', 'Track costs and resource use'],
     nextAction: 'Confirm canonical name and original source; map each claimed technology to readiness level and falsifiable tests.',
     evidence: 'Related concepts discussed in project history; exact scope and implementation are not verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Related concepts discussed in project history; exact scope and implementation are not verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Related concepts discussed in project history; exact scope and implementation are not verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   },
   {
     id: 'MWX-SYS-014', title: 'Material Forge & Experimental R&D', aliases: ['Materials and Device Research'],
@@ -162,6 +227,11 @@ export const ecosystemSystems = [
     guardrails: ['Proposal is not deployed hardware', 'No unmeasured efficiency or capability claims', 'Qualified laboratory and electrical safety review required'],
     nextAction: 'Determine which concepts have source documents and convert each into a falsifiable test plan or mark it as a speculative concept.',
     evidence: 'Proposed integration role; physical lab or device implementation not verified.'
+    sourceProvenance: "Architecture baseline: docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md. Current repository evidence: Proposed integration role; physical lab or device implementation not verified.",
+    decisionRole: "Human project maintainer for scope and release decisions; qualified domain reviewer required before domain-specific validation. Individual assignment is not recorded yet.",
+    acceptanceCriteria: undefined,
+    uncertainty: "Lifecycle=proposed. Proposed integration role; physical lab or device implementation not verified. This record is a planning/status record, not proof of external acceptance or real-world operation.",
+    reviewedAt: '2026-10-21',
   }
 ];
 
@@ -183,5 +253,5 @@ export const ecosystemRules = [
   'Primary sources, interpretations, testimony, hypotheses and measured results remain distinct.',
   'Unresolved conflicts stay visible until evidence supports a resolution.',
   'System concepts do not change the fixed 33-slot championship numbering.',
-  'MoonWitness XII remains static React + Vite for this phase; no backend or ORM is required.'
+  'MoonWitness XII uses Next.js App Router + React + TypeScript/TSX with version-controlled static data; no backend, database, or ORM is required in this phase.'
 ];

@@ -12,7 +12,7 @@ for (const s of ecosystemSystems) {
   assert.ok(s.title?.trim(), s.id + ' needs a canonical title');
   assert.ok(Array.isArray(s.aliases) && s.aliases.length > 0, s.id + ' needs aliases');
   assert.ok(allowedStatuses.has(s.status), s.id + ' has an unsupported lifecycle status: ' + s.status);
-  for (const field of ['domain','purpose','maturity','nextAction','evidence']) assert.ok(typeof s[field] === 'string' && s[field].trim(), s.id + ' missing ' + field);
+  for (const field of ['domain','purpose','maturity','nextAction','evidence','sourceProvenance','decisionRole','acceptanceCriteria','uncertainty','reviewedAt']) assert.ok(typeof s[field] === 'string' && s[field].trim(), s.id + ' missing ' + field);
   for (const field of ['inputs','outputs','dependsOn','connectsTo','guardrails']) assert.ok(Array.isArray(s[field]), s.id + ' missing array ' + field);
   for (const dependency of s.dependsOn) assert.ok(ids.has(dependency), s.id + ' depends on unknown system ' + dependency);
   for (const target of s.connectsTo) assert.ok(ids.has(target), s.id + ' connects to unknown system ' + target);
@@ -25,5 +25,8 @@ assert.ok(ecosystemRules.length >= 5, 'Cross-system safety rules must be present
 const page = readFileSync('src/pages-ui/Ecosystem.tsx','utf8');
 const architecture = readFileSync('docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md','utf8');
 assert.ok(page.includes('Next.js App Router') && !page.includes('React + Vite'), 'Ecosystem UI must reflect the actual platform');
+assert.ok(!ecosystemRules.some(rule => /React \\+ Vite/i.test(rule)), 'Ecosystem rules must not describe the retired Vite platform');
+assert.ok(page.includes('s.acceptanceCriteria') && page.includes('s.sourceProvenance') && page.includes('s.decisionRole'), 'Ecosystem UI must expose governance metadata');
+assert.ok(ecosystemSystems.every(s => /^\\d{4}-\\d{2}-\\d{2}$/.test(s.reviewedAt)), 'Each system needs a review date');
 assert.ok(architecture.includes('Next.js App Router') && !architecture.includes('Public XII remains React + Vite'), 'Architecture must reflect the actual platform');
 console.log('Ecosystem integrity PASS: ' + ecosystemSystems.length + ' canonical systems, ' + relatedConcepts.length + ' related concepts, valid IDs/dependencies/lifecycle fields, and no operational claims without evidence.');
