@@ -12,7 +12,7 @@ const safeRead=()=>{try{const v=JSON.parse(localStorage.getItem(boardKey)||'[]')
 export default function CommandCenter(){
  const {completed,toggle}=useWorldProgress();
  const [cycle,setCycle]=useState('All');const [guild,setGuild]=useState('All');
- const [selectedEvent,setSelectedEvent]=useState(0);const[saved,setSaved]=useState([]);
+ const [selectedEvent,setSelectedEvent]=useState(0);const[saved,setSaved]=useState<string[]>([]);
  const [view,setView]=useState('dashboard');
  const events=useMemo(()=>communityEvents.filter(e=>(cycle==='All'||e.cycle===cycle)&&(guild==='All'||e.domain===guild)),[cycle,guild]);
  const chosen=events.length?events[Math.min(selectedEvent,events.length-1)]:null;
