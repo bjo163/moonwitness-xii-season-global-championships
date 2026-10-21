@@ -19,14 +19,19 @@ for (const s of ecosystemSystems) {
   if (s.status === 'operational') assert.match(s.evidence, /verified|measured|production|operational evidence/i, s.id + ' cannot be operational without explicit evidence');
 }
 assert.equal(new Set(relatedConcepts.map(x => x.id)).size, relatedConcepts.length, 'Related concept IDs must be unique');
-for (const c of relatedConcepts) assert.ok(c.id && c.title && c.type && c.status && c.scope && c.nextAction && c.boundary, 'Related concept record is incomplete: ' + (c.id || 'unknown'));
+for (const c of relatedConcepts) {
+  assert.ok(c.id && c.title && c.type && c.status && c.scope && c.nextAction && c.boundary, 'Related concept record is incomplete: ' + (c.id || 'unknown'));
+  for (const field of ['sourceProvenance','decisionRole','acceptanceCriteria','uncertainty','reviewedAt']) assert.ok(typeof c[field] === 'string' && c[field].trim(), c.id + ' missing ' + field);
+  assert.equal(c.reviewedAt, '2026-10-21', c.id + ' review date missing');
+}
 assert.ok(ecosystemLifecycle.length >= 7, 'Lifecycle must describe progression from captured concept to operation');
 assert.ok(ecosystemRules.length >= 5, 'Cross-system safety rules must be present');
 const page = readFileSync('src/pages-ui/Ecosystem.tsx','utf8');
 const architecture = readFileSync('docs/MOONWITNESS-XII-INTEGRATED-SYSTEMS-ARCHITECTURE.md','utf8');
 assert.ok(page.includes('Next.js App Router') && !page.includes('React + Vite'), 'Ecosystem UI must reflect the actual platform');
 assert.ok(!ecosystemRules.some(rule => rule.includes('React + Vite')), 'Ecosystem rules must not describe the retired Vite platform');
-assert.ok(page.includes('s.acceptanceCriteria') && page.includes('s.sourceProvenance') && page.includes('s.decisionRole'), 'Ecosystem UI must expose governance metadata');
+assert.ok(page.includes('s.acceptanceCriteria') && page.includes('s.sourceProvenance') && page.includes('s.decisionRole'), 'Ecosystem UI must expose system governance metadata');
+assert.ok(page.includes('x.acceptanceCriteria') && page.includes('x.sourceProvenance') && page.includes('x.decisionRole'), 'Ecosystem UI must expose related-concept governance metadata');
 assert.ok(ecosystemSystems.every(s => /^\d{4}-\d{2}-\d{2}$/.test(s.reviewedAt)), 'Each system needs a review date');
 assert.ok(architecture.includes('Next.js App Router') && !architecture.includes('Public XII remains React + Vite'), 'Architecture must reflect the actual platform');
 console.log('Ecosystem integrity PASS: ' + ecosystemSystems.length + ' canonical systems, ' + relatedConcepts.length + ' related concepts, valid IDs/dependencies/lifecycle fields, and no operational claims without evidence.');
