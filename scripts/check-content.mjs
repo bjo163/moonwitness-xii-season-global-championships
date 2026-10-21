@@ -197,7 +197,7 @@ console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy n
 const syafaatLab = readFileSync('src/pages-ui/SyafaatEngine.tsx','utf8');
 const routedPages = readFileSync('src/app/[...slug]/page.tsx','utf8');
 const navigation = readFileSync('src/components/Header.tsx','utf8');
-for (const marker of ['calculateSyafaatMetrics','SESSION ONLY','CLEAR SESSION DATA','N/A','human','local']) {
+for (const marker of ['calculateSyafaatMetrics','SESSION ONLY','CLEAR SESSION DATA','N/A','pahala','local']) {
   assert.ok(syafaatLab.toLowerCase().includes(marker.toLowerCase()), 'SYAFAAT lab missing marker: ' + marker);
 }
 assert.ok(routedPages.includes('path === "syafaat-engine"'), 'SYAFAAT lab route missing');
