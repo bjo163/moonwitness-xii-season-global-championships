@@ -191,3 +191,16 @@ assert.ok(readFileSync('src/app/[...slug]/page.tsx','utf8').includes('path === "
 assert.ok(readFileSync('src/pages-ui/Home.tsx','utf8').includes('#033 KOPIHITAM - SIACENG'));
 
 console.log('Content integrity checks PASS: 105 champions, 33 levels, 8 legacy numbered reports + 1 #033 chat-recorded submission, WILD YOUTH and 15 story entries / 63 editorial pages, 0 verified approvals.');
+
+
+// SYAFAAT local-only metrics lab: route, navigation, denominator rules, and no persistence claims.
+const syafaatLab = readFileSync('src/pages-ui/SyafaatEngine.tsx','utf8');
+const routedPages = readFileSync('src/app/[...slug]/page.tsx','utf8');
+const navigation = readFileSync('src/components/Header.tsx','utf8');
+for (const marker of ['calculateSyafaatMetrics','SESSION ONLY','CLEAR SESSION DATA','N/A','human','local']) {
+  assert.ok(syafaatLab.toLowerCase().includes(marker.toLowerCase()), 'SYAFAAT lab missing marker: ' + marker);
+}
+assert.ok(routedPages.includes('path === "syafaat-engine"'), 'SYAFAAT lab route missing');
+assert.ok(navigation.includes("'/syafaat-engine'"), 'SYAFAAT lab navigation missing');
+assert.ok(!syafaatLab.includes('localStorage') && !syafaatLab.includes('fetch('), 'SYAFAAT lab must remain local-only with no persistence or external dispatch');
+assert.ok(readFileSync('src/pages-ui/Syafaat.tsx','utf8').includes('href="/syafaat-engine"'), 'SYAFAAT master registry must link to the metrics lab');
