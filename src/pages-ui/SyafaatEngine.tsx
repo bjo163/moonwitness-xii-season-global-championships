@@ -112,7 +112,7 @@ export default function SyafaatEngine() {
         </div>
       </section>
 
-      <section className="section alt" aria-labelledby="entry-heading">
+      <section className="section alt syafaat-engine" aria-labelledby="entry-heading">
         <Head eyebrow="// TEST RECORDS" title="ADD LOCAL TEST RECORDS." sub="Pakai entri contoh untuk memeriksa denominator dan transisi status. Tidak ada entri yang dikirim ke luar halaman." />
         <div className="grid two">
           <article className="card">
