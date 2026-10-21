@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import "./globals.css";
 import AppShell from "./AppShell";
 
@@ -7,8 +8,8 @@ export const metadata = {
   applicationName: "MOONWITNESS XII",
 };
 
-export const viewport = { themeColor: "#0b1220" };
+export const viewport = { themeColor: "#0e0b1a" };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return <html lang="id" suppressHydrationWarning><body><AppShell>{children}</AppShell></body></html>;
 }
