@@ -12,8 +12,9 @@ export function loadWorldProgress(){
  }catch{return [];}
 }
 export function useWorldProgress(){
- const[completed,setCompleted]=useState(loadWorldProgress);
- useEffect(()=>{try{window.localStorage.setItem(KEY,JSON.stringify(sanitize(completed)));window.localStorage.setItem(LEGACY,JSON.stringify(sanitize(completed).filter(n=>n<=33)));}catch{}},[completed]);
+ const[completed,setCompleted]=useState([]);const[hydrated,setHydrated]=useState(false);
+ useEffect(()=>{setCompleted(loadWorldProgress());setHydrated(true);},[]);
+ useEffect(()=>{if(!hydrated)return;try{window.localStorage.setItem(KEY,JSON.stringify(sanitize(completed)));window.localStorage.setItem(LEGACY,JSON.stringify(sanitize(completed).filter(n=>n<=33)));}catch{}},[completed,hydrated]);
  useEffect(()=>{const update=e=>{if(e.type===WORKSPACE_EVENT||e.key===KEY||e.key===LEGACY)setCompleted(loadWorldProgress());};window.addEventListener('storage',update);window.addEventListener(WORKSPACE_EVENT,update);return()=>{window.removeEventListener('storage',update);window.removeEventListener(WORKSPACE_EVENT,update);};},[]);
  const toggle=id=>{if(!Number.isInteger(id)||id<1||id>100)return;setCompleted(prev=>prev.includes(id)?prev.filter(n=>n!==id):sanitize([...prev,id]));};
  const reset=()=>setCompleted([]);

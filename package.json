@@ -1,26 +1,28 @@
 {
   "name": "moonwitness-xii-global-championships",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "npm run test && npm run audit:posters && vite build",
-    "preview": "vite preview --host 0.0.0.0",
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "npm run test && npm run audit:posters && next build",
+    "start": "next start --hostname 0.0.0.0",
+    "preview": "next start --hostname 0.0.0.0",
     "test": "node scripts/check-content.mjs && node scripts/test-workspace.mjs",
     "check": "npm run build",
     "test:browser": "playwright test",
     "audit:posters": "node scripts/audit-posters.mjs"
   },
   "dependencies": {
+    "next": "16.2.6",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.0"
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
-    "vite": "^7.1.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "^5.9.2",
-    "@playwright/test": "^1.56.1"
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.9.2"
   }
 }

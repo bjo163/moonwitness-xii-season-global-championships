@@ -1,5 +1,6 @@
+"use client";
 import React,{useMemo,useState} from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'next/link';
 import {Head,Notice} from '../components/UI.jsx';
 import {ecosystemSystems,ecosystemLifecycle,ecosystemRules} from '../data/ecosystemRegistry.js';
 import {relatedConcepts,conceptStatusLabels} from '../data/relatedConceptCatalog.js';
